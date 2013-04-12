@@ -20,14 +20,14 @@ using namespace std;
 
 int ans[25][25];
 
-int LCS(int n,int* first, int* second){
+int LCS(int n,int* first, int* second) {
     memset(ans,0,sizeof(ans));
     int i,j;
-    for(i=1;i<=n;i++){
-        for(j=1;j<=n;j++){
-            if(first[i] == second[j]){
+    for(i=1; i<=n; i++) {
+        for(j=1; j<=n; j++) {
+            if(first[i] == second[j]) {
                 ans[i][j] = ans[i-1][j-1] + 1;
-            }else{
+            } else {
                 ans[i][j] = max(ans[i-1][j], ans[i][j-1]);
             }
         }
@@ -36,25 +36,29 @@ int LCS(int n,int* first, int* second){
 
 }
 
-int main(){
+int main() {
     int i,j;
-    int n;
-    int str1[25]={-1};
-    int str2[25]={-1};
-    while(~scanf("%d",&n)){
+    int n,tmp;
+    int str1[25]= {-1};
+    int str2[25]= {-2};
+    scanf("%d",&n);
 
-        for(i=1;i<=n;i++){
-            scanf("%d",&str1[i]);
-        }
-
-        for(i=1;i<n;i++){
-            for(j=1;j<=n;j++){
-                scanf("%d",&str2[j]);
-            }
-            printf("%d\n",LCS(n,str1,str2));
-        }
-
+    for(i=1; i<=n; i++) {
+        scanf("%d",&tmp);
+        str1[tmp] = i;
     }
+
+    while(~scanf("%d",&tmp)){
+        str2[tmp] = 1;
+        for(j=2; j<=n; j++) {
+            scanf("%d",&tmp);
+            str2[tmp] = j;
+        }
+        printf("%d\n",LCS(n,str1,str2));
+    }
+
+
+
 
     return 0;
 }
