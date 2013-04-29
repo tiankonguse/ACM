@@ -58,11 +58,12 @@ int main() {
                 if(first[i] == second[j]){
                     str2[i][j] = (str1[i-1][j-1] +1)%mod;
                     tmp = (tmp + str2[i][j]) % mod;
-                    str1[i][j] = (str1[i-1][j] + tmp) % mod;
+
                 }else{
                     str2[i][j] = 0;
-                    str1[i][j] = (str1[i][j-1] + get(j,i)) % mod;
+                   // str1[i][j] = (str1[i][j-1] + get(j,i)) % mod;
                 }
+                str1[i][j] = (str1[i-1][j] + tmp) % mod;
             }
         }
         printf("%lld\n",str1[i-1][j-1]);
