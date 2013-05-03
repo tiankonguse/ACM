@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+
+int f[201][201];
+int g[40001];
+int c;
+
+void init()
+{
+	int i,j,k;
+	c = 1;
+	for(i = 2;i <= 200;i++)
+		for(j = 2;j <= 200;j++,c++)
+		{
+			for(k = 2;k+2 <= j;k++)
+				g[f[i][k]^f[i][j-k]] = c;
+			for(k = 2; k+2 <= i;k++)
+				g[f[k][j]^f[i-k][j]] = c;
+			for(k = 0;g[k] == c;k++);
+			f[i][j] = k;
+		}
+}
+
+int main()
+{
+	int a,b;
+	init();
+	while(scanf("%d%d",&a,&b) != EOF)
+		if(f[a][b]) printf("WIN\n");
+		else printf("LOSE\n");
+		return 0;
+}
