@@ -18,6 +18,14 @@
 using namespace std;
 const int P=100;
 int next[P];
+
+//next[i]的意义
+//s为匹配串,t为s的前i个字符组成的子串
+//t = s[0]s[1]...s[i-1]
+//设串s[0]s[1]...s[k]和串s[i-1-k]s[i-1-(k-1)]...s[i-1]相等，
+//next[i]就是这样的k的最大值
+//
+
 void get_next(char *pat){
 	memset(next,-1,sizeof(next));
 	for(int i=1,k;pat[i];++i){
