@@ -17,6 +17,7 @@
 #include<algorithm>
 using namespace std;
 
+const double  esp = 1e-6;
 
 struct T {
     int weeks;
@@ -59,20 +60,13 @@ int find_lev(char const* const name) {
     }
 }
 
-bool is_zero(double const& downloaded, double  const& ratio){
-    if(downloaded >= 50 && ratio < 0.4) {
-        return 1;
-    }
-    if(downloaded >= 100 && ratio < 0.5) {
-        return 1;
-    }
-    if(downloaded >= 200 && ratio < 0.6) {
-        return 1;
-    }
-    if(downloaded >= 400 && ratio < 0.7) {
-        return 1;
-    }
-    if(downloaded >= 800 && ratio < 0.8) {
+bool is_zero(double const& downloaded, double  const& ratio) {
+    if(downloaded >= 50 && ratio < 0.4 ||
+            downloaded >= 100 && ratio < 0.5 ||
+            downloaded >= 200 && ratio < 0.6 ||
+            downloaded >= 400 && ratio < 0.7 ||
+            downloaded >= 800 && ratio < 0.8
+      ) {
         return 1;
     }
 
@@ -90,22 +84,30 @@ int main() {
     scanf("%d",&cas);
     while(cas--) {
         scanf("%s%d%lf%lf",str,&Register_time,&downloaded, &uploaded);
+
+        if(downloaded <= esp){
+            printf("%s\n",_map[1]);
+            continue;
+        }
+
         ratio = uploaded/downloaded;
 
         bool ok = false;
         now_lev =  find_lev(str);
         for(i = 9; i>=2; i--) {
             if(Register_time >= user[i].weeks && downloaded >= user[i].downloaded) {
-                if(ratio >= user[i].above) {
-                    printf("%s\n",_map[i]);
-                    ok = true;
-                    break;
-                }
-
-                if(now_lev == i && ratio >= user[i].below) {
-                    printf("%s\n",_map[i]);
-                    ok = true;
-                    break;
+                if(now_lev >= i){
+                    if(ratio >= user[i].below){
+                        printf("%s\n",_map[i]);
+                        ok = true;
+                        break;
+                    }
+                }else{
+                    if(ratio >= user[i].above){
+                        printf("%s\n",_map[i]);
+                        ok = true;
+                        break;
+                    }
                 }
             }
         }
