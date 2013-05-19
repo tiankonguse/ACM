@@ -1,44 +1,41 @@
 /*************************************************************************
-    > File Name: C Serial Numbers.cpp
+    > File Name: C Serial Numbers004.cpp
     > Author: tiankonguse
     > Mail: shen10000shen@gmail.com
-    > Created Time: 2013/5/16 19:38:01
+    > Created Time: 2013/5/17 9:16:51
  ************************************************************************/
 
 #include<iostream>
 #include<cstdio>
 #include<cstring>
 #include<cstdlib>
+#include<set>
+#include<map>
 #include<queue>
 #include<stack>
 #include<functional>
 #include<algorithm>
 using namespace std;
+
 const int N = 100010;
 struct T{
     int val,num;
     T(){};
     T(int val,int num):val(val),num(num){}
-}now;
-int str[N];
-int _str[N];
-int *oldstr,*newstr;
-queue<T>que;z
+}now,que[N];
+int que_num;
+bool vis[N];
+int ans[N];
 int main() {
     int n,m,si,cas,i,tmp;
     scanf("%d",&cas);
     while(cas--){
         scanf("%d%d",&n,&m);
-        memset(str,-1,sizeof(str));
-        memset(_str,-1,sizeof(_str));
-        oldstr = str;
-        newstr = _str;
-        while(!que.empty())que.pop();
+        memset(vis,false,sizeof(vis));
 
-        oldstr[0] = 0;
-        que.push(T(0,0));
+        que_num = 0;
 
-        for(i=1;i<=n;i++){
+        while(n--){
             scanf("%d",&si);
             while(1){
                 if(que.front().num == i)break;

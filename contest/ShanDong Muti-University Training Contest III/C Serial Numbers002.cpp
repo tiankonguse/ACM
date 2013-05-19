@@ -18,8 +18,13 @@
 using namespace std;
 const int maxn = 100005;
 int vis[maxn],ans[maxn];
-int main() {
-    int t,i,j,n,m,num;
+struct array
+{
+    int num,times;
+}s[maxn];
+int main()
+{
+    int t,i,j,n,m,tmp,d;
     scanf("%d",&t);
     while(t--)
     {
@@ -29,38 +34,31 @@ int main() {
         int k=0;
         for(i=1;i<=n;i++)
         {
-            scanf("%d",&num);
-            if(i==1)
+            scanf("%d",&tmp);
+            int g=0;
+            int kk = k;
+            for(j=0;j<kk;j++)
             {
-                num%=m;
-                vis[num]=1;
-                ans[k++]=num;
-                for(j=0;j<m;j++)
-            cout<<j<<"**"<<vis[j]<<endl;
-            cout<<endl;
-                continue;
-            }
-            for(j=k-1;j>=0;j--)
-            {
-                int d = (ans[j]+num)%m;
+                d = (ans[j]+tmp)%m;
                 if(vis[d]==0)ans[k++]=d;
-
                 if(vis[d]<vis[ans[j]]+1)
                 {
-                    vis[d]=vis[ans[j]]+1;
+                    s[g].num=d;s[g++].times=vis[ans[j]]+1;
                 }
             }
-            num %= m;
-            if(vis[num]==0)ans[k++]=num;
-            vis[num]++;
-            for(j=0;j<m;j++)
-            cout<<j<<"**"<<vis[j]<<endl;
-            cout<<endl;
-           // for(j=0;j<k;j++)
-            //cout<<j<<"*&^^%%"<<ans[j]<<endl;
-            //cout<<endl;
+            d = tmp%m;
+            if(vis[d]==0)ans[k++]=d;
+            if(vis[d]<1)
+            {
+                s[g].num=d;s[g++].times=1;
+            }
+            for(j=0;j<g;j++)
+            {
+                if(vis[s[j].num]<s[j].times)
+                  vis[s[j].num]=s[j].times;
+            }
         }
-        cout<<vis[0]<<endl;
+        printf("%d\n",vis[0]);
     }
     return 0;
 }
