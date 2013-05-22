@@ -8,7 +8,7 @@
 #include<vector>
 #include<algorithm>
 using namespace std;
-typedef    unsigned long long LL;
+typedef    unsigned __int64 LL;
 const int S = 20;
 LL muti_mod(LL a,LL b,LL c)
 {
@@ -150,15 +150,15 @@ int main()
 //            printf("%ulld n=%ulld---%d\n",i,n,Miller_Rabin(n));
     }
 
-    for(i=2;i<=64;j++)
+    for(j=2;j<=64;j++)
     {
         if(factor[j].size() == 1)
         {
-            printf("%llu is Mersenne prime.\n",_str[j]);
+            printf("%d %I64u\n---\n",j,_str[j]);
         }
         else
         {
-            printf("%llu is NOT Mersenne prime.\n",_str[j]);
+            printf("%d %I64u\n",j,_str[j]);
             tmp = -1;
             for(i=0; i<factor[j].size(); i++)
             {
@@ -166,12 +166,12 @@ int main()
                 if(tmp != factor[j][i])
                 {
                     if(i)putchar(' ');
-                    printf("%llu",factor[j][i]);
+                    printf("%I64u",factor[j][i]);
                 }
 
                 tmp = factor[j][i];
             }
-            puts("");
+            puts("\n---");
         }
 
     }
