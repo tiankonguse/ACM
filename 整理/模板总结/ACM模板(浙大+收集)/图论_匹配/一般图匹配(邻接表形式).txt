@@ -1,0 +1,42 @@
+//一般图最大匹配,邻接表形式,复杂度O(n*e)
+//返回匹配顶点对数,match返回匹配,未匹配顶点match值为-1
+//传入图的顶点数n和邻接表list
+#define MAXN 100
+struct edge_t{
+   int from,to;
+   edge_t* next;
+};
+
+int aug(int n,edge_t* list[],int* match,int* v,int now){
+   int t,ret=0;edge_t* e;
+   v[now]=1;
+   for (e=list[now];e;e=e->next)
+      if (!v[t=e->to]){
+         if (match[t]<0)
+            match[now]=t,match[t]=now,ret=1;
+         else{
+            v[t]=1;
+            if (aug(n,list,match,v,match[t]))
+               match[now]=t,match[t]=now,ret=1;
+            v[t]=0;
+         }
+         if (ret)
+            break;
+      }
+   v[now]=0;
+   return ret;
+}
+
+int graph_match(int n,edge_t* list[],int* match){
+   int v[MAXN],i,j;
+   for (i=0;i<n;i++)
+   v[i]=0,match[i]=-1;
+   for (i=0,j=n;i<n&&j>=2;)
+      if (match[i]<0&&aug(n,list,match,v,i))
+         i=0,j-=2;
+      else
+         i++;
+   for (i=j=0;i<n;i++)
+      j+=(match[i]>=0);
+   return j/2;
+}
