@@ -1,0 +1,27 @@
+//miller rabin
+//判断自然数n是否为素数
+//time越高失败概率越低,一般取10到50
+#include <stdlib.h>
+#ifdef WIN32
+typedef __int64 i64;
+#else
+typedef long long i64;
+#endif
+
+int modular_exponent(int a,int b,int n){ //a^b mod n
+	int ret;
+	for (;b;b>>=1,a=(int)((i64)a)*a%n)
+		if (b&1)
+			ret=(int)((i64)ret)*a%n;
+	return ret;
+}
+
+// Carmicheal number: 561,41041,825265,321197185
+int miller_rabin(int n,int time=10){
+	if (n==1||(n!=2&&!(n%2))||(n!=3&&!(n%3))||(n!=5&&!(n%5))||(n!=7&&!(n%7)))
+		return 0;
+	while (time--)
+		if (modular_exponent(((rand()&0x7fff<<16)+rand()&0x7fff+rand()&0x7fff)%(n-1)+1,n-1,n)!=1)
+			return 0;
+	return 1;
+}

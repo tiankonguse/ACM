@@ -1,0 +1,114 @@
+//如果是最小生成树解题的话，我就用Prime算法和Kruskal算法解之，看看时间之间的差别。
+//pku 3723
+
+#include <iostream>
+using namespace std;
+const int d = 10001;
+
+struct list{
+	
+	int v1,v2,w;	
+};
+list v[5 * d];
+int vis[2 * d];
+int rank[2 * d];
+
+int comp(const void *e1,const void *e2){
+	
+	return ((list *)e2) -> w - ((list *)e1) -> w;	
+}
+
+void Init_set(void){
+	
+	for(int i = 0 ; i <= 20000 ; i ++ ){
+		
+		rank[i] = 0;
+		vis[i] = i;	
+	}
+	return;
+}	
+
+int Find_set(const int &x){
+	
+	if(x != vis[x]){
+		
+		vis[x] = Find_set(vis[x]);	
+	}	
+	return vis[x];
+}
+
+bool Union_set(int x,int y){
+	
+	x = Find_set(x);
+	y = Find_set(y);
+	
+	if(x != y){
+		
+		if(rank[x] > rank[y]){
+			
+			vis[y] = x;
+			//rank[x] += rank[y];	
+		}
+		else{
+			
+			vis[x] = y;
+			//rank[y] += rank[x];	
+		}
+		if(rank[x]==rank[y])
+			rank[x]++;
+		return true;
+	}
+	return false;	
+}	
+
+int kruskal(int n,int r){
+	
+	qsort(v,r,sizeof(list),comp);
+	
+	int result = 0 , count = 0;
+
+        int i;
+	
+	for( i = 0 ; i < r && count < n - 1 ; i ++ ){
+		
+		if(Union_set(v[i].v1,v[i].v2)){
+			
+			++ count;
+			result += v[i].w;
+		}		
+	}
+	return result;
+}	
+
+int main(){
+	
+	int t,n,m,r;
+	scanf("%d",&t);
+	
+	while(t -- ){
+		
+		scanf("%d%d%d",&n,&m,&r);
+		
+		for(int i = 0 ; i < r ; i ++ ){
+			
+			scanf("%d%d%d",&v[i].v1,&v[i].v2,&v[i].w);	
+			v[i].v2 += d;
+		}
+			
+		Init_set();
+		
+		int result = kruskal(n + m,r);
+		for (i=0;i<n+m;i++)
+		{
+			cout<<rank[i]<<endl;
+		}
+		
+		result = 10000 * (n + m) - result;
+		
+		printf("%d\n",result);
+		
+	}
+	return 0;	
+}
+
+
