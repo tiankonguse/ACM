@@ -16,9 +16,13 @@
 #include<functional>
 #include<algorithm>
 using namespace std;
+typedef long long LL;
+const int N=1000000;
+const int M=300000;
+
 
 
 int main() {
-
+    printf("%d\n",(0>>1));
     return 0;
 }
