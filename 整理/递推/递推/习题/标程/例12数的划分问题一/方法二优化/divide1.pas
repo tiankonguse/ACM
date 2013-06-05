@@ -1,0 +1,22 @@
+var n,m,i,j,x:integer;
+    f,s:array[0..50,0..50]of int64;
+begin
+    assign(input,'divide1.in');
+    reset(input);
+    assign(output,'divide1.out');
+    rewrite(output);
+    readln(n,m);
+    for i:=1 to n do begin
+      f[i,1]:=1;
+      s[i,1]:=i;
+    end;
+    for j:=2 to m do begin
+      for i:=j to n do begin
+        f[i,j]:=s[i-1,j-1];
+        s[i,j]:=s[i-1,j]+f[i,j];
+      end;
+    end;
+    writeln(f[n,m]);
+    close(input);
+    close(output);
+end.

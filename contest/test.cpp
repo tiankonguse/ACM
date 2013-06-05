@@ -1,17 +1,21 @@
-#include <stdio.h>
-
-int getAns(int n,int m){
-    int ans = 0;
-    for (int i=2; i<=n; i++){
-        ans=(ans+m)%i;
+#include <cstdio>
+#include <cmath>
+typedef double Type;
+typedef long long LL;
+double eps = 1e-6;
+int const maxn = 1e6;
+LL f(int *p, int i, int final){
+    if(i == 0){
+        return 0;
     }
-    return ans+1;
+    if(p[i] == final){
+        return f(p,i-1,final);
+    }else{
+        return f(p,i-1,6 - p[i] - final) +
+    }
 }
 
 int main(void) {
-    int n, m, i, ans=0;
-    for (i=2; i<=n; i++)
-        s=(s+m)%i;
-    printf ("The winner is %d/n", s+1);
+
     return 0 ;
 }

@@ -1,0 +1,25 @@
+program ball2;
+ var
+  i,j,k,l,m,n,r:longint;
+  f:array[0..30,0..30]of longint;
+ procedure ball(n,r:longint);
+  begin
+   for i:=1 to n do
+    for j:=1 to r do
+     begin
+      if (j=1)or(i=j) then f[i,j]:=1;
+      if i<j then f[i,j]:=0;
+     end;
+   for i:=1 to n do
+    for j:=1 to r do
+    begin if i>j then
+     f[i,j]:=f[i-1,j-1]+f[i-1,j]*j;end;
+  end;
+  begin
+   assign(input,'ball.in');reset(input);
+   assign(output,'ball.out');rewrite(output);
+   readln(n,r);
+   ball(n,r);
+   writeln(f[n,r]);
+   close(input);close(output);
+  end.

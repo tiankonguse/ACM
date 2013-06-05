@@ -11,58 +11,55 @@ struct Point{
 }now,tmp,from,to;
 queue<Point>que;
 
-bool getto(int x,int y){
-    return to.x == x && to.y == y;
+bool getto(Point& tmp){
+    return to.x == tmp.x && to.y == tmp.y;
+}
+
+int bfs(){
+    while(!que.empty())que.pop();
+    if(getto(from))return 0;
+    str[from.x][from.y] = 1;
+    que.push(from);
+    int i;
+    while(!que.empty()){
+        now = que.front();que.pop();
+        for(i=0;i<4;i++){
+            tmp.x = now.x + mymap[i][0];
+            tmp.y = now.y + mymap[i][1];
+            if(getto(tmp))return str[now.x][now.y];
+            if(str[tmp.x][tmp.y] != 0)continue;
+            str[tmp.x][tmp.y] = str[now.x][now.y] + 1;
+            que.push(tmp);
+        }
+    }
+    return -1;
 }
 
 int main(){
     int n,m;
     int x,y;
     int i,j;
+    int ans;
     while(~scanf("%d%d",&n,&m)){
         memset(str,1,sizeof(str));
 
         for(i=1;i<=n;i++){
             for(j=1;j<=m;j++){
                 scanf("%d",&str[i][j]);
-
-                if(str[i][j])str[i][j]=-1;
-                else str[i][j]=-2;
             }
         }
         scanf("%d%d%d%d",&from.x,&from.y,&to.x,&to.y);
         if(str[from.x][from.y] || str[to.x][to.y]){
             printf("No Answer!\n");
         }else{
-            if(!getto(from.x,from.y)){
-                while(!que.empty())que.pop();
-                str[from.x][from.y]=0;
-                que.push(from);
-                while(!que.empty()){
-                    from = que.front();que.pop();
-                    for(i=0;i<4;i++){
-                        x = from.x+mymap[i][0];
-                        y = from.y+mymap[i][1];
-                        //Ô½½ç
-                        if(x<1 || x>n || y<1 || y>m)continue;
-                        //Ç½
-                        if(str[x][y] != -2)continue;
-                        str[x][y]=str[from.x][from.y]+1;
-                        tmp.x=x;
-                        tmp.y=y;
-
-                        if(getto(from.x,from.y))break;
-                        else que.push(tmp);
-
-                    }
-                    if(getto(from.x,from.y))break;
-                }
-            }
-            if(str[to.x][to.y]!= -2){
-                printf("%d\n",str[to.x][to.y]);
-            }else{
+            ans = bfs();
+            if(ans == -1){
                 printf("No Answer!\n");
+            }else{
+                printf("%d\n",ans);
             }
+
+            printf("");
         }
     }
 
