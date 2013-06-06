@@ -1,4 +1,3 @@
-
 /*************************************************************************
     > File Name: 2794_F．Function Curve.cpp
     > Author: tiankonguse
@@ -48,16 +47,20 @@ int getMinHeight(double x) {
 
 double getLen(double x,int pos) {
 
+
+
     if(pos == -1){
         return x;
     }
 
-    double a = 4 * str[pos].k * str[pos].k;
-    double b = -1.0 * a * 2 * str[pos].a;
-    double c = a * str[pos].a * str[pos].a + 1;
-    double tmp = sqrt(a * x * x + b * x + c);
+    x = 2 * str[pos].k * (x - str[pos].a);
+//    double a = 4 * str[pos].k * str[pos].k;
+//    double b = -1.0 * a * 2 * str[pos].a;
+//    double c = a * str[pos].a * str[pos].a + 1;
+    double tmp = sqrt(x * x + 1);
 
-    return (2 * a * x + b) * tmp / (4 * a) + (4 * a * c - b * b) * (log(fabs(2 * a * x + b + 2 * sqrt(a) * tmp))) / (8*pow(a,1.0/3));
+    return x * tmp / 2 + log(x + tmp) / 2;
+//    return (2 * a * x + b) * tmp / (4 * a) + (4 * a * c - b * b) * (log(fabs(2 * a * x + b + 2 * sqrt(a) * tmp))) / (8*pow(a,1.0/3));
 }
 
 int main() {
