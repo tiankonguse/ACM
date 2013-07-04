@@ -1,5 +1,0 @@
-VC++中定义int64
-  __int64 a;
-
-Gcc中定义int64
-  long long a;

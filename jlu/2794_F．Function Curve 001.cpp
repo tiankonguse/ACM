@@ -48,7 +48,7 @@ int getMinHeight(double x) {
 
 double getLen(double x,int pos) {
 
-    if(pos == -1){
+    if(pos == -1) {
         return x;
     }
 
@@ -85,10 +85,8 @@ int main() {
 
             }
         }
-        if(pre_pos == h_pos) {
-            ans += getLen(100,pre_pos) - getLen(pre,pre_pos);
-            printf("%lf %lf ans = %lf\n",pre,100.0,ans);
-        }
+        ans += getLen(100,pre_pos) - getLen(pre,pre_pos);
+        printf("%lf %lf ans = %lf\n",pre,100.0,ans);
         printf("%.2f\n",ans);
     }
 

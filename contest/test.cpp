@@ -1,21 +1,24 @@
 #include <cstdio>
 #include <cmath>
-typedef double Type;
-typedef long long LL;
-double eps = 1e-6;
-int const maxn = 1e6;
-LL f(int *p, int i, int final){
-    if(i == 0){
-        return 0;
+
+int val[7];
+
+bool is(int n){
+    for(int i=0;i<6;i++){
+        val[i] = n%10;
+        n/=10;
     }
-    if(p[i] == final){
-        return f(p,i-1,final);
-    }else{
-        return f(p,i-1,6 - p[i] - final) +
+    for(int i=0;i<3;i++){
+        if(val[i] != val[5-i])return false;
     }
+    return true;
 }
 
-int main(void) {
-
+int main() {
+    int ans = 0;
+    for(int i = 0; i < 1000000; i++){
+        if(is(i))ans++;
+    }
+    printf("%d\n",ans);
     return 0 ;
 }

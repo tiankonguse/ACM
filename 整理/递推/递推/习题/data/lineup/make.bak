@@ -1,8 +1,0 @@
-var ch:char;
-begin
-  for ch:='0' to '9' do begin
-    assign(output,'lineup'+ch+'.in');
-    rewrite(output);
-    close(output);
-  end;
-end.

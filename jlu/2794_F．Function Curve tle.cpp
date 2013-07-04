@@ -43,7 +43,7 @@ int main() {
 
     int cas,i;
     double x,pre,h;
-    double step = 0.0001,ans;
+    double step = 0.001,ans;
     scanf("%d",&cas);
     while(cas--) {
         scanf("%d",&n);
