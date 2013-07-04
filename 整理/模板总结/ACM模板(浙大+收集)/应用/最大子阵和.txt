@@ -1,0 +1,33 @@
+//求最大子阵和,复杂度O(n^3)
+//传入阵的大小m,n和内容mat[][]
+//返回最大子阵和,重载返回子阵位置(maxsum=list[s1][s2]+...+list[e1][e2])
+//可更改元素类型
+#define MAXN 100
+typedef int elem_t;
+
+elem_t maxsum(int m,int n,elem_t mat[][MAXN]){
+    elem_t matsum[MAXN][MAXN+1],ret,sum;
+    int i,j,k;
+    for (i=0;i<m;i++)
+        for (matsum[i][j=0]=0;j<n;j++)
+            matsum[i][j+1]=matsum[i][j]+mat[i][j];
+    for (ret=mat[0][j=0];j<n;j++)
+        for (k=j;k<n;k++)
+            for (sum=0,i=0;i<m;i++)
+                sum=(sum>0?sum:0)+matsum[i][k+1]-matsum[i][j],ret=(sum>ret?sum:ret);
+    return ret;
+}
+
+elem_t maxsum(int m,int n,elem_t mat[][MAXN],int& s1,int& s2,int& e1,int& e2){
+    elem_t matsum[MAXN][MAXN+1],ret,sum;
+    int i,j,k,s;
+    for (i=0;i<m;i++)
+        for (matsum[i][j=0]=0;j<n;j++)
+            matsum[i][j+1]=matsum[i][j]+mat[i][j];
+    for (ret=mat[s1=e1=0][s2=e2=j=0];j<n;j++)
+        for (k=j;k<n;k++)
+            for (sum=0,s=i=0;i<m;i++,s=(sum>0?s:i))
+                if ((sum=(sum>0?sum:0)+matsum[i][k+1]-matsum[i][j])>ret)
+                    ret=sum,s1=s,s2=i,e1=j,e2=k;
+    return ret;
+}

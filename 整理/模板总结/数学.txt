@@ -1,0 +1,65 @@
+void Pell(int n)//Pell 方程x^2 + N * y^2 = 1,Java高精度
+{
+	BigInteger p0 = BigInteger.ZERO;
+	BigInteger N  =  BigInteger.valueOf (n);
+	BigInteger p1 = BigInteger.ONE;
+	BigInteger q0 = BigInteger.ONE;
+	BigInteger q1 = BigInteger.ZERO;
+	BigInteger p2,q2,a0 = BigInteger.valueOf( (int)Math.sqrt(n)),a1 = a0, a2;
+	BigInteger h1 = BigInteger.ONE;
+	BigInteger g1 = BigInteger.ZERO;
+	while (true)
+	{
+		g1 = (a1.multiply(h1)).subtract(g1);
+		h1 = (N.subtract(g1.multiply(g1))).divide(h1);
+		a2 = (g1.add(a0)).divide(h1);
+		p2 = a1.multiply(p1).add(p0);
+		q2 = a1.multiply(q1).add(q0);
+		if ( p2.multiply(p2).subtract(N.multiply(q2.multiply(q2))).equals(BigInteger.ONE))
+		{
+			System.out.println(p2 + " " + q2);
+			return ;
+		}
+		p0 = p1;
+		p1 = p2;
+		q0 = q1;
+		q1 = q2;
+		a1 = a2;
+	}
+}
+矩阵类
+struct Matrix
+{
+       u64 a[N*2][N*2];
+       Matrix(){memset(a,0,sizeof(a));}
+       Matrix One(){for(int i=0;i<sz;i++) a[i][i]=1; return *this;}
+       Matrix operator *(const Matrix &l)
+       {
+              Matrix tmp;
+              for(int i=0;i<sz;i++)
+                  for(int j=0;j<sz;j++)
+                      for(int k=0;k<sz;k++)
+                          tmp.a[i][j]+=a[i][k]*l.a[k][j];
+              return tmp;
+       }
+       Matrix operator +(const Matrix &l)
+       {
+              Matrix tmp;
+              for(int i=0;i<sz;i++)
+                 for(int j=0;j<sz;j++)
+                      tmp.a[i][j]=a[i][j]+l.a[i][j];
+              return tmp; 
+       }
+};
+Matrix pow(Matrix t,u64 k)
+{
+       Matrix tmp;
+       tmp.One();
+       while(k)
+       {
+            if(k&1) tmp=tmp*t;
+            t=t*t;
+            k>>=1;
+       }
+       return tmp;
+}

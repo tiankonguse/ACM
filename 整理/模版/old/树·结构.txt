@@ -1,0 +1,23 @@
+//Trie
+int  trie[N*Len][|alphabat|],end[N*Len][|alphabat|];
+int base = 'A';
+int key(char c)
+{
+    return c-base;
+}
+void insert(char tmp[])
+{
+     int len=strlen(tmp);
+     int cur=0;
+     for(int i=0;i<len;i++)
+     {
+          if(trie[cur][key(tmp[i])]==-1)
+          {
+               cnt++;
+               for(int j=0;j<26;j++) trie[cnt][j]=-1;
+               trie[cur][key(tmp[i])]=cnt;
+          }
+          cur=trie[cur][key(tmp[i])];
+     }
+     end[cur][key(tmp[len-1])]=1;
+}
