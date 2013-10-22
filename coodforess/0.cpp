@@ -12,11 +12,7 @@
 using namespace std;
 typedef long long LL;
 
-
-
-
-int main(int argc, char* argv[]) {
-
+int main(int argc, char* argv[]){
 
     return 0;
 }
