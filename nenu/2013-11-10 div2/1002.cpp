@@ -11,13 +11,31 @@
 #include<functional>
 #include<stdarg.h>
 using namespace std;
+#ifdef __int64
+typedef __int64 LL;
+#else
 typedef long long LL;
+#endif
 
+char str[100000];
 
 int main() {
-int size=256<<20;
-char *p=(char*)malloc(size)+size;
-__asm__("movl %0, %%esp\n"::"r"(p));
+	int a,i;
+
+	while(~scanf("%s",str)){
+		if(strlen(str) == 1 && str[0] == '0'){
+			break;
+		}
+		a = 0;
+		for(i=0;str[i];i++){
+			a += str[i] - '0';
+		}
+
+		while(a>9){
+			a = a/10 + a%10;
+		}
+		printf("%d\n",a);
+	}
 
     return 0;
 }

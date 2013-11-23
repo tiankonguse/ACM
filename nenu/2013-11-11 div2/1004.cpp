@@ -11,13 +11,20 @@
 #include<functional>
 #include<stdarg.h>
 using namespace std;
+#ifdef __int64
+typedef __int64 LL;
+#else
 typedef long long LL;
+#endif
 
 
 int main() {
-int size=256<<20;
-char *p=(char*)malloc(size)+size;
-__asm__("movl %0, %%esp\n"::"r"(p));
+	int t,a,b;
+	scanf("%d",&t);
+	while(t--){
+		scanf("%d%d",&a,&b);
+		printf("%d\n",a+b);
+	}
 
     return 0;
 }

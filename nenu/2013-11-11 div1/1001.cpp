@@ -15,9 +15,9 @@ typedef long long LL;
 
 
 int main() {
-int size=256<<20;
-char *p=(char*)malloc(size)+size;
-__asm__("movl %0, %%esp\n"::"r"(p));
-
+	int a;
+	a=2;
+	printf("Hello World\n");
+	a++;
     return 0;
 }

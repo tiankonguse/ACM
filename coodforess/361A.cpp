@@ -15,9 +15,16 @@ typedef long long LL;
 
 
 int main() {
-int size=256<<20;
-char *p=(char*)malloc(size)+size;
-__asm__("movl %0, %%esp\n"::"r"(p));
+	int i,j,n,k;
+	while(~scanf("%d%d",&n,&k)){
+		for(i=0;i<n;i++){
+			for(j=0;j<n;j++){
+				printf("%d ",i==j?k:0);
+			}
+			printf("\n");
+		}
+	}
 
     return 0;
 }
+
