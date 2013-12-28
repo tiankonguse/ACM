@@ -11,13 +11,27 @@
 #include<functional>
 #include<stdarg.h>
 using namespace std;
+#ifdef __int64
+typedef __int64 LL;
+#else
 typedef long long LL;
+#endif
+char str[111111];
 
-
+//1689 2
+//1698 4
+//1869 0
+//1896 6
+//1968 1
+//1986 5
+//6198 3
 int main() {
-int size=256<<20;
-char *p=(char*)malloc(size)+size;
-__asm__("movl %0, %%esp\n"::"r"(p));
+	int i,j,l;
+	for(i=0;i<7;i++){
+		printf("%d %d\n",i,(i*10)%7);
+	}
+
+
 
     return 0;
 }

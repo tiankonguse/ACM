@@ -1,0 +1,33 @@
+
+
+Title
+
+Hello World;(2)
+    
+
+Description
+
+输出一个"Hello World;"有点简单了,现在我想输出n个"Hello World;"了;
+
+
+Input
+
+输入一个整数n;
+    
+
+Output
+
+输出n个"Hello World;",每个"Hello World;"一行;
+
+
+Sample Input
+
+3
+
+
+Sample Output
+
+Hello World;
+Hello World;
+Hello World;
+

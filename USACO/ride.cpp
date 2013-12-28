@@ -1,17 +1,29 @@
 /*
-ID: shen1002
+ID: tiankonguse
 PROG: ride
 LANG: C++
 */
-#include <iostream>
-#include <fstream>
-#include <string>
-#include<stdio.h>
+#include<cstdio>
+#include<cstdlib>
+#include<cstring>
+#include<iostream>
+#include<string>
+#include<queue>
+#include<map>
+#include<cmath>
+#include<stack>
+#include<algorithm>
+#include<functional>
+#include<stdarg.h>
 using namespace std;
+#ifdef __int64
+typedef __int64 LL;
+#else
+typedef long long LL;
+#endif
 const int MOD=47;
+
 int main() {
-    //ofstream fout ("test.out");
-    //ifstream fin ("test.in");
     freopen("ride.in","r",stdin);
     freopen("ride.out","w",stdout);
     char str1[111],str2[111];
@@ -24,3 +36,4 @@ int main() {
 	}
     return 0;
 }
+

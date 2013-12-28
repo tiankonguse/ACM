@@ -1,0 +1,7 @@
+题的描述在cpp文件内。
+input.cpp是数据生成程序。
+.in是输入文件
+.out是输出文件。
+如果发现提交正确的代码也是WA,则可能是windows与linux的换行不同的原因。
+若服务器在linux下，则需要使用数据生成程序在linux下生成数据，在windows下则需要在windows下生成。
+
