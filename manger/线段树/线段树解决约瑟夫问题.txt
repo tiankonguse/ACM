@@ -1,0 +1,52 @@
+Code£º
+#include<stdio.h> 
+#include<string.h> 
+const int MAX=30010; 
+struct Jose 
+{ 
+       int left,right,n,mid; 
+}segt[MAX*3]; 
+int fir=0; 
+void create(int l,int r,int num) 
+{ 
+     segt[num].left=l; 
+     segt[num].right=r; 
+     segt[num].n=r-l; 
+     segt[num].mid=(l+r)>>1; 
+     if(l+1==r) return ; 
+     create(l,(l+r)>>1,2*num); 
+     create((l+r)>>1,r,2*num+1); 
+} 
+int del(int k,int num) 
+{
+     segt[num].n--; 
+     int l=segt[num].left,r=segt[num].right; 
+     if(l+1==r) 
+     { 
+          segt[num].n=0; 
+          return l; 
+     } 
+     if(segt[2*num].n>=k) return del(k,2*num); 
+     return del(k-segt[num*2].n,2*num+1); 
+}
+int main() 
+{ 
+    int n,m; 
+    while(scanf("%d%d",&n,&m)!=EOF) 
+    { 
+         memset(segt,0,sizeof(segt)); 
+         fir=0;                     
+         create(1,n+1,1); 
+         int k=0; 
+         for(int i=n;i>=1;i--) 
+         {       
+		if(fir)   k=(k+m-1)%i; 
+                else k=m%n; 
+                if(k==0) k=i; 
+                if(fir) putchar(' '); 
+                fir=1; 
+                printf("%d",del(k,1)); 
+         } 
+         puts(""); 
+    } 
+} 

@@ -1,0 +1,19 @@
+//单源最短路径,用于路权相等的情况,dijkstra优化为bfs,正向表形式,复杂度O(m)
+//求出源s到所有点的最短路经,传入图的大小n和正向表list,buf,边权值len
+//返回到各点最短距离min[]和路径pre[],pre[i]记录s到i路径上i的父结点,pre[s]=-1
+//可更改路权类型,但必须非负且相等!
+#define MAXN 200
+#define inf 1000000000
+typedef int elem_t;
+
+void dijkstra(int n,int* list,int* buf,elem_t len,int s,elem_t* min,int* pre){
+    int i,que[MAXN],f=0,r=0,p=1,l=1,t;
+    for (i=0;i<n;i++)
+        min[i]=inf;
+    min[que[0]=s]=0,pre[s]=-1;
+    for (;r<=f;l++,r=f+1,f=p-1)
+        for (i=r;i<=f;i++)
+            for (t=list[que[i]];t<list[que[i]+1];t++)
+                if (min[buf[t]]==inf)
+                    min[que[p++]=buf[t]]=len*l,pre[buf[t]]=que[i];
+}

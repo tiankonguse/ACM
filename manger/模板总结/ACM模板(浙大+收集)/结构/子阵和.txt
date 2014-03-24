@@ -1,0 +1,23 @@
+//求sum{a[0..m-1][0..n-1]}
+//维护和查询复杂度均为O(logm*logn)
+//用于动态求子阵和,数组内容保存在sum.a[][]中
+//可以改成其他数据类型
+#include <string.h>
+#define lowbit(x) ((x)&((x)^((x)-1)))
+#define MAXN 100
+typedef int elem_t;
+
+struct sum{
+    elem_t a[MAXN][MAXN],c[MAXN][MAXN],ret;
+    int m,n,t;
+    void init(int i,int j){memset(a,0,sizeof(a));memset(c,0,sizeof(c));m=i,n=j;}
+    void update(int i,int j,elem_t v){
+        for (v-=a[i][j],a[i++][j++]+=v,t=j;i<=m;i+=lowbit(i))
+            for (j=t;j<=n;c[i-1][j-1]+=v,j+=lowbit(j));
+    }
+    elem_t query(int i,int j){
+        for (ret=0,t=j;i;i^=lowbit(i))
+            for (j=t;j;ret+=c[i-1][j-1],j^=lowbit(j));
+        return ret;
+    }
+};

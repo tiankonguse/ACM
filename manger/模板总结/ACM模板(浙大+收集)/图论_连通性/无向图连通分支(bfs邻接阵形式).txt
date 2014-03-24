@@ -1,0 +1,18 @@
+//无向图连通分支,bfs邻接阵形式,O(n^2)
+//返回分支数,id返回1..分支数的值
+//传入图的大小n和邻接阵mat,不相邻点边权0
+#define MAXN 100
+
+int find_components(int n,int mat[][MAXN],int* id){
+   int ret,k,i,j,m;
+   for (k=0;k<n;id[k++]=0);
+   for (ret=k=0;k<n;k++)
+       if (!id[k])
+           for (id[k]=-1,ret++,m=1;m;)
+               for (m=i=0;i<n;i++)
+                   if (id[i]==-1)
+                       for (m++,id[i]=ret,j=0;j<n;j++)
+                           if (!id[j]&&mat[i][j])
+                               id[j]=-1;
+   return ret;
+}

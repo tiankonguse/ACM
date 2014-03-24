@@ -1,0 +1,23 @@
+var n,r,i,j,x:integer;
+    f,c:array[0..20,0..20]of int64;
+begin
+  assign(input,'ball.in');
+  reset(input);
+  assign(output,'ball.out');
+  rewrite(output);
+  readln(n,r);
+  for i:=1 to n do c[i,0]:=1;
+  c[1,1]:=1;
+  for i:=2 to n do
+    for j:=1 to n do c[i,j]:=c[i-1,j-1]+c[i-1,j];
+  for i:=1 to n do f[i,1]:=1;
+  for j:=2 to r do begin
+    f[j,j]:=1;
+    for i:=j+1 to n do begin
+      for x:=1 to i-j+1 do f[i,j]:=f[i,j]+c[i-1,x-1]*f[i-x,j-1];
+    end;
+  end;
+  writeln(f[n,r]);
+  close(input);
+  close(output);
+end.

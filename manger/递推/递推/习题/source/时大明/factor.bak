@@ -1,0 +1,14 @@
+var a,b,n,m,k,i,j:longint; f:array[0..200,0..200]of longint;
+begin
+  readln(a,b,k,n,m);
+  f[1,1]:=a;
+  f[0,1]:=b;
+  for i:=1 to n  do
+   for j:=1 to k do
+   f[i,j]:=f[i-1,j-1]*a+f[i,j-1]*b;
+   writeln(f[n,k]);
+   readln;
+
+
+
+end.

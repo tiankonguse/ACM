@@ -1,0 +1,20 @@
+//无向图连通分支,dfs邻接阵形式,O(n^2)
+//返回分支数,id返回1..分支数的值
+//传入图的大小n和邻接阵mat,不相邻点边权0
+#define MAXN 100
+
+void floodfill(int n,int mat[][MAXN],int* id,int now,int tag){
+    int i;    
+    for (id[now]=tag,i=0;i<n;i++)
+        if (!id[i]&&mat[now][i])
+            floodfill(n,mat,id,i,tag);
+}
+
+int find_components(int n,int mat[][MAXN],int* id){
+    int ret,i;
+    for (i=0;i<n;id[i++]=0);
+    for (ret=i=0;i<n;i++)
+        if (!id[i])
+            floodfill(n,mat,id,i,++ret);
+    return ret;
+}

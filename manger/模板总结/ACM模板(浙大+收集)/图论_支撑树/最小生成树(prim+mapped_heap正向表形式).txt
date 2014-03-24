@@ -1,0 +1,46 @@
+//无向图最小生成树,prim算法+映射二分堆,正向表形式,复杂度O(mlogn)
+//返回最小生成树的长度ret,传入图的大小n和正向表list,buf
+//可更改边权的类型,pre[]返回树的构造,用父结点表示,根节点(第一个)pre值为-1
+//必须保证图的连通的!
+#define MAXN 200
+#define inf 1000000000
+typedef double elem_t;
+struct edge_t{
+    int to;
+    elem_t len;
+};
+
+#define _cp(a,b) ((a)<(b))
+struct heap{
+    elem_t h[MAXN+1];
+    int ind[MAXN+1],map[MAXN+1],n,p,c;
+    void init(){n=0;}
+    void ins(int i,elem_t e){
+        for (p=++n;p>1&&_cp(e,h[p>>1]);h[map[ind[p]=ind[p>>1]]=p]=h[p>>1],p>>=1);
+        h[map[ind[p]=i]=p]=e;
+    }
+    int del(int i,elem_t& e){
+        i=map[i];if (i<1||i>n) return 0;
+        for (e=h[p=i];p>1;h[map[ind[p]=ind[p>>1]]=p]=h[p>>1],p>>=1);
+        for (c=2;c<n&&_cp(h[c+=(c<n-1&&_cp(h[c+1],h[c]))],h[n]);h[map[ind[p]=ind[c]]=p]=h[c],p=c,c<<=1);
+        h[map[ind[p]=ind[n]]=p]=h[n];n--;return 1;
+    }
+    int delmin(int& i,elem_t& e){
+        if (n<1) return 0;i=ind[1];
+        for (e=h[p=1],c=2;c<n&&_cp(h[c+=(c<n-1&&_cp(h[c+1],h[c]))],h[n]);h[map[ind[p]=ind[c]]=p]=h[c],p=c,c<<=1);
+        h[map[ind[p]=ind[n]]=p]=h[n];n--;return 1;
+    }
+};
+
+elem_t prim(int n,int* list,edge_t* buf,int* pre){
+    heap h;
+    elem_t min[MAXN],ret=0,e;
+    int v[MAXN],i,j;
+    for (h.init(),i=0;i<n;i++)
+        min[i]=(i?inf:0),v[i]=0,pre[i]=-1,h.ins(i,min[i]);
+    while (h.delmin(i,e))
+        for (v[i]=1,ret+=e,j=list[i];j<list[i+1];j++)
+            if (!v[buf[j].to]&&buf[j].len<min[buf[j].to])
+                pre[buf[j].to]=i,h.del(buf[j].to,e),h.ins(buf[j].to,min[buf[j].to]=buf[j].len);
+    return ret;
+}

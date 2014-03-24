@@ -1,0 +1,606 @@
+<!--STATUS OK-->
+  <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
+  <base href="http://www.cppblog.com/qywyh/archive/2007/08/27/30943.aspx">
+  <style>
+  body{margin:4px 0}
+  #bd_sn_h{text-align:left;background-color:#ffffff;color:#000000}
+  #bd_sn_h #p1{clear:both;font:14px Arial;margin:0 0 0 2px;padding:4px 0 0 0}
+  #bd_sn_h a{color:#0000ff;text-decoration:underline}
+  #bd_sn_h #p1 a{font-weight:bold}
+  #baidu div{position:static}
+  </style>
+
+<table id="baidu" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr><td>
+  <div style="text-align:left;background-color:#ffffff;color:#000000">
+    <div style="margin:6px 18px 0 10px;float:left"><a href="http://www.baidu.com"><img style="border:0px" alt="到百度首页" src="http://img.baidu.com/img/logo-kz.gif"></a></div>
+    <div style="margin:27px 0 0 0;float:left">
+      <form style="margin:0;padding:0" action="http://www.baidu.com/s"> 
+      <input name="wd" size="35" style="font:16px Arial"> <input type="submit" value="百度一下">
+      <input name="cl" type="hidden" value="3">
+   	  </form>
+    </div>
+	<p style="clear:both;font:14px Arial;margin:0 0 0 2px;padding:4px 0 0 0;width:100%;text-align:left;background-color:#ffffff;color:#000000">您查询的关键词是：<B style='color:black;background-color:#ffff66'><a href=http://cache.baidu.com/c?m=9d78d513d9d437ab4f9b96697d1dc0126a4381132ba6a6020ca58449e3732d405011e1ac26520774d7d20f6d16de4b4b9d862235775d2feddd8eca5ddcc88f356acd6223706bd703508347f29e5125b671cd05f4ec52a2f1aa2fc0ee8389841004d753077885ed89501d14cf72f1163ae5a78e48620c51f8a7&p=9e66c54ad0c701f044be9b7f0c4e92&user=baidu#baidusnap0>中国</a>&nbsp;</B><B style='color:black;background-color:#A0FFFF'><a href=http://cache.baidu.com/c?m=9d78d513d9d437ab4f9b96697d1dc0126a4381132ba6a6020ca58449e3732d405011e1ac26520774d7d20f6d16de4b4b9d862235775d2feddd8eca5ddcc88f356acd6223706bd703508347f29e5125b671cd05f4ec52a2f1aa2fc0ee8389841004d753077885ed89501d14cf72f1163ae5a78e48620c51f8a7&p=9e66c54ad0c701f044be9b7f0c4e92&user=baidu#baidusnap1>同余</a>&nbsp;</B><B style='color:black;background-color:#99ff99'><a href=http://cache.baidu.com/c?m=9d78d513d9d437ab4f9b96697d1dc0126a4381132ba6a6020ca58449e3732d405011e1ac26520774d7d20f6d16de4b4b9d862235775d2feddd8eca5ddcc88f356acd6223706bd703508347f29e5125b671cd05f4ec52a2f1aa2fc0ee8389841004d753077885ed89501d14cf72f1163ae5a78e48620c51f8a7&p=9e66c54ad0c701f044be9b7f0c4e92&user=baidu#baidusnap2>余定理</a>&nbsp;</B> 。如果打开速度慢，可以尝试<a style="color:#0000ff;text-decoration:underline;font-weight:bold" href="http://cache.baidu.com/c?m=9d78d513d9d437ab4f9b96697d1dc0126a4381132ba6a6020ca58449e3732d405011e1ac26520774d7d20f6d16de4b4b9d862235775d2feddd8eca5ddcc88f356acd6223706bd703508347f29e5125b671cd05f4ec52a2f1aa2fc0ee8389841004d753077885ed89501d14cf72f1163ae5a78e48620c51f8a7&p=9e66c54ad0c701f044be9b7f0c4e92&user=baidu&fast=y">快速版</a>；如果想保存快照，可以<a style="color:#0000ff;text-decoration:underline;font-weight:bold" onclick="window.open('http://cang.baidu.com/do/add?it='+encodeURIComponent(document.title)+'&amp;iu='+encodeURIComponent(location.href)+'&amp;fr=ps#nw=1','_s','scrollbars=no,width=600,height=450,right=75,top=20,status=no,resizable=yes'); return false;" href="http://cang.baidu.com/do/add" target="_blank">添加到搜藏</a>。</p>
+	<p style="font:12px Arial;color:gray;margin:0 2px;width:100%text-align:left;background-color:#ffffff">(百度和网页<a style="color:#0000ff;text-decoration:underline" href="http://www.cppblog.com/qywyh/archive/2007/08/27/30943.aspx">http://www.cppblog.com/qywyh/archive/2007/08/27/30943.aspx</a>的作者无关，不对其内容负责。百度快照谨为网络故障时之索引，不代表被搜索网站的即时页面。)</p>
+	<hr style="margin:8px 0;width:100%">
+  </div>
+</td></tr>
+</table>
+  <div style="position:relative">
+  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head id="Head"><title>
+	中国剩余定理(同余方程组)小结 - &豪 - C++博客
+</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta id="metaKeywords" name="keywords" content="中国剩余定理(同余方程组)小结" /><link id="MainCss" type="text/css" rel="stylesheet" href="http://www.cppblog.com/Skins/green/style.css" /><link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cppblog.com/qywyh/rss.aspx" /></head>
+<body>
+    <form name="Form1" method="post" action="30943.aspx" id="Form1">
+<input type="hidden" name="__VIEWSTATE" id="
+__VIEWSTATE" value="" />
+
+
+												
+
+        
+<table align=center width="90%" cellspacing=0 cellpadding=5 border=0 bgcolor=white style="border-bottom:solid 1px #CCCCCC">
+<tr>
+	<td colspan=2 class=banner height=100 background="/skins/green/images/bg_banner.jpg">
+	
+<div id="header">
+	<span>
+		<a id="Header2_HeaderTitle" href="http://www.cppblog.com/qywyh/">&豪</a><br/>
+		<div class=sub>豪->blog</div>
+	</span>
+</div>
+	</td>
+</tr>
+
+<tr>
+	<td style="padding-left:10px" height=35>
+	
+<b><a id="MyLinks2_HomeLink" class="listitem" href="http://www.cppblog.com/">C++博客</a></b> | 
+<b><a id="MyLinks2_MyHomeLink" class="listitem" href="http://www.cppblog.com/qywyh/">首页</a></b> | 
+<b><a id="MyLinks2_NewPostLink" class="listitem" href="http://www.cppblog.com/qywyh/admin/EditPosts.aspx?opt=1">发新随笔</a></b> | 
+<b><a id="MyLinks2_NewArticleLink" class="listitem" href="/EnterMyBlog.aspx?NewArticle=1">发新文章</a></b> | 
+<b><a id="MyLinks2_ContactLink" accesskey="9" class="listitem" href="http://www.cppblog.com/qywyh/contact.aspx?id=1">联系</a></b> | 
+<b><a id="MyLinks2_Syndication" class="listitem" href="http://www.cppblog.com/qywyh/Rss.aspx">聚合</a></b><a id="MyLinks2_XMLLink" href="http://www.cppblog.com/qywyh/Rss.aspx"><img src="http://www.cppblog.com/images/xml.gif" border="0" /></a> | 
+<b><a id="MyLinks2_Admin" class="listitem" href="http://www.cppblog.com/qywyh/admin/EditPosts.aspx">管理</a></b>
+
+	</td>
+	<td align=right style="padding-right:20px" width="30%">
+	
+随笔：75
+文章：79
+评论：206
+引用：0
+	</td>
+</tr>
+
+</table>
+<table align=center width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+	<td valign=top width="75%" style="padding:0">
+		<table align=center width="100%" height=1400 cellspacing=0 cellpadding=5 border=0 bgcolor=white class=index>
+		<tr>
+			<td class=banner valign=top>
+			
+					
+<div class="block">
+	<h1 class="block_title"><a name=baidusnap0></a><a name=baidusnap2></a><a name=baidusnap1></a><a id="viewpost1_TitleUrl" href="http://www.cppblog.com/qywyh/archive/2007/08/27/30943.html"><B style='color:black;background-color:#ffff66'>中国</B>剩<B style='color:black;background-color:#99ff99'>余定理</B>(<B style='color:black;background-color:#A0FFFF'>同余</B>方程组)小结</a></h1>
+	<div class="post">
+		<div class="postcontent">
+			<p>问题简单来说就是&nbsp;a = ai (mod ni)&nbsp;&nbsp;&nbsp;求未知数a,<br>&nbsp;以下小结略去证明, 只是对定理作了必要的解释, 要了解相关定理,可查阅数论资料.<br><br><B style='color:black;background-color:#ffff66'>中国</B>余数定理:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设 n=n1*n2...nk, 其中因子两两互质.有:&nbsp;&nbsp;a-----(a1,a2,...,ak), 其中ai = a mod ni, 则 a和(a1,a2,...,ak)关系是一一对应的.就是说可以由 a求出(a1,a2,...,ak), 也可以由(a1,a2,...,ak)求出a<br><br>推论1:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于 a=ai&nbsp; (mod ni) 的<B style='color:black;background-color:#A0FFFF'>同余</B>方程,有唯一解<br><br>下面说说由(a1, a2, ..., ak)求a的方法:<br>定义 mi = n1*n2*...nk / ni;&nbsp;&nbsp;&nbsp;ci = mi(mf&nbsp; mod ni);&nbsp;&nbsp;&nbsp;其中 mi*mf&nbsp;&nbsp;mod ni = 1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;则 a = (a1*c1+a2*c2+...+ak*ck)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(mod n)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(注:由此等式可求a%n, 当n很大时)</p>
+<p><B style='color:black;background-color:#ffff66'>中国</B>剩<B style='color:black;background-color:#99ff99'>余定理</B>关键是mf的求法,如果理解了扩展欧几里得 ax+by=d, 就可以想到:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mi*mf&nbsp;&nbsp;mod ni = 1 =&gt; mi*mf+ni*y=1;<br><br>代码如下:<br></p>
+<p>&#160;</p>
+<div style="BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #cccccc 1px solid; PADDING-LEFT: 4px; FONT-SIZE: 13px; PADDING-BOTTOM: 4px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 98%; WORD-BREAK: break-all; PADDING-TOP: 4px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #eeeeee"><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top><span style="COLOR: #000000">#include&nbsp;</span><span style="COLOR: #000000">&lt;</span><span style="COLOR: #000000">iostream</span><span style="COLOR: #000000">&gt;</span><span style="COLOR: #000000"><br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>#include&nbsp;</span><span style="COLOR: #000000">&lt;</span><span style="COLOR: #000000">cmath</span><span style="COLOR: #000000">&gt;</span><span style="COLOR: #000000"><br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>using&nbsp;namespace&nbsp;std;<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top><br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top></span><span style="COLOR: #0000ff">const</span><span style="COLOR: #000000">&nbsp;</span><span style="COLOR: #0000ff">int</span><span style="COLOR: #000000">&nbsp;MAXN&nbsp;</span><span style="COLOR: #000000">=</span><span style="COLOR: #000000">&nbsp;</span><span style="COLOR: #000000">100</span><span style="COLOR: #000000">;<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top></span><span style="COLOR: #0000ff">int</span><span style="COLOR: #000000">&nbsp;nn,&nbsp;a[MAXN],&nbsp;n[MAXN];<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top><br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top></span><span style="COLOR: #0000ff">int</span><span style="COLOR: #000000">&nbsp;egcd(</span><span style="COLOR: #0000ff">int</span><span style="COLOR: #000000">&nbsp;a,&nbsp;</span><span style="COLOR: #0000ff">int</span><span style="COLOR: #000000">&nbsp;b,&nbsp;</span><span style="COLOR: #0000ff">int</span><span style="COLOR: #000000">&nbsp;</span><span style="COLOR: #000000">&amp;</span><span style="COLOR: #000000">x,&nbsp;</span><span style="COLOR: #0000ff">int</span><span style="COLOR: #000000">&nbsp;</span><span style="COLOR: #000000">&amp;</span><span style="COLOR: #000000">y)&nbsp;{<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="COLOR: #0000ff">int</span><span style="COLOR: #000000">&nbsp;d;<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="COLOR: #0000ff">if</span><span style="COLOR: #000000">&nbsp;(b&nbsp;</span><span style="COLOR: #000000">==</span><span style="COLOR: #000000">&nbsp;</span><span style="COLOR: #000000">0</span><span style="COLOR: #000000">)&nbsp;{<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;</span><span style="COLOR: #000000">=</span><span style="COLOR: #000000">&nbsp;</span><span style="COLOR: #000000">1</span><span style="COLOR: #000000">;&nbsp;y&nbsp;</span><span style="COLOR: #000000">=</span><span style="COLOR: #000000">&nbsp;</span><span style="COLOR: #000000">0</span><span style="COLOR: #000000">;<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;a;<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="COLOR: #0000ff">else</span><span style="COLOR: #000000">&nbsp;{<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d&nbsp;</span><span style="COLOR: #000000">=</span><span style="COLOR: #000000">&nbsp;egcd(b,&nbsp;a%b,&nbsp;y,&nbsp;x);<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;</span><span style="COLOR: #000000">-=</span><span style="COLOR: #000000">&nbsp;a</span><span style="COLOR: #000000">/</span><span style="COLOR: #000000">b</span><span style="COLOR: #000000">*</span><span style="COLOR: #000000">x;<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;d;<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;}<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>}<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top><br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top></span><span style="COLOR: #0000ff">int</span><span style="COLOR: #000000">&nbsp;lmes()&nbsp;{<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="COLOR: #0000ff">int</span><span style="COLOR: #000000">&nbsp;i,&nbsp;tm</span><span style="COLOR: #000000">=</span><span style="COLOR: #000000">1</span><span style="COLOR: #000000">,&nbsp;mf,&nbsp;y,&nbsp;ret</span><span style="COLOR: #000000">=</span><span style="COLOR: #000000">0</span><span style="COLOR: #000000">,&nbsp;m;<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="COLOR: #0000ff">for</span><span style="COLOR: #000000">&nbsp;(i</span><span style="COLOR: #000000">=</span><span style="COLOR: #000000">0</span><span style="COLOR: #000000">;&nbsp;i</span><span style="COLOR: #000000">&lt;</span><span style="COLOR: #000000">nn;&nbsp;i</span><span style="COLOR: #000000">++</span><span style="COLOR: #000000">)&nbsp;tm&nbsp;</span><span style="COLOR: #000000">*=</span><span style="COLOR: #000000">&nbsp;n[i];<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="COLOR: #0000ff">for</span><span style="COLOR: #000000">&nbsp;(i</span><span style="COLOR: #000000">=</span><span style="COLOR: #000000">0</span><span style="COLOR: #000000">;&nbsp;i</span><span style="COLOR: #000000">&lt;</span><span style="COLOR: #000000">nn;&nbsp;i</span><span style="COLOR: #000000">++</span><span style="COLOR: #000000">)&nbsp;{<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m&nbsp;</span><span style="COLOR: #000000">=</span><span style="COLOR: #000000">&nbsp;tm</span><span style="COLOR: #000000">/</span><span style="COLOR: #000000">n[i];<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;egcd(m,&nbsp;n[i],&nbsp;mf,&nbsp;y);<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ret&nbsp;</span><span style="COLOR: #000000">+=</span><span style="COLOR: #000000">&nbsp;(a[i]</span><span style="COLOR: #000000">*</span><span style="COLOR: #000000">m</span><span style="COLOR: #000000">*</span><span style="COLOR: #000000">(mf%n[i]))%tm;<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;}<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(ret</span><span style="COLOR: #000000">+</span><span style="COLOR: #000000">tm)%tm;<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>}<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top><br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top></span><span style="COLOR: #0000ff">int</span><span style="COLOR: #000000">&nbsp;main()&nbsp;{<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;a[</span><span style="COLOR: #000000">0</span><span style="COLOR: #000000">]&nbsp;</span><span style="COLOR: #000000">=</span><span style="COLOR: #000000">&nbsp;</span><span style="COLOR: #000000">4</span><span style="COLOR: #000000">;&nbsp;a[</span><span style="COLOR: #000000">1</span><span style="COLOR: #000000">]&nbsp;</span><span style="COLOR: #000000">=</span><span style="COLOR: #000000">&nbsp;</span><span style="COLOR: #000000">5</span><span style="COLOR: #000000">;<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;n[</span><span style="COLOR: #000000">0</span><span style="COLOR: #000000">]&nbsp;</span><span style="COLOR: #000000">=</span><span style="COLOR: #000000">&nbsp;</span><span style="COLOR: #000000">5</span><span style="COLOR: #000000">;&nbsp;n[</span><span style="COLOR: #000000">1</span><span style="COLOR: #000000">]&nbsp;</span><span style="COLOR: #000000">=</span><span style="COLOR: #000000">&nbsp;</span><span style="COLOR: #000000">11</span><span style="COLOR: #000000">;<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;nn&nbsp;</span><span style="COLOR: #000000">=</span><span style="COLOR: #000000">&nbsp;</span><span style="COLOR: #000000">2</span><span style="COLOR: #000000">;<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;printf(</span><span style="COLOR: #000000">"</span><span style="COLOR: #000000">%d\n</span><span style="COLOR: #000000">"</span><span style="COLOR: #000000">,&nbsp;lmes());<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="COLOR: #000000">0</span><span style="COLOR: #000000">;<br><img src="http://www.cppblog.com/Images/OutliningIndicators/None.gif" align=top>}</span></div>
+<p><br>&nbsp;</p>
+
+		</div>
+		<div class="itemdesc">
+			发表于 2007-08-27 16:46 <a href='http://www.cppblog.com/qywyh/'>豪</a> 阅读(889) <a href='#Post'>评论(1)</a> &nbsp;<a href="http://www.cppblog.com/qywyh/admin/EditPosts.aspx?postid=30943">编辑</a>&nbsp;<a href="http://www.cppblog.com/qywyh/AddToFavorite.aspx?id=30943">收藏</a> <a href='http://www.cppblog.com/qywyh/services/trackbacks/30943.aspx'>引用</a>  所属分类: <a href='http://www.cppblog.com/qywyh/category/885.html'>算法&ACM</a> 
+		</div>
+	</div>
+	<div class="seperator">&nbsp;</div>
+	<img src ="http://www.cppblog.com/qywyh/aggbug/30943.html?webview=1" width = "1" height = "1" />
+	
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+rdf:about="http://www.cppblog.com/qywyh/archive/2007/08/27/30943.html"
+dc:identifier="http://www.cppblog.com/qywyh/archive/2007/08/27/30943.html"
+dc:title="中国剩余定理(同余方程组)小结"
+trackback:ping="http://www.cppblog.com/qywyh/services/trackbacks/30943.aspx" />
+</rdf:RDF>
+-->
+
+
+<div id="AjaxHolder_UpdatePanel1">
+	    
+    <a name="pagedcomment"></a>
+<div class="post">
+<a name="评论" />
+<div class="moreinfo">
+	<div class="moreinfotitle">
+		评论
+	</div>
+	
+	
+			<div class="comments">
+		
+			<div class="comment">
+				<div class="comment_title">
+					<a title="permalink: re: 中国剩余定理(同余方程组)小结" href="/qywyh/archive/2007/08/27/30943.aspx#32401">#</a>&nbsp;<a name="32401"></a>re: <B style='color:black;background-color:#ffff66'>中国</B>剩<B style='color:black;background-color:#99ff99'>余定理</B>(<B style='color:black;background-color:#A0FFFF'>同余</B>方程组)小结<a name="Post"></a>
+				</div>
+				<div class="comment_content">学习~</div>
+				<div class="comment_footer"><a id="AjaxHolder_Comments_CommentList_ctl01_NameLink" href="http://drizzlecrj.cnblogs.com" target="_blank">drizzlecrj</a> 评论于 2007-09-18 10:11&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;drizzlecrj&quot;)" href="/qywyh/archive/2007/08/27/30943.aspx#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.cppblog.com/comment?author=drizzlecrj" target="_blank">更多评论</a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl01_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl01$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl01_EditLink"></a></div>
+			</div>
+		
+			</div>
+		
+</div>
+</div>
+<div class="seperator">&nbsp;</div>
+<div id="AjaxHolder_Comments_divRefreshComments" style="text-align:right;margin-right:10px;margin-bottom:5px;font-size:12px;"><a id="AjaxHolder_Comments_refreshList" href="javascript:__doPostBack('AjaxHolder$Comments$refreshList','')">刷新评论列表</a></div>
+<style>
+td { font-size: 12px }
+.commentTextBox 
+{ 
+    font-family : Verdana; 
+    font-size: 13px;
+ }
+</style>
+<!--Beging Temp Save-->
+<STYLE>.userData { BEHAVIOR: url(#default#userdata) }
+	</STYLE>
+<DIV class="userData" id="CommentsPersistDiv"></DIV>
+
+<!--Ene TempSave-->
+<div class="commentform">
+<span id="AjaxHolder_PostComment_ltSubmitMsg"><font color="Red"></font></span>
+<br />
+<a name="Feedback"></a>
+	<TABLE cellSpacing="1" cellPadding="1" border="0">
+		<TR>
+			<TD width="75"></TD>
+			<TD></TD>
+			<TD></TD>
+		</TR>
+		<TR>
+			<TD width="55">标题</TD>
+			<TD><input name="AjaxHolder$PostComment$tbTitle" type="text" value="re: 中国剩余定理(同余方程组)小结" id="AjaxHolder_PostComment_tbTitle" class="commenttb" style="width:320" /></TD>
+			<TD>&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD>姓名</TD>
+			<TD><input name="AjaxHolder$PostComment$tbName" type="text" id="AjaxHolder_PostComment_tbName" class="commenttb" style="width:320" /></TD>
+			<TD>&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD>主页</TD>
+			<TD><input name="AjaxHolder$PostComment$tbUrl" type="text" id="AjaxHolder_PostComment_tbUrl" class="commenttb" style="width:320" /></TD>
+			<TD><FONT face="宋体"></FONT></TD>
+		</TR>
+		<tr>
+			<td align="left" colSpan="3">
+				<table id="AjaxHolder_PostComment_tbCaptchaImage" class="CommentForm" cellspacing="0" cellpadding="0" border="0">
+		<tr>
+			<td colspan="3">
+							
+							<span id="AjaxHolder_PostComment_lblImage"><b><font color="Red"></font></b></span>
+						</td>
+		</tr>
+		<tr>
+			<td width="78">验证码</td>
+			<td><input name="AjaxHolder$PostComment$CodeNumberTextBox" type="text" id="AjaxHolder_PostComment_CodeNumberTextBox" />*</td>
+			<td align="left">
+							<img src="../../../../../Modules/CaptchaImage/JpegImage.aspx" id="AjaxHolder_PostComment_Img1" />
+						</td>
+		</tr>
+	</table>
+	
+			</td>
+		</tr>
+		<TR>
+			<TD colSpan="3">内容(提交失败后,可以通过“恢复上次提交”恢复刚刚提交的内容)
+				&nbsp;<BR>
+				<textarea name="AjaxHolder$PostComment$tbComment" rows="10" cols="50" id="AjaxHolder_PostComment_tbComment" class="commentTextBox" onkeydown="ctlent(event,'AjaxHolder_PostComment_tbComment')" style="Width:480;Height:220"></textarea></TD>
+		</TR>
+		<TR>
+			<TD colSpan="3">
+		<span id="AjaxHolder_PostComment_Message"><font color="Red"></font></span>
+		</td>
+		<TR>
+			<TD colSpan="3"><input id="AjaxHolder_PostComment_chkRemember" type="checkbox" name="AjaxHolder$PostComment$chkRemember" checked="checked" tabindex="-1" /><label for="AjaxHolder_PostComment_chkRemember">Remember Me?</label></TD>
+		</TR>
+		<TR>
+			<TD height="23"><input type="submit" name="AjaxHolder$PostComment$btnSubmit" value="提交" onclick="TempSave('AjaxHolder_PostComment_tbComment');WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;AjaxHolder$PostComment$btnSubmit&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="AjaxHolder_PostComment_btnSubmit" />
+				</TD>
+			<td colSpan="2" height="23">&nbsp;
+				<a id="AjaxHolder_PostComment_lnkLogin" href="http://www.cppblog.com/login.aspx?ReturnURL=http://www.cppblog.com/qywyh/archive/2007/08/27/30943.aspx&amp;SourceURL=/qywyh/archive/2007/08/27/30943.aspx">登录</a>&nbsp;&nbsp;<a id="AjaxHolder_PostComment_linkLoginComment" OnClick="if(document.getElementById('AjaxHolder_PostComment_tbComment').value != '') return confirm('未提交的评论内容将会丢失, 你真的要进入高级评论吗?');" href="http://www.cppblog.com/qywyh/archive/2007/08/27/30943.aspx?login=1#Post">使用高级评论</a>&nbsp;&nbsp;<a href="http://www.cppblog.com/RequireRegister.aspx">新用户注册</a>&nbsp;&nbsp;<A href="#Top">返回页首</A>&nbsp;&nbsp;<a id="AjaxHolder_PostComment_lbRestore" OnClick="Restore('AjaxHolder_PostComment_tbComment'); return false;" href="/qywyh/archive/2007/08/27/30943.aspx#Post">恢复上次提交</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+		</TR>
+		<TR>
+			<TD colSpan="3">[使用Ctrl+Enter键可以直接提交]</TD>
+		</TR>
+		<TR>
+			<TD colSpan="3" height="5">
+<div id="divRelativePosts">
+相关文章:
+	
+			<ul style="margin-top:0px;">
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl01_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/11/03/35809.html">用stl打spfa短了1k代码，慢了200ms</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl02_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/10/20/34674.html">三次样条插值</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl03_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/10/20/34658.html">龙贝格积分2457jlu</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl04_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/10/18/34522.html">三分法求函数极值buaa1024</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl05_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/09/23/32741.html">为了大作业报告好写点，重写了RBTree</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl06_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/09/02/31432.html">扩展的欧拉函数 pku1091</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl07_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/08/28/31020.html">连分数学习笔记</a>
+			</li>
+		
+			<li style='list-style:none;display:none'>
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl08_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/08/27/30943.html"><B style='color:black;background-color:#ffff66'>中国</B>剩<B style='color:black;background-color:#99ff99'>余定理</B>(<B style='color:black;background-color:#A0FFFF'>同余</B>方程组)小结</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl09_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/08/27/30918.html">解模线性方程小结</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl10_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/07/23/28655.html">好久没写了.</a>
+			</li>
+		
+			</ul>
+		
+</div>
+</TD>
+		</TR>
+		<TR>
+			<TD colSpan="3" height="1"><a href="http://bbs.zdnet.com.cn" target="_blank">IT人的互动社区—ZDNetChina中文社区</a></TD>
+		</TR>
+		<TR>
+			<TD colSpan="3">
+				</TD>
+		</TR>
+	</TABLE>	
+</div>
+
+
+</div>
+
+				
+			</td>
+		</tr>
+		</table>
+	</td>
+	<td valign=top style="border-left:solid 1px #CCCCCC">
+		<table align=center width="100%" height=1400 cellspacing=0 cellpadding=5 border=0 bgcolor=white>
+		<tr>
+			<td class=banner valign=top style="padding-top:0px">
+			
+			<table width="100%" height="200">
+			<tr>
+				<td><table id="Calendar2_entryCal" cellspacing="0" cellpadding="1" title="Calendar" bordercolor="White" border="0" height="100%" width="100%">
+	<tr><td colspan="7" bgcolor="White"><font face="Verdana" color="#CC0099"><table cellspacing="0" border="0" width="100%">
+		<tr><td valign="bottom" width="15%"><font face="Verdana" color="#FF6600"><a href="javascript:__doPostBack('Calendar2$entryCal','V2891')" style="color:#CC0099" title="Go to the previous month">&lt;</a></font></td><td align="center" width="70%"><font face="Verdana" color="#FF6600">2008年1月</font></td><td align="right" valign="bottom" width="15%"><font face="Verdana" color="#FF6600"><a href="javascript:__doPostBack('Calendar2$entryCal','V2953')" style="color:#CC0099" title="Go to the next month">&gt;</a></font></td></tr>
+	</table></font></td></tr><tr><th align="center" abbr="日" scope="col" bgcolor="White"><font face="Arial" color="#CC0099">日</font></th><th align="center" abbr="一" scope="col" bgcolor="White"><font face="Arial" color="#CC0099">一</font></th><th align="center" abbr="二" scope="col" bgcolor="White"><font face="Arial" color="#CC0099">二</font></th><th align="center" abbr="三" scope="col" bgcolor="White"><font face="Arial" color="#CC0099">三</font></th><th align="center" abbr="四" scope="col" bgcolor="White"><font face="Arial" color="#CC0099">四</font></th><th align="center" abbr="五" scope="col" bgcolor="White"><font face="Arial" color="#CC0099">五</font></th><th align="center" abbr="六" scope="col" bgcolor="White"><font face="Arial" color="#CC0099">六</font></th></tr><tr><td align="center" width="14%"><font face="Verdana" color="#303030">30</font></td><td align="center" width="14%"><font face="Verdana" color="#303030">31</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">1</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">2</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">3</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">4</font></td><td align="center" bgcolor="#EEEEEE" width="14%"><font face="Verdana" color="#CC0099">5</font></td></tr><tr><td align="center" width="14%"><font face="Verdana" color="#CC0099">6</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">7</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">8</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">9</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">10</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">11</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">12</font></td></tr><tr><td align="center" width="14%"><font face="Verdana" color="#CC0099">13</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">14</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">15</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">16</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">17</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">18</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">19</font></td></tr><tr><td align="center" width="14%"><font face="Verdana" color="#CC0099">20</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">21</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">22</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">23</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">24</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">25</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">26</font></td></tr><tr><td align="center" width="14%"><font face="Verdana" color="#CC0099">27</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">28</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">29</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">30</font></td><td align="center" width="14%"><font face="Verdana" color="#CC0099">31</font></td><td align="center" width="14%"><font face="Verdana" color="#303030">1</font></td><td align="center" width="14%"><font face="Verdana" color="#303030">2</font></td></tr><tr><td align="center" width="14%"><font face="Verdana" color="#303030">3</font></td><td align="center" width="14%"><font face="Verdana" color="#303030">4</font></td><td align="center" width="14%"><font face="Verdana" color="#303030">5</font></td><td align="center" width="14%"><font face="Verdana" color="#303030">6</font></td><td align="center" width="14%"><font face="Verdana" color="#303030">7</font></td><td align="center" width="14%"><font face="Verdana" color="#303030">8</font></td><td align="center" width="14%"><font face="Verdana" color="#303030">9</font></td></tr>
+</table></td>
+			</tr>
+			</table>
+			
+<h1>公告</h1>
+<div align=center style="margin-top:10px">潜心看书研究！</div>	
+			
+<h3>常用链接</h3>
+<ul>
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl01_lnkLinkItem" href="http://www.cppblog.com/qywyh/MyPosts.html">我的随笔</a></li>
+	
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl02_lnkLinkItem" href="http://www.cppblog.com/qywyh/MyComments.html">我的评论</a></li>
+	
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl03_lnkLinkItem" href="http://www.cppblog.com/qywyh/OtherPosts.html">我参与的随笔</a></li>
+	</ul>
+<H3>留言簿<span style="font-size:11px;font-weight:normal;">(10)</span></H3>
+<ul>
+	<li>
+		<a id="SingleColumn1__12b2c99_lnkMessages" href="http://www.cppblog.com/qywyh/Contact.aspx?id=1">给我留言</a>
+	<li>
+		<a id="SingleColumn1__12b2c99_lnkPublicMsgView" href="http://www.cppblog.com/qywyh/default.aspx?opt=msg">查看公开留言</a>
+	<li>
+		<a id="SingleColumn1__12b2c99_lnkPrivateMsgView" href="http://www.cppblog.com/qywyh/admin/MyMessages.aspx">查看私人留言</a>
+	</li>
+</ul>
+
+		<h1 class = "listtitle">随笔分类<span style="font-size:11px;font-weight:normal">(75)</span></h1>
+		
+				<ul class = "list" type="square">
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl01_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/3590.html">AJAX(1)</a> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl01_RssLink" title="Subscribe to AJAX(1)" class="listitem" href="http://www.cppblog.com/qywyh/category/3590.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl02_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/332.html">C++之梦(7)</a> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl02_RssLink" title="Subscribe to C++之梦(7)" class="listitem" href="http://www.cppblog.com/qywyh/category/332.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl03_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/5609.html">DesignPattern(1)</a> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl03_RssLink" title="Subscribe to DesignPattern(1)" class="listitem" href="http://www.cppblog.com/qywyh/category/5609.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl04_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/333.html">PHP之路(8)</a> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl04_RssLink" title="Subscribe to PHP之路(8)" class="listitem" href="http://www.cppblog.com/qywyh/category/333.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl05_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/991.html">TCP/IP</a> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl05_RssLink" title="Subscribe to TCP/IP" class="listitem" href="http://www.cppblog.com/qywyh/category/991.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl06_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/992.html">VC</a> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl06_RssLink" title="Subscribe to VC" class="listitem" href="http://www.cppblog.com/qywyh/category/992.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl07_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/5327.html">计算机图形学(2)</a> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl07_RssLink" title="Subscribe to 计算机图形学(2)" class="listitem" href="http://www.cppblog.com/qywyh/category/5327.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl08_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/331.html">生活感想(24)</a> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl08_RssLink" title="Subscribe to 生活感想(24)" class="listitem" href="http://www.cppblog.com/qywyh/category/331.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl09_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/885.html">算法&ACM(32)</a> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl09_RssLink" title="Subscribe to 算法&amp;ACM(32)" class="listitem" href="http://www.cppblog.com/qywyh/category/885.html/rss">(rss)</a></li>
+			
+				</ul>
+			
+	
+		<h1 class = "listtitle">文章分类<span style="font-size:11px;font-weight:normal">(77)</span></h1>
+		
+				<ul class = "list" type="square">
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl01_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/1629.html">ACM题目(26)</a> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl01_RssLink" title="Subscribe to ACM题目(26)" class="listitem" href="http://www.cppblog.com/qywyh/category/1629.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl02_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/675.html">Basic C++(8)</a> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl02_RssLink" title="Subscribe to Basic C++(8)" class="listitem" href="http://www.cppblog.com/qywyh/category/675.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl03_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/5408.html">Java(4)</a> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl03_RssLink" title="Subscribe to Java(4)" class="listitem" href="http://www.cppblog.com/qywyh/category/5408.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl04_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/5228.html">MFC(2)</a> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl04_RssLink" title="Subscribe to MFC(2)" class="listitem" href="http://www.cppblog.com/qywyh/category/5228.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl05_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/532.html">php学习与实践(4)</a> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl05_RssLink" title="Subscribe to php学习与实践(4)" class="listitem" href="http://www.cppblog.com/qywyh/category/532.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl06_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/5302.html">操作系统(1)</a> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl06_RssLink" title="Subscribe to 操作系统(1)" class="listitem" href="http://www.cppblog.com/qywyh/category/5302.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl07_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/537.html">计算机(1)</a> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl07_RssLink" title="Subscribe to 计算机(1)" class="listitem" href="http://www.cppblog.com/qywyh/category/537.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl08_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/547.html">数据结构与算法(29)</a> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl08_RssLink" title="Subscribe to 数据结构与算法(29)" class="listitem" href="http://www.cppblog.com/qywyh/category/547.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl09_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/1075.html">数论(1)</a> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl09_RssLink" title="Subscribe to 数论(1)" class="listitem" href="http://www.cppblog.com/qywyh/category/1075.html/rss">(rss)</a></li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl10_Link" class="listitem" href="http://www.cppblog.com/qywyh/category/993.html">网络(1)</a> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl10_RssLink" title="Subscribe to 网络(1)" class="listitem" href="http://www.cppblog.com/qywyh/category/993.html/rss">(rss)</a></li>
+			
+				</ul>
+			
+	
+		<h1 class = "listtitle">相册</h1>
+		
+				<ul class = "list" type="square">
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl01_Link" class="listitem" href="http://www.cppblog.com/qywyh/gallery/533.html">MY LIFE</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl02_Link" class="listitem" href="http://www.cppblog.com/qywyh/gallery/1493.html">MY PRODUCTION</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl03_Link" class="listitem" href="http://www.cppblog.com/qywyh/gallery/1487.html">SCUT/ICPC MY TEAM</a> </li>
+			
+				</ul>
+			
+	
+		<h1 class = "listtitle">ACM OJ</h1>
+		
+				<ul class = "list" type="square">
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl01_Link" class="listitem" href="http://acm.hit.edu.cn/ojs/ojs.php" target="_blank">HOJ</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl02_Link" class="listitem" href="http://acm.pku.edu.cn/" target="_blank">POJ</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl03_Link" class="listitem" href="http://cs.tju.edu.cn/acm/" target="_blank">TOJ</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl04_Link" class="listitem" href="http://acm.timus.ru/ranklist.aspx" target="_blank">URAL</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl05_Link" class="listitem" href="http://acm.uva.es/problemset/" target="_blank">UVA</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl06_Link" class="listitem" href="http://acm.zju.edu.cn/" target="_blank">ZOJ</a> </li>
+			
+				</ul>
+			
+	
+		<h1 class = "listtitle">My friends</h1>
+		
+				<ul class = "list" type="square">
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl01_Link" class="listitem" href="http://453558911.qzone.qq.com/" target="_blank">Apple's Garden</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl02_Link" class="listitem" href="http://www.cppblog.com/asp/" target="_blank">asp's blog</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl03_Link" class="listitem" href="http://www.cppblog.com/chgsh8089/" target="_blank">chgsh's blog</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl04_Link" class="listitem" href="http://spaces.msn.com/evicn/">evicn's blog</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl05_Link" class="listitem" href="http://jay_zzw.blogchinese.com/" target="_blank">jay_zzw's blog</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl06_Link" class="listitem" href="http://www.cppblog.com/shyli/" target="_blank">shyli's blog</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl07_Link" class="listitem" href="http://www.cppblog.com/sicheng/" target="_blank">sicheng's blog</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl08_Link" class="listitem" href="http://spaces.msn.com/members/xmm444/" target="_blank">xmm's blog</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl09_Link" class="listitem" href="http://qywyh.spaces.live.com/" target="_blank">豪的space</a> </li>
+			
+				<li class = "listitem"><a id="SingleColumn1_Categories_CatList_ctl04_LinkList_ctl10_Link" class="listitem" href="http://www.cnitblog.com/cockerel" target="_blank">踏雪赤兔's blog</a> </li>
+			
+				</ul>
+			
+	
+
+
+<H3>搜索</H3>
+<ul>
+	<li>
+		<li><input style="WIDTH: 130px" type="text" name="q" id="q" onkeydown="return SearchGoogle(document.getElementById('q'),event,'www.cppblog.com/qywyh')">&nbsp;<input onclick="SearchGoogle(document.getElementById('q'),event,'www.cppblog.com/qywyh')" type="button" value="搜索" name="sa">
+	</li>
+</ul>
+
+<H3>积分与排名</H3>
+<ul>
+	<li>
+		积分 -
+		40416
+	<li>
+		排名 -
+		21
+	</li>
+</ul>
+
+<h3>最新评论
+	<a id="SingleColumn1__37c9ed6_RSSHyperlink1" href="http://www.cppblog.com/qywyh/CommentsRSS.aspx"><img src="/images/xml.gif" border="0" /></a></h3>
+<div class="RecentComment">
+	
+			<ul>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__37c9ed6_CommentList_ctl01_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/12/15/34725.html#38557">1.?re: 扫描线-通用多边形填充算法</a>
+			</li>
+			<li style="word-break:break-all">
+				谢谢哦，真的很感谢！我一直很想学好CG的，但是不大熟悉这些资源，耽误了很多的时间，现在有点时间不等人大的感觉！
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--wa</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__37c9ed6_CommentList_ctl02_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/12/13/1612.html#38404">2.?re: php学习笔记（更新中...）</a>
+			</li>
+			<li style="word-break:break-all">
+				很想学php，可是一直没有时间，也一直不愿意开始，好像特别难~~~~心理作用呢，等我有开始学的勇气，和你好好交流阿
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--zcp</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__37c9ed6_CommentList_ctl03_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/11/07/35809.html#36075">3.?re: 用stl打spfa短了1k代码，慢了200ms</a>
+			</li>
+			<li style="word-break:break-all">
+				总结了很多ACM ~，牛~,佩服！<br>有没有资料传我一份，THANKS。。。<br>邮箱   amyvmiwei@126.com<br>谢谢！
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--wei</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__37c9ed6_CommentList_ctl04_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/10/20/1347.html#34705">4.?re: 不看书怎么见彩虹？</a>
+			</li>
+			<li style="word-break:break-all">
+				看代码也可以见彩虹哦
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--Minidx全文检索</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__37c9ed6_CommentList_ctl05_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/10/07/31432.html#33710">5.?re: 扩展的欧拉函数 pku1091</a>
+			</li>
+			<li style="word-break:break-all">
+				@beyond<br>-_-这题不会，我那时候想dp结果发现不行。。。
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--豪</li>
+		
+			</ul>
+		
+</div>
+
+<h3>阅读排行榜</h3>
+<div class="RecentComment">
+	
+			<ul style="word-break:break-all">
+		
+			<li>
+				<a id="SingleColumn1__2c9dc59_TopList_ctl01_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/09/02/31432.aspx">1.?扩展的欧拉函数 pku1091(1079)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2c9dc59_TopList_ctl02_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2006/03/01/3616.aspx">2.?又是一题动态规划--经典(1026)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2c9dc59_TopList_ctl03_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2006/02/08/3110.aspx">3.?好高兴啊,a+b那题一次通过啦,acm有个好开始!!!^_^(939)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2c9dc59_TopList_ctl04_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2007/08/27/30943.aspx">4.?<B style='color:black;background-color:#ffff66'>中国</B>剩<B style='color:black;background-color:#99ff99'>余定理</B>(<B style='color:black;background-color:#A0FFFF'>同余</B>方程组)小结(889)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2c9dc59_TopList_ctl05_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2006/08/09/11043.aspx">5.?Dijkstra单源最短路径(887)</a>
+			</li>
+		
+			</ul>
+		
+</div>
+
+<h3>评论排行榜</h3>
+<div class="RecentComment">
+	
+			<ul style="word-break:break-all">
+		
+			<li>
+				<a id="SingleColumn1__3500777_TopList_ctl01_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2006/02/08/3110.aspx">1.?好高兴啊,a+b那题一次通过啦,acm有个好开始!!!^_^(25)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__3500777_TopList_ctl02_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2006/02/08/3141.aspx">2.?今天又过条简单题,呵呵(14)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__3500777_TopList_ctl03_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2005/12/30/2255.aspx">3.?看 c++primer 后的一个问题(13)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__3500777_TopList_ctl04_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2005/11/22/1228.aspx">4.?变量初始化的重要性!(9)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__3500777_TopList_ctl05_Hyperlink1" href="http://www.cppblog.com/qywyh/archive/2006/03/14/4132.aspx">5.?从二叉树的递归遍历想到的:利用重载函数,使函数接口更"友好"(9)</a>
+			</li>
+		
+			</ul>
+		
+</div>
+
+			
+			<br>
+			
+<div class="footer">
+	Powered by: <a href="http://www.cnblogs.com">博客园</a><br>模板提供：<a href="http://blog.hjenglish.com">沪江博客</a><br>
+	Copyright &copy;2008 豪
+</div>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+<br>
+
+<!-- 页面内因素 -->
+
+
+
+
+    
+    
+
+
+</form>
+         
+</body>
+</html>
+
+

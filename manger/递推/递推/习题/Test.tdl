@@ -1,0 +1,16 @@
+.tdl
+Data\factor\factor.tpi
+Data\hanoi\hanoi.tpi
+Data\domino\stair.tpi
+Data\ball1\ball.tpi
+Data\ball2\ball.tpi
+Data\book\book.tpi
+Data\tree\tree.tpi
+Data\stack\tree.tpi
+Data\bracket\tree.tpi
+Data\polygon\tree.tpi
+Data\lineup\lineup.tpi
+Data\divide1\divide.tpi
+Data\divide2\divide.tpi
+Data\divide3\divide.tpi
+Data\danger\danger.tpi

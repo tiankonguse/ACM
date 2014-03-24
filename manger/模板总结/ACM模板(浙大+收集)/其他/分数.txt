@@ -1,0 +1,78 @@
+struct frac{
+    int num,den;
+};
+
+double fabs(double x){
+    return x>0?x:-x;
+}
+
+int gcd(int a,int b){
+    int t;
+    if (a<0)
+        a=-a;
+    if (b<0)
+        b=-b;
+    if (!b)
+        return a;
+    while (t=a%b)
+        a=b,b=t;
+    return b;
+}
+
+void simplify(frac& f){
+    int t;
+    if (t=gcd(f.num,f.den))
+        f.num/=t,f.den/=t;
+    else
+        f.den=1;
+}
+
+frac f(int n,int d,int s=1){
+    frac ret;
+    if (d<0)
+        ret.num=-n,ret.den=-d;
+    else
+        ret.num=n,ret.den=d;
+    if (s)
+        simplify(ret);
+    return ret;
+}
+
+frac convert(double x){
+    frac ret;
+    for (ret.den=1;fabs(x-int(x))>1e-10;ret.den*=10,x*=10);
+    ret.num=(int)x;
+    simplify(ret);
+    return ret;
+}
+
+int fraqcmp(frac a,frac b){
+    int g1=gcd(a.den,b.den),g2=gcd(a.num,b.num);
+    if (!g1||!g2)
+        return 0;
+    return b.den/g1*(a.num/g2)-a.den/g1*(b.num/g2);
+}
+
+frac add(frac a,frac b){
+    int g1=gcd(a.den,b.den),g2,t;
+    if (!g1)
+        return f(1,0,0);
+    t=b.den/g1*a.num+a.den/g1*b.num;
+    g2=gcd(g1,t);
+    return f(t/g2,a.den/g1*(b.den/g2),0);
+}
+
+frac sub(frac a,frac b){
+    return add(a,f(-b.num,b.den,0));
+}
+
+frac mul(frac a,frac b){
+    int t1=gcd(a.den,b.num),t2=gcd(a.num,b.den);
+    if (!t1||!t2)
+        return f(1,1,0);
+    return f(a.num/t2*(b.num/t1),a.den/t1*(b.den/t2),0);
+}
+
+frac div(frac a,frac b){
+    return mul(a,f(b.den,b.num,0));
+}
