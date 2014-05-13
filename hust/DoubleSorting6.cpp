@@ -38,6 +38,7 @@ bool ansFind;
 int nowMaxNum;
 int nowStep;
 int nowMinNum;
+int maxNum;
 
 int getNum() {
     int ret = 0;
@@ -136,6 +137,7 @@ void init() {
     stail = 0;
     int num = getNum();
     int dis = getDis();
+    maxNum = min(num, dis);
     qhead.push(T(shead, 0, num, dis, max(dis/2 + 1, num/3 + 1)));
 
     for(int k=0; k<2; k++) {
@@ -173,9 +175,7 @@ void bfs() {
         toArray(t.s);
 
         for(i=0; i<n-1; i++) {
-			if(str[0][i] + 1== str[0][i+1] && str[0][i]== str[1][i] && str[0][i+1] == str[1][i+1]){
-				continue;
-			}
+
 
             for(j=0; j<2; j++) {
 
@@ -190,12 +190,17 @@ void bfs() {
                     toString(tt.s);
                     tt.dis = changeDis(t.dis, i, i+1, j, k);
                     tt.num = changeNum(t.num, i, i+1, j, k);
-                    if(tt.dis >= t.dis || tt.num >= t.num){
-						continue;
-                    }
-
                     tt.left = max((tt.num + 1 )/3 + 1, tt.dis/2 + 1);
-                    qhead.push(tt);
+                    nowMaxNum = tt.step + min(tt.dis,tt.num);
+                    nowMinNum = tt.step + tt.left;
+                    if(tt.dis >= t.dis && tt.num >= t.num) {
+
+                    }else if(maxNum < nowMinNum){
+
+                    }{
+                    	maxNum = min(nowMaxNum, maxNum);
+						qhead.push(tt);
+                    }
                     swap(str[j][i],str[k][i+1]);
                 }
             }
@@ -233,6 +238,12 @@ int main(int argc, char* argv[]) {
 3 3
 2 2
 1 1
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+Aborted (core dumped)
+
+Process returned 134 (0x86)   execution time : 74.512 s
+
 
 7
 7 7
@@ -243,6 +254,9 @@ int main(int argc, char* argv[]) {
 2 2
 1 1
 
+31
+Process returned 0 (0x0)   execution time : 10.650 s
+
 6
 6 6
 5 5
@@ -251,12 +265,19 @@ int main(int argc, char* argv[]) {
 2 2
 1 1
 
+23
+Process returned 0 (0x0)   execution time : 0.500 s
+
+
 5
 5 5
 4 4
 3 3
 2 2
 1 1
+
+15
+Process returned 0 (0x0)   execution time : 0.379 s
 
 4
 4 4
@@ -282,28 +303,8 @@ int main(int argc, char* argv[]) {
 1 7
 
 
-0:1534252314
-1:1523452314
-2:1523243514
-3:1523241345
-4:1523123445
-5:1512233445
-6:1125233445
-7:1122353445
-8:1122334545
-9:1122334455
 
-0:1534252314
-1:1524352314
-2:1245352314
-3:1245233514
-4:1245231345
-5:1224351345
-6:1224133545
-7:1224133455
-8:1212343455
-9:1212334455
-10:1122334455
+
 
 
 */

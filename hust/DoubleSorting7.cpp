@@ -262,9 +262,9 @@ void bfs() {
 					tt.dis = changeDis(t.dis, i, i+1, j, k);
                     tt.num = changeNum(t.num, i, i+1, j, k);
                     tt.left = max((tt.num + 1 )/3 + 1, tt.dis/2 + 1);
-                    if(tt.dis >= t.dis || tt.num >= t.num) {
-                        continue;
-                    }
+//                    if(tt.dis >= t.dis || tt.num >= t.num) {
+//                        continue;
+//                    }
 push(tt);
 //                    if(state.find(tt.s) == state.end()){
 //						pre[tt.s] = t.s;
