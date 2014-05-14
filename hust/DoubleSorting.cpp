@@ -131,7 +131,7 @@ int main(int argc, char* argv[]) {
         }
         while(fix()) {
             output();
-            ans++;
+            //ans++;
         }
         printf("%d\n",ans);
     }
