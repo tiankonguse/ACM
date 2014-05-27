@@ -17,7 +17,9 @@ typedef long long LL;
 
 int main(int argc, char* argv[]) {
 
-
+	for(int i=22;i<=65;i++){
+		printf("%d,",i);
+	}
     return 0;
 }
 
