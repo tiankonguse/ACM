@@ -1,0 +1,45 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>We are playing a game with some of coins on a rectangular board.
+The board is divided into unit square cells.
+Each cell is either empty, or it contains an obstacle.
+The board is given to you as a vector &lt;string&gt; <b>board</b>.
+The character '#' represents an obstacle and '.' is an empty cell.
+<br></br>
+<br></br>
+<br></br>
+When starting the game, the player places coins into some of the empty cells.
+The number of coins and their positions are chosen by the player.
+The only restriction is that the player may not place two coins into the same cell.
+<br></br>
+<br></br>
+<br></br>
+Next to the board, there are 4 buttons labeled "Left", "Right", "Up", and "Down".
+The game is played by pushing these buttons.
+When the player pushes a button, all coins will try to move one cell in the corresponding direction.
+For each coin, there can be three different outcomes:
+<ul>
+<li>If the next cell in the chosen direction contains an obstacle, the coin remains in its current cell.</li>
+<li>If there is no next cell in the chosen direction (i.e., if the coin is already on the corresponding edge of the board), the coin falls off the board.</li>
+<li>In all other cases, the coin moves one cell in the chosen direction. (Note that this includes the case when the destination cell currently contains another coin. In this way it may happen that there will be multiple coins in the same cell.)</li>
+</ul>
+<br></br>
+<br></br>
+<br></br>
+The goal of the game is to make some coins (at least one) fall off the board, while some others (at least one) still remain on the board.
+The initial configuration of coins is called <i>good</i> if there is a sequence of buttons that can be pushed to win the game from that configuration.
+Return the number of good initial configurations, modulo 1,000,000,009.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>CoinsGame</td></tr><tr><td>Method:</td><td>ways</td></tr><tr><td>Parameters:</td><td>vector &lt;string&gt;</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int ways(vector &lt;string&gt; board)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>board</b> will contain between 1 and 40 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Every element of <b>board</b> will have the same length, and this length will be between 1 and 40, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each character in each element of <b>board</b> will be one of '#' and '.'.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;..&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2">The only way to win the game on this board is to start by placing a coin on each cell.
+You can then push either of the buttons Left and Right to make one coin fall off.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;##.#&quot;,
+ &quot;.###&quot;,
+ &quot;###.&quot;,
+ &quot;#.##&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 11</pre></td></tr><tr><td><table><tr><td colspan="2">You cannot win the game if you use less than two coins.
+On this board, any configuration with at least two coins can be won (by a single push of some button).
+Hence, the answer is C(4,2) + C(4,3) + C(4,4) = 6 + 4 + 1 = 11.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;####&quot;,
+ &quot;#..#&quot;,
+ &quot;#..#&quot;,
+ &quot;####&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2">You cannot win any game on this board, as you cannot make any coin fall off the board.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;#.#.#&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;........&quot;,
+ &quot;........&quot;,
+ &quot;........&quot;,
+ &quot;........&quot;,
+ &quot;........&quot;,
+ &quot;........&quot;,
+ &quot;........&quot;,
+ &quot;........&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 688856388</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

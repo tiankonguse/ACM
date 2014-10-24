@@ -1,0 +1,155 @@
+Content
+
+1. Introduction
+	1.1 Introduction
+	1.2 Network Flow Problem
+	1.3 Applications
+	1.4 Summary
+	Reference Notes
+	Exercises
+
+2. Paths, Trees, And Cycles
+	2.1 Introduction
+	2.2 Notation And Definitions
+	2.3 Network Representations
+	2.4 Network Transformations
+	2.5 Summary
+	Reference Notes
+	Exercises
+
+3. Algorithm Design And Analysis
+	3.1 Introduction
+	3.2 Complexity Analysis
+	3.3 Developing Polynomial-Time Algorithms
+	3.4 Searh Algorithms
+	3.5 Flow Decomposition Algorithms
+	3.6 Summary
+	Reference Notes
+	Exercises
+
+4. Shortest Paths: Label-Setting Algorithms
+	4.1 Introduction
+	4.2 Application
+	4.3 Tree of Shortest Paths
+	4.4 Shortest Path Problems in Acyclic Networks
+	4.5 Dijkstra's Algorithm
+	4.6 Dial's Implementation
+	4.7 Heap Implementation
+	4.8 Radix Heap Implementation
+	4.9 Summary
+	Reference Notes
+	Exercises
+
+5. Shortest Paths: Label-Correcting Algorithms
+	Reference Notes
+	Exercises
+
+6. Maximum Flows: Basic Ideas
+	6.1 Introduction
+	6.2 Applications
+	6.3 Flows and Cuts
+	6.4 Generic Augmenting Path Algorithm
+	6.5 Labeling Algorithm and the Max-Flow Min-Cut Theorem
+	6.6 Combinatorial Implications of the Max-Flow Min-Cut Theorem
+	6.7 Flows with Lower Bounds
+	6.8 Summary
+	Reference Notes
+	Exercises
+
+7. Maximum Flows: Polynomial ALgorithms
+	7.1 Introduction
+	7.2 Distance Labels
+	7.3 Capacity Scaling Algorithm
+	7.4 Shortest Augmenting Path Algorithm
+	7.5 Distance labels and Layered Networks
+	7.6 Generic Preflow-Push Algorithm
+	7.7 FIFO Preflow-Push Algorithm
+	7.8 Highest-Label Preflow-Push Algorithm
+	7.9 Excess Scaling Algorithm
+	7.10 Summary
+	Reference Notes
+	Exercises
+
+8. Maximum Flows: Additional Topics
+	
+	Reference Notes
+	Exercises
+
+9. Minimum Cost Flows: Basic Algorithms
+	Reference Notes
+	Exercises
+
+10. Minimum Cost Flows: Polynomial Algorithms
+
+11. Minimum Cost Flows: Network Simplex Algorithms
+
+12. Assignments and Matchings
+
+13. Minimum Spanning Trees
+
+14. Convex Cost Flows
+
+15. Generalized Flows
+
+16. Lagrangian Relaxation and Network Optimization
+
+17. Multicommodity FLows
+
+18. Computational Testing of Algorithms
+
+19. Additional Applications
+
+Appendix A
+Appendix B
+Appendix C
+
+
+
+
+
+
+
+
+1
+
+19. Data Structures and Network Algorithms
+
+
+
+
+
+
+
+
+
+
+
+Everywhere we look in our daily lives, networks are apparent.
+Electrical and power networks bring lighting and entertainment into our homes.
+Telephone networks permit us to comunicate with each other almost effortlessly within
+our local communities and across regional and international borders.
+
+Manufacturing
+
+
+
+
+
+
+nc
+
+6
+30
+60
+
+
+nc
+
+
+
+oo
+
+
+
+
+

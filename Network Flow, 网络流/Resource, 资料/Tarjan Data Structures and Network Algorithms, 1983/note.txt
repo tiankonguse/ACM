@@ -1,0 +1,27 @@
+[1] R. G. Busacker and P. J. Gowen, A precedure for determining a family of minimal-cost network flow patterns, 1961
+[2] R. V. Cherkasky, Algorithm of construction of maximal flow in networks with complexity of O(V^2E^0.5) operations, 1977
+[3] E. A. Dinic, Algorithm for solution of a problem of maximum flow in a network with power estimation, 1970
+
+[4] J. Edmonds and R. M. Karp, Theoretical improvements in algorithmic efficiency for network flow problems, 1972
+[5] P. Elias, A. Feinstein and C. E. Shannon, Note on maximum flow through a network, 1956
+
+
+[14] A. V. K.
+
+
+
+LiuH04
+MSS92
+
+
+先将区间端点离散化，对每个区间，加边 (li, ri, 1, wi) ..
+之后按顺序对每个端点加边 (i, i+1, k, 0) ..
+
+
+
+
+
+
+
+
+

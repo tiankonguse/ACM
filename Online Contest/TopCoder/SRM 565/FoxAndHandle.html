@@ -1,0 +1,29 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>We say that a string Z can be obtained by shuffling two strings X and Y together, if it is possible to interleave the letters of X and Y so that Z is obtained. It is not allowed to change the order of letters in X and Y.
+For example, you can shuffle the strings X="abcd" and Y="efg" to produce any of the strings "abcdefg", "aebfcgd", "abcefgd", or "eabcfdg", but you cannot produce the string "bacdefg".
+<br></br>
+<br></br>
+<br></br>
+Formally, let Shuffle(X,Y) be the set of all strings that can be produced by shuffling X and Y together.
+We can define Shuffle inductively as follows:
+<ul>
+<li>for any string X: Shuffle("",X) = Shuffle(X,"") = { X }</li>
+<li>for any letters a, b and any strings X, Y:
+Shuffle(aX,bY) = { aZ : Z belongs to Shuffle(X,bY) } united with { bZ : Z belongs to Shuffle(aX,Y) }.</li>
+</ul>
+<br></br>
+<br></br>
+<br></br>
+Fox Ciel wants to register on TopCoder.
+In order to do that, she has to pick a handle.
+Ciel has a pet cat called <b>S</b>.
+As her handle, Ciel wants to use a string H with the following property:
+<b>S</b> can be obtained by shuffling H and some permutation of H together.<br></br>
+For example, if <b>S</b>="ceiiclel", one possible handle would be H="ciel":
+she can permute H to obtain H'="eicl", and then shuffle these H and H' together to produce <b>S</b>.
+<br></br>
+<br></br>
+<br></br>
+You are given the string <b>S</b>.
+The constraints guarantee that there is at least one possible handle H with the above property.
+Find and return the lexicographically smallest valid H.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>FoxAndHandle</td></tr><tr><td>Method:</td><td>lexSmallestName</td></tr><tr><td>Parameters:</td><td>string</td></tr><tr><td>Returns:</td><td>string</td></tr><tr><td>Method signature:</td><td>string lexSmallestName(string S)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>S</b> will contain between 2 and 50 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each character of <b>S</b> will be a lowercase letter ('a'-'z').</td></tr><tr><td align="center" valign="top">-</td><td>Each letter ('a'-'z') will occur in <b>S</b> an even number of times.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;foxfox&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;fox&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">There are five possible handles for Fox Ciel in this test case: "fox", "fxo", "ofx", "oxf", and "xfo".
+The lexicographically smallest one is "fox".</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;ccieliel&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;ceil&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">Note that "ciel" is also a valid handle, but "ceil" is lexicographically smaller.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;abaabbab&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;aabb&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;bbbbaaaa&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;bbaa&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;fedcbafedcba&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;afedcb&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;nodevillivedon&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;deilvon&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

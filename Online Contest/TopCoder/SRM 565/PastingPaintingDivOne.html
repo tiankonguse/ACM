@@ -1,0 +1,44 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>Cucumber Boy likes drawing pictures.  Today, he plans to draw a picture using a very simple graphics editor.</p>
+<p></p>
+<p>The editor has the following functions:</p>
+<ul>
+<li>The canvas is an infinite two-dimensional grid of pixels.</li>
+<li>There are only four colors: red, green, blue, and transparent. These are denoted 'R', 'G', 'B', and '.' (a period), respectively.</li>
+<li>The editor has a clipboard that contains a rectangular picture.</li>
+<li>The editor can take the picture in the clipboard and paste it onto any corresponding rectangle of the canvas. The user just has to select the pixel of the canvas where the upper left corner of the clipboard will be pasted.</li>
+<li>When pasting the picture, the red, green, and blue pixels of the picture in the clipboard will overwrite their corresponding pixels on the canvas. The pixels that are transparent in the clipboard picture do not change the canvas.</li>
+</ul>
+<p></p>
+<p>At this moment, all pixels on the infinite canvas are transparent.  Cucumber Boy has already stored a picture in the clipboard.  You are given this picture as a vector &lt;string&gt; <b>clipboard</b>.</p>
+<p></p>
+<p>Cucumber Boy now wants to paste the clipboard picture onto the canvas exactly <b>T</b> times in a row.  For each i, when pasting the clipboard for the i-th time, he will choose the pixel (i,i) as the upper left corner of the pasted picture.</p>
+<p></p>
+<p>You are given the vector &lt;string&gt; <b>clipboard</b> and the int <b>T</b>.  Return a vector&lt;long long&gt; containing exactly three elements: the number of red, green, and blue pixels on the canvas after all the pasting is finished.</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>PastingPaintingDivOne</td></tr><tr><td>Method:</td><td>countColors</td></tr><tr><td>Parameters:</td><td>vector &lt;string&gt;, int</td></tr><tr><td>Returns:</td><td>vector&lt;long long&gt;</td></tr><tr><td>Method signature:</td><td>vector&lt;long long&gt; countColors(vector &lt;string&gt; clipboard, int T)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>clipboard</b> will contain between 1 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>clipboard</b> will contain between 1 and 50 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>clipboard</b> will contain the same number of characters.</td></tr><tr><td align="center" valign="top">-</td><td>Each character of each element of <b>clipboard</b> will be one of 'R', 'G', 'B', and '.'.</td></tr><tr><td align="center" valign="top">-</td><td><b>T</b> will be between 1 and 1,000,000,000, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{
+&quot;..G&quot;,
+&quot;R..&quot;,
+&quot;BG.&quot;
+}</pre></td></tr><tr><td><pre>3</pre></td></tr></table></td></tr><tr><td><pre>Returns: {3, 4, 3 }</pre></td></tr><tr><td><table><tr><td colspan="2"><p><img src="http://www.topcoder.com/contest/problem/PastingPaintingDivOne/sample1_div1.png"></img></p></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{
+&quot;R...&quot;,
+&quot;....&quot;,
+&quot;....&quot;,
+&quot;...R&quot;
+}</pre></td></tr><tr><td><pre>2</pre></td></tr></table></td></tr><tr><td><pre>Returns: {4, 0, 0 }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;RGB&quot;}</pre></td></tr><tr><td><pre>100000</pre></td></tr></table></td></tr><tr><td><pre>Returns: {100000, 100000, 100000 }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;.&quot;}</pre></td></tr><tr><td><pre>1000000000</pre></td></tr></table></td></tr><tr><td><pre>Returns: {0, 0, 0 }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{
+&quot;RB.&quot;,
+&quot;.G.&quot;
+}
+</pre></td></tr><tr><td><pre>100</pre></td></tr></table></td></tr><tr><td><pre>Returns: {100, 1, 100 }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{
+&quot;..........G..........&quot;,
+&quot;.........G.G.........&quot;,
+&quot;........G...G........&quot;,
+&quot;.......G.....G.......&quot;,
+&quot;......G..B.B..G......&quot;,
+&quot;.....G...B.B...G.....&quot;,
+&quot;....G...........G....&quot;,
+&quot;...G...R.....R...G...&quot;,
+&quot;..G.....RRRRRR....G..&quot;,
+&quot;.G..........RR.....G.&quot;,
+&quot;GGGGGGGGGGGGGGGGGGGGG&quot;
+}</pre></td></tr><tr><td><pre>1000000000</pre></td></tr></table></td></tr><tr><td><pre>Returns: {2000000018, 17000000048, 2000000005 }</pre></td></tr><tr><td><table><tr><td colspan="2"><p>Note that the answers may overflow a 32-bit integer variable.</p>
+<p></p>
+<p><img src="http://www.topcoder.com/contest/problem/PastingPaintingDivOne/sample5_div1-clipboard.png"></img></p>
+<p>This is the image of <b>clipboard</b> in this example.</p></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

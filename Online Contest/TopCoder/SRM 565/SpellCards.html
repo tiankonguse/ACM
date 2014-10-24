@@ -1,0 +1,35 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>You are playing a card game.
+In the card game, each card holds a magic spell with two properties: its level and its damage.
+During the game, you will play some of the cards (possibly none or all of them) to attack your enemy.
+<br></br>
+<br></br>
+<br></br>
+Initially, there are n cards.
+The cards are placed in a row and they are labeled from 0 to n-1, in order.
+You are given two vector &lt;int&gt;s: <b>level</b> and <b>damage</b>.
+For each i, the level of card i is <b>level</b>[i], and its damage is <b>damage</b>[i].
+<br></br>
+<br></br>
+<br></br>
+In each turn of the game, you can do one of two possible actions:
+<ol>
+<li>
+Let L be the level and D the damage of the card that is currently the leftmost card in the row.
+If there are at least L cards in the row, you may play the leftmost card.
+Playing it deals D damage to your enemy.
+After you play this card, the first L cards in the row (including the played one) are discarded.
+That is, the cards currently labeled 0 through (L-1), inclusive, are discarded.
+The order of the remaining cards does not change.
+</li>
+<li>
+If you have at least one card, you can take the last card in the row and move it to the beginning.
+For example, if the row initially contained cards A,B,C,D,E, in this order, after this operation it will contain E,A,B,C,D.
+</li>
+</ol>
+After each turn, the cards are relabeled 0 through x-1, where x is their current count.
+<br></br>
+<br></br>
+<br></br>
+Return the maximal total damage you can deal to your opponent.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>SpellCards</td></tr><tr><td>Method:</td><td>maxDamage</td></tr><tr><td>Parameters:</td><td>vector &lt;int&gt;, vector &lt;int&gt;</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int maxDamage(vector &lt;int&gt; level, vector &lt;int&gt; damage)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>level</b> will contain between 1 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>level</b> and <b>damage</b> will contain the same number of elements.</td></tr><tr><td align="center" valign="top">-</td><td>Each element in <b>level</b> will be between 1 and 50, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element in <b>damage</b> will be between 1 and 10,000, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1,1,1}</pre></td></tr><tr><td><pre>{10,20,30}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 60</pre></td></tr><tr><td><table><tr><td colspan="2">You can play card 0 three times in a row, dealing 10+20+30 = 60 damage.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{3,3,3}</pre></td></tr><tr><td><pre>{10,20,30}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 30</pre></td></tr><tr><td><table><tr><td colspan="2">Here, it is optimal to start by moving the last card to the beginning of the row.
+In the second turn we then use the card and deal 30 damage.
+Afterwards, all three cards are discarded.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{4,4,4}</pre></td></tr><tr><td><pre>{10,20,30}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2">This time you can't use any spell card.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{50,1,50,1,50}</pre></td></tr><tr><td><pre>{10,20,30,40,50}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 60</pre></td></tr><tr><td><table><tr><td colspan="2">You can use 2 cards with damage 20 and 40.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{2,1,1}</pre></td></tr><tr><td><pre>{40,40,10}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 80</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1,2,1,1,3,2,1}</pre></td></tr><tr><td><pre>{10,40,10,10,90,40,10}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 170</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">6)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1,2,2,3,1,4,2}</pre></td></tr><tr><td><pre>{113,253,523,941,250,534,454}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1918</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
