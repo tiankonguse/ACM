@@ -17,6 +17,6 @@ typedef __int64 LL;
 typedef long long LL;
 #endif
 int main() {
-
+void(int &a, int &b);
     return 0;
 }
