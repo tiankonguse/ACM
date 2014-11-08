@@ -1,0 +1,72 @@
+<html>
+<head><title>G. Spy Union</title></head>
+<body>
+<div align="justify">
+
+<h2>G. Spy Union</h2>
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr><td align="justify">
+<p>
+The spy network of the WSA has grown too big, downsizing is unavoidable.
+Unfortunately the Trade Union of Spies is large and strong, and they have spies
+everywhere. After many months of fruitless fighting, the management of the WSA
+met the representatives of the union, and together they came up with two 
+directed trees.
+<p>
+The first tree represents the hierarchy of the WSA. Each employee is a node,
+and each node is the head of a department (the node together with all its
+descendants). Each node is tagged with an integer that specifies how many
+employees have to be in that department to keep the organization operational.
+The second tree is the hierarchy of the union - a different hierarchy with
+different integers, but the meaning of the tree is the same.
+All employees are present in both trees.
+<p>
+Your task is to determine which employees to dismiss to get the smallest
+possible organization while still keeping all WSA and union departments
+operational.
+<td> &nbsp;&nbsp; <td align="right">
+<img width=300 alt="two hierarchies built from the same people" src="trees_small.jpg">
+<br><font size="-3">source: http://pixabay.com/en/silhouettes-hierarchy-human-man-81830/</font>
+</table>
+<p>
+Note that department heads may be fired - in which case a subordinate will be
+the new head; but some departments may have a tag of 0, meaning that the
+department is superfluous and may be eliminated altogether.
+<h3>Input</h3>
+
+The first line is an integer <i>N</i>, the number of employees. Their
+Employee ID (EID) is an integer between 0 and <i>N</i>-1. The next
+<i>N</i> lines refer to employees, the <i>n</i>th line to the employee
+with EID <i>n</i>, in <i>Bw Bu Rw Ru</i> format.
+<i>Bx</i> is the EID of this employee's boss in the <i>w</i> (WSA) or <i>u</i> (union) hierarchies (0 &lt;= Bx &lt; <i>N</i>, the boss EID of
+the top manager is their own number).
+<i>Rx</i> is the number of required people in this employee's respective subtree (0 &lt;= Rx &lt;= N).
+
+<h3>Output</h3>
+The first line is <i>K</i>, the maximum number of employees who can be fired.
+The second line contains <i>K</i> integers, the EIDs of the dismissed
+employees.
+
+<table border="0" width="100%" cellpadding=0 cellspacing=0>
+<tr>
+<td valign=top><h3>Example input</h3>
+<pre>
+5
+1 0 1 2
+2 0 1 2
+2 1 2 0
+2 1 0 1
+1 3 0 0
+</pre>
+
+<td valign=top><h3>Example output</h3>
+<pre>
+2
+4 2
+</pre>
+</table>
+
+</div>
+</body>
+</html>
+

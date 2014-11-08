@@ -1,0 +1,78 @@
+<html>
+<head><title>A. Safe</title></head>
+<body>
+<div align="justify">
+
+<h2>A. Safe</h2>
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr><td align="justify">
+<p>
+The WSA prints every important document and stores the printouts in large,
+secure safes. As per policy, safes always must be closed after use, forcing
+employees to open each safe hundreds of times per day. A key point of
+optimizing processes at the WSA is to speed up entering passwords for safes.
+<p>
+The keyboard keys on the safe are not ordinary keys, every
+time they are pressed they don't just enter the letter displayed on them as
+input, but the letter displayed on them changes as well. For each key, there is
+a cycle of letters that can appear 
+<p>
+The cycle of each key (actual letters the key would input push-by-push,
+in order) is known as well as the password that needs to be entered.
+The code is accepted only if a password of length N is entered using the last N
+key presses (that is, there's no way to reset cycles in between).
+All keys start on the first letter of their cycle (and the cycle can loop around).
+<td> &nbsp;&nbsp; <td align="right">
+<img width=300 alt="letter code disk" src="Enigma_rotors_with_alphabet_rings.jpg">
+<br><font size="-3">source: http://commons.wikimedia.org/wiki/File:Enigma_rotors_with_alphabet_rings.jpg</font>
+</table>
+
+<p>
+The task is to find the least amount of key presses needed to enter the code.
+<p>
+For each keyboard there are several different passwords that the task should be
+solved for.
+
+<h3>Input</h3>
+
+The first line contains one number, <i>N</i>, the number of keys.
+The next <i>N</i> lines contain the cycle for each key, consisting
+only of capital English letters.
+The following line contains <i>M</i>, the number of passwords that need to
+be typed on this keyboard. The next <i>M</i> lines contain the <i>M</i>
+passwords.
+
+<h3>Output</h3>
+
+A single number on a separate line for each input code, in order.
+If it is possible to enter the code, output the number of key
+presses necessary, otherwise output "-1".
+
+<table border="0" width="100%" cellpadding=0 cellspacing=0>
+<tr>
+<td valign=top><h3>Example input</h3>
+<pre>
+3
+ABC
+TEST
+CAT
+4
+TEST
+CC
+STT
+TT
+</pre>
+
+<td valign=top><h3>Example output</h3>
+<pre>
+4
+4
+5
+4
+</pre>
+</table>
+
+</div>
+</body>
+</html>
+

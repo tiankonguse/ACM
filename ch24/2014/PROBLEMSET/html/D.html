@@ -1,0 +1,338 @@
+<html>
+<head><title>D. Visual Programming</title></head>
+<body>
+<div align="justify">
+
+<h2>D. Visual Programming</h2>
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr><td align="justify">
+
+For each problem input you should write programs in the polygon programming
+language that read
+the input through the SIO register, evaluate it, and write suitable output
+through SIO. Each <i>problem input</i> is a different programming task. You
+should upload a polygon program for each. The <i>problem input</i> tasks are
+semi-independent: in case you can write a generic solution that solves
+more than one task, you may submit the same program to multiple inputs.
+<p>
+The evaluation server will run your program multiple times with
+different example <i>input streams</i> and determine the raw score as a
+sum of the following:
+<ul>
+<li> the program outputs the right solution for every example <i>input stream</i>: 200 points;
+<li> or the program outputs a wrong solution or crashes or violates the limits: stop testing, report failure, penalty.
+</ul>
+<p>
+Note: in the input and output format description, an EOF at the end of
+the stream is always assumed; this EOF is not a real character and thus does
+not count when calculating the length of the stream.
+<p>
+Submissions are evaluated on the reference implementation of the polyprog environment;
+to avoid contributing to global warming by excess simulation of
+infinite loops programs are stopped after executing 200000 polygons, without
+writing an EOF. Such greedy porgrams are obviously not accepted as they fail
+to terminate their output stream with an EOF.
+<p>
+<b>It is strongly recommended to solve all inputs of the previous task before solving
+this one!</b>
+
+<td> &nbsp;&nbsp; <td align="right">
+<img width=300 alt="modern art in programming: colorful triangles connected with lines" src="4.png">
+<br><font size="-3">Reference program four (4.pp) from the previous task</font>
+</table>
+
+<p>
+<table width=100% border=1 align=center>
+<tr><th colspan=3> Task summary
+<tr>
+	<th> problem id
+	<th> serial input syntax
+	<th> short description
+<tr>
+	<td>1
+	<td>list of uint8 and +
+	<td>calculate sum, no overflow
+<tr>
+	<td>2
+	<td>list of uint8 and + and -
+	<td>calculate sum, no overflow
+<tr>
+	<td>3
+	<td>list of uint8 and +, -, * and /
+	<td>evaluate the expression, no precedence
+<tr>
+	<td>4
+	<td>decimal number in ASCII text
+	<td>decimal to binary converter
+<tr>
+	<td>5
+	<td>uint16 binary number
+	<td>binary to decimal converter
+<tr>
+	<td>6
+	<td>plain text input: numbers and operators (+, -, *, /)
+	<td>evaluate the expression (as in 3), no precedence
+<tr>
+	<td>7
+	<td colspan=2> same as problem 6, plus the ^ operator for generic power
+<tr>
+	<td>8
+	<td colspan=2> same as problem 7, plus the _ operator for generic root
+<tr>
+	<td>9
+	<td> list of uint64 in binary and + operator
+	<td> same as problem 1
+<tr>
+	<td>10
+	<td> list of uint64 in binary and + and - operators
+	<td> same as problem 1
+</table>
+
+<p>
+<table border=1 width=100% align=center>
+<tr><th colspan=3> Detailed specification
+<tr><th>description <th> input            <th> output
+<tr><td>
+<b>Problem 1</b>:
+Input stream is a list of number-operator pairs. Numbers are
+1 byte long unsigned integers, the operator is always a plus
+sign ('+'). The program shall evaluate the expression on the input
+and calculate the result and print it on the output as an unsigned 16
+bit integer. When printing the output, the most significant byte shall
+be printed first. The last operator is omitted, the input ends with a
+number.
+<p>
+A valid input stream contains an odd number of bytes, every second byte
+is a '+' operator. If the operator byte is '-', '*' or '/' then the behaviour
+is undefined (won't be tested), otherwise if the input is not valid, the program shall
+print the text "ERROR" and a newline (in 6 bytes) and exit.
+<i>The ERROR message</i>
+in hex is: <tt>45 52 52 4F 52 0A &lt;EOF&gt;</tt>.
+<p>
+<i>Problem inputs</i> are designed to yield a sum less than 65536, therefore
+this example program doesn't need to deal with overflows.
+<td valign=top>(hex)
+<pre>02 2B
+07</pre>
+<td valign=top>(hex)
+<pre>00 09</pre>
+</table>
+
+<table border=1 width=100% align=center>
+<tr><th>description <th> input            <th> output
+<tr><td>
+<b>Problem 2</b>:
+Same as problem 1, except the operator may be a plus or a minus sign ('-');
+minus means subtraction. Assuming operations are performed
+in order of apperance, the <i>problem inputs</i> will guarantee that the
+result of the expression up to any operator will be between -32768 and +32767.
+Output must be written in two's complement format.
+<td valign=top>(hex)
+<pre>
+02 2B
+07 2D
+03
+</pre>
+<td valign=top>(hex)
+<pre>00 06</pre>
+
+<tr><td>
+<b>Problem 3</b>:
+Same as problem 2, except the operator may be a plus, minus, multiply ('*') 
+and divide ('/'). There is no operator precedence in this task, <b>operations
+are executed in order they appear</b>, so 2+3*4 is not evaluated as
+2+(3*4) but as (2+3)*4. Division by zero shall result in <i>the ERROR message</i>. Divisions
+are integer divisions. The dividend is never negative.
+The <i>problem inputs</i> do not contain calculations with any intermediate
+result out of the -32768 and +32767 range (the program doesn't have to
+care about overflow conditions).
+<td valign=top>(hex)
+<pre>
+02 2B
+07 2D
+03 2A
+04 2F
+03</pre>
+<td valign=top>(hex)
+<pre>00 08</pre>
+
+<tr><td>
+<b>Problem 4</b>:
+Input stream is a number written as ASCII text in decimal format. The
+program shall read the input, convert it to an unsigned 8 bit integer
+and print it in binary format to the serial output.
+<p>
+If the input contains anything else than digits, the program shall
+quit without printing any character.
+<p>
+Input is always between 0 and 255, range check is not required. Leading
+zeros shall be accepted.
+<td valign=top>(hex)
+<pre>
+31 32
+33
+</pre>
+<td valign=top>(hex)
+<pre>7B</pre>
+
+<tr><td>
+<b>Problem 5</b>:
+Input stream is a list of 16 bit unsigned integers, most significant byte first,
+thus consisting of an even number of bytes altogether.
+After the second byte of an item is received it should immediately
+print an ASCII decimal representation of that number (with leading zeros
+filled up to a width of 5 characters) and a newline. If the input terminates
+after odd number of bytes, the program shall print <i>the ERROR message</i>.
+<td valign=top>(hex)
+<pre>
+10 70
+</pre>
+<td valign=top>(hex)
+<pre>
+30 32
+36 33
+30
+</pre>
+
+<tr><td>
+<b>Problem 6</b>:
+Same as problem 3, but input is ASCII text: each line is a decimal
+number or an operator. Lines are terminated with a single newline
+character (ASCII 10, "\n"). The first and the last line of the
+stream must be numbers. Numbers are unsigned integers between
+0 and 32767 and may contain leading zeros. The output format is
+the same as in problem 5. The program is not required to do anything
+special for overflows.
+<p>
+If a number-line of the input contains anything other character than
+digits, the operator-line is not a '+', '-', '/', '*', '^' or '_' or an input
+line is empty, the program shall print <i>the ERROR message</i>.
+If the operator is '^' or '_' the behaviour is undefined (won't be tested).
+<td valign=top>(text)
+<pre>
+12
++
+55
+/
+2
+*
+3
+</pre>
+<td valign=top>(text)
+<pre>
+00099
+</pre>
+</table>
+
+<table border=1 width=100% align=center>
+<tr><th>description <th> input            <th> output
+<tr><td>
+<b>Problem 7</b>:
+Same as problem 6, with an extra operator "^", which means power:
+<i>^b</i> means <i>the result of the previous part</i> to the power of <i>b</i>.
+The <i>problem inputs</i> will not use the power feature to generate
+numbers larger than 32767. Corner cases:
+<ul>
+	<li> 0^0: the result is 1
+	<li> 0^1: the result is 0
+</ul>
+<td valign=top>(text)
+<pre>
+02
+*
+3
+^
+4
+</pre>
+<td valign=top>(text)
+<pre>
+01296
+</pre>
+
+<tr><td>
+<b>Problem 8</b>:
+Same as problem 7, with a generic root operator '_':
+<i>_b</i> means <i>the result of the previous part</i> to the root of <i>b</i>.
+For example 8_3 is 2. Since this is only a demonstration program, the managers
+are tolerant with the precision of the root operator: the result is accepted
+if it's +-2 of the root calculated with infinite precision truncated to
+integer; the inifinite precision is meant for the root operation only,
+not for any previous calculations.
+For example 122_3 is approximately 4.95968 thus the range of acceptance
+is (4-2)..(4+2), so anything between 2 and 6 (inclusive) is accepted (exception:
+"_1" must be precise).
+Corner cases:
+<ul>
+	<li> <i>a_1</i>: must be exactly <i>a</i>, the +-2 tolerance is not applied here
+	<li> <i>a_0</i>: <i>the ERROR message</i>
+</ul>
+<td valign=top>(text)
+<pre>
+2
+*
+3
++
+100
+*
+19
+_
+3
+</pre>
+<td valign=top>(text)
+<pre>
+00012
+</pre>
+(but 00010, 00011, 00013 and 00014 are also accepted)
+
+<tr><td>
+<b>Problem 9</b>:
+Same as problem 1, but for 64 bit unsigned integers. Both input and
+output numbers are 8 byte long, with the <b>least significant byte written
+first</b> (unlike in the previous problems!).
+<p>
+The addition shall be done modulo 2<sup>64</sup>.
+<p>
+If the operator byte is '-' the behaviour is undefined (won't be tested), otherwise if
+the operator is not '+' or the end of the input stream is reached unexpectedly,
+print
+<i>the ERROR message</i>.
+<td valign=top>(hex)
+<pre>
+86 47 F0 75
+12 60 3F 13
+2B
+7D 0D E5 60
+3F 83 C0 2F
+</pre>
+<td valign=top>(hex)
+<pre>
+03 55 D5 D6
+51 E3 FF 42
+</pre>
+
+<tr><td>
+<b>Problem 10</b>:
+Same as problem 9, with an extra operator '-' for subtraction modulo 2<sup>64</sup>.
+Input will not contain numbers larger than 2<sup>63</sup>-1.
+<td valign=top>(hex)
+<pre>
+03 00 00 00
+00 00 00 00
+2B
+02 00 00 00
+00 00 00 00
+2D
+09 00 00 00
+00 00 00 00
+</pre>
+<td valign=top>(hex)
+<pre>
+FC FF FF FF
+FF FF FF FF
+</pre>
+</table>
+
+</div>
+</body>
+</html>
+

@@ -1,0 +1,127 @@
+<html>
+<head><title>J. Image compression</title></head>
+<body>
+<div align="justify">
+
+<h2>J. Image compression</h2>
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr><td align="justify">
+<p>
+The latest spy gadget is an earring that has a 2 terapixel camera, a 16 core
+compound graphics processing and CPU unit, 4 TB of overclocked 512-bit GDDRX
+RAM, and an user-expandable mass storage interface. It can take and transmit
+photos of the finest quality, whenever your ear itches; and the massive heatsink
+lends a very fashionable look to the user.
+<p>
+Because of certain legal issues (regarding dubious medical concerns about
+high-energy electromagnetic radiation near the user's brain), the bandwidth that the
+earring may utilize during wireless image transmission is extremely small. Until
+these obsolete regulations are removed, the WSA has to compress the images very
+severely. They came up with a creative lossy compression format that will keep
+major features reconstructible, and loses only some unimportant details.
+<td> &nbsp;&nbsp; <td align="right">
+<img width=300 alt="a random 3d heightmap" src="Heightmap_rendered.png">
+<br><font size="-3">http://commons.wikimedia.org/wiki/File:Heightmap_rendered.png</font>
+</table>
+
+<p>
+The decompressor is already available; your task is to write the compressor.
+The WSA is looking for an implementation that provides the best image output
+while staying inside the strict size requirements.
+<p>
+Given a grayscale input png (saved directly from the
+Intelligent/Imaging Serial CCD), you need to find a suitable compression.
+The compressed image is described only by a couple of reference points.
+Each reference point is a pair of coordinates and an intensity. The
+original image is reproduced by determining the intensity of the missing
+pixels between reference points using the value of all reference points.
+The exact method for any given pixel on the output is:
+<ul>
+	<li> if there is a reference point on the pixel, output intensity is the same as the intensity of the reference point
+	<li> otherwise the intensity of the pixel is the weighted arithmetic mean (average) of all the reference points' intensity. For each reference point, the weight is the reciprocal of the squared distance from the pixel (1 / (dx<sup>2</sup> + dy<sup>2</sup>)).
+</ul>
+<p>
+Multiple reference points can not be placed on the same coordinates,
+all reference points must be within the boundaries of the image.
+<p>
+The maximum number of reference points used to store an image is the sum
+of <I>SX</i> and <I>SY</i>, the horizontal and vertical dimesions of the
+image in pixels.
+
+<h3>Input</h3>
+A grayscale png file.
+
+<h3>Output</h3>
+The first line is an integer <i>N</i>, the number of reference points used.
+The following <i>N</i> lines are reference points in <i>X Y I</i> format
+where <i>X</i> and <i>Y</i> are the coordinates of the reference point
+and <i>I</i> is the intensity between 0 (black) and 255 (white).
+<p>
+The top-left pixel of the image is X=0;Y=0.
+
+<h3>Scoring</h3>
+<p>
+Scoring is based on the root mean squared error (RMSE):
+<p>
+Valid submissions are rendered to a grayscale image.
+The render and the input image are compared. The intensity difference of each
+pixel is squared, then the average of the resulting values is calculated.
+The square root of the average is the RMSE. This is then compared to
+the best submission so far.
+(The eval score in the submission system is trunc(1000000*RMSE)):
+<pre>
+  SCORE = 100*(1 - sqrt(1 - BEST/RMSE))
+</pre>
+
+<p>
+<table border="0" width="100%" cellpadding=0 cellspacing=0>
+<tr>
+<td valign=top><h3>Example input</h3>
+<img src="0_big.png">
+
+<td valign=top><h3>Example output<br>(part 1)</h3>
+<pre>
+32
+14 10 12
+4 6 24
+0 28 24
+11 3 233
+17 14 236
+13 10 234
+30 8 235
+31 3 242
+28 17 20
+14 23 243
+10 27 6
+2 4 236
+20 14 27
+20 17 1
+13 11 28
+</pre>
+
+<td valign=top><h3>Example output<br>(part 2)</h3>
+<pre>
+9 22 13
+17 9 23
+22 14 11
+16 6 237
+9 29 26
+14 4 241
+22 11 31
+17 30 10
+12 9 236
+26 8 26
+8 19 0
+21 23 14
+3 23 227
+14 2 6
+29 11 235
+13 23 22
+11 28 13
+</pre>
+</table>
+
+</div>
+</body>
+</html>
+

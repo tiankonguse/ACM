@@ -1,0 +1,95 @@
+<html>
+<head><title>I. Crowd control</title></head>
+<body>
+<div align="justify">
+
+<h2>I. Crowd control</h2>
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr><td align="justify">
+<p>
+Because of crowd management difficulties experienced during recent unfortunate
+events regarding the WSA leadership, the WSA decided to investigate
+the flow of personnel in public buildings. A stampede of people constrained in
+passages partially blocked by columns, plants, janitors, and other debris
+caused unwelcome media attention and made it difficult to control
+"demonstrators" and other undesirables.
+<p>
+Based on advice from their private hands-on security experts and other
+consultants, the WSA decided that in the future it wishes to arrange
+conferences in buildings that can pass people through at a given rate during
+escape scenarios.
+
+<td> &nbsp;&nbsp; <td align="right">
+<img width=300 alt="Green person leaving the room in panic" src="Emergency_Exit_Sign_clip_art_medium.png">
+<br><font size="-3">source: http://vector.me/browse/182519/emergency_exit_sign_clip_art </font>
+</table>
+<p>
+
+Your task is to find the maximum possible flow rate of people for each
+given layout. (Keep in mind that the carrying capacity of a corridor is
+proportional to its cross section.)
+
+<h3>Input</h3>
+
+The layout is represented as a polygon, two sides of which are the entrance
+and the exit. All the obstacles are also given as polygons. Other than the
+neighbouring sides of polygons, the lines never touch.
+<p>
+First line contains 3 numbers, first <i>o</i>, the number of obstacles, then <i>b</i> end <i>e</i>,
+the beginning and end sides of the outer polygon. The side of
+the outer polygon between the <i>b</i>th and (<i>b</i>+1)th vertices is the beginning, and
+the side of the outer polygon between the <i>e</i>th and (<i>e</i>+1)th vertices is the end.
+0 &lt; <i>b, e</i> &lt; <i>n</i> of outer polygon.
+<p>
+Next is the outer polygon, the first line of which is <i>n</i>, the number of sides,
+then <i>n</i> lines with the x and y coordinates of the <i>n</i> vertices, starting with the
+1st vertex. The coordinates are all floating point numbers.
+<p>
+Next come the <i>o</i> obstacles in the same format.
+
+<h3>Output</h3>
+The width of a simple corridor with the equivalent
+flow rate to this layout (as a floating point number).
+<p>
+We accept an output if it is within 0.0001% of the official solution.
+
+<table border="0" width="100%" cellpadding=0 cellspacing=0>
+<tr>
+<td valign=top><h3>Example input</h3>
+<pre>
+1 2 6
+8
+0 0
+0 1
+0 4
+0 5
+4 5
+6 4
+6 1
+6 0
+4
+2 1
+2 4
+4 4
+4 1
+</pre>
+
+<td valign=top><h3>Example output</h3>
+<pre>
+1.89442719
+</pre>
+</table>
+
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr><td align="justify">
+In the example, a big obstacle in the middle splits the layout to two corridors.
+The bottom corridor has a width of 1, but the top corridor is only 0.89442719 wide
+at its narrowest point, marked by the red dashed line, so the total possible flow
+is equivalent to a corridor that is 1.89442719 wide.
+<td> &nbsp;&nbsp; <td align=right>
+<img alt="example layout" src="example.png">
+</table>
+</div>
+</body>
+</html>
+

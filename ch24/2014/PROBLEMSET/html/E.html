@@ -1,0 +1,74 @@
+<html>
+<head><title>E. Travelling</title></head>
+<body>
+<div align="justify">
+
+<h2>E. Travelling</h2>
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr><td align="justify">
+<p>
+Some WSA agents travel frequently on official business, and they figured out
+how to cheat the WSA's working time accounting system. The trick is that
+if they have to visit a lot of distant cities, they travel more to the east
+than to the west, and they use local time zones for logging their time.
+As long as they don't travel around the globe twice, and they choose a
+reasonably short path, no one would notice.
+<p>
+At least, so they thought. WSA management eventually discovered the cheating
+(...no they didn't; rather, someone snitched), and they want to estimate the
+losses. They handed you 10 lists of cities that agents usually visit (with
+coordinates).
+
+<td> &nbsp;&nbsp; <td align="right">
+<img width=300 alt="a large airplane, weighting about half of the Earth, orbiting a globe of 1:1 scale" src="travel-globe.png">
+<br><font size="-3">source:http://openclipart.org/detail/170988/travel-globe-by-gnokii-170988</font>
+</table>
+
+<p>
+Find the shortest tour visiting all the listed locations without ever traveling
+West (longitude shall never decrease, except when crossing the antimeridian)
+and without traveling around the planet more than twice.
+
+<h3>Input</h3>
+<p>The first line contains N, the number of locations and
+the following N lines are the (latitude, longitude) coordinates
+of the locations in degrees.
+(-90 &le; latitude &le; 90 increasing to the North and
+-180 &le; longitude &le; 180 increasing to the East and
+there are no locations exactly at the same longitude or at the poles)
+
+<h3>Output</h3>
+<p>The first line should contain the length of the optimal
+tour in km (to one meter precision;
+Earth is approximated as a perfect sphere with R = 6371 km radius).
+<p>The second line should contain N+1 numbers separated by whitespace:
+the indices of the locations in the order they are visited in the
+optimal tour (indexing starts from 0, based on the order in the input,
+the last location must be the same as the first one and the longitude
+of consecutive locations must not decrease more than twice).
+
+<p>
+<table border="0" width="100%" cellpadding=0 cellspacing=0>
+<tr>
+<td valign=top><h3>Example input</h3>
+<pre>
+6
+40 0.5
+-60 50
+-10 -80
+80 1e2
+30 -160
+-70 140
+</pre>
+
+<td valign=top><h3>Example output</h3>
+<pre>
+53904.473044
+4 1 5 2 0 3 4
+</pre>
+</table>
+
+</div>
+</body>
+</html>
+

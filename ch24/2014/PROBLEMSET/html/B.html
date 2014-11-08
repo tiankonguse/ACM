@@ -1,0 +1,79 @@
+<html>
+<head><title>B. Wiretapping</title></head>
+<body>
+<div align="justify">
+
+<h2>B. Wiretapping</h2>
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr><td align="justify">
+<p>
+The WSA used to tap a lot of phone lines - it's a great way of catching
+evil plots that the terrorist cells carelessly discuss between themselves using
+the public phone system. Lately, the WSA had to reduce costs by cutting back
+on traditional wiretapping, and they are trying to determine which few
+phone lines they will concentrate their remaining resources on.
+<p>
+There is a large list of terrorist cell relationships, otherwise known as phone
+lines (collected by other means).
+<td> &nbsp;&nbsp; <td align="right">
+<img width=300 alt="a typical Bad People social network" src="black_orange_men_cloud.png">
+<br><font size="-3">http://openclipart.org/detail/99967/black-orange-men-cloud-by-pydubreucq</font>
+</table>
+
+<p>
+When the Head of Bad People decides to do something Evil, he hatches the Master
+Plan; the plan is then broadcast to all cells, using the public phone
+network.
+<p>
+The WSA assumes that terrorists behave rationally, thus:
+<ul>
+<li> they utilize the smallest possible amount of connections (minimizing number
+   of phone calls)
+<li> they always distribute the plan to every cell.
+</ul>
+<p>
+A talented young agent has chosen a phone line the tap is installed on.
+Your task is to determine the probability of catching the important
+broadcast, whichever connection setup the terrorist chose this time.
+
+<h3>Input</h3>
+The first line contains two integers <i>N</i> and <i>E</i>, the number of
+cells and potential phone connections, respectively. The next <i>E</i> lines are the edges
+given as a pair of integers <i>A</i> and <i>B</i>, each between 0 and <i>N</i>-1,
+representing a potential phone call between cells <i>A</i> and <i>B</i>.
+<p>
+The wiretap is placed on the first connection on the list.
+
+<h3>Output</h3>
+A single number to 1e-6 precision describing the probability of
+catching the message on the tapped line.
+
+<table border="0" width="100%" cellpadding=0 cellspacing=0>
+<tr>
+<td valign=top><h3>Example input</h3>
+<pre>
+6 12
+0 1
+1 2
+2 3
+3 4
+4 5
+3 0
+0 2
+1 3
+2 4
+3 5
+4 0
+5 1
+</pre>
+
+<td valign=top><h3>Example output</h3>
+<pre>
+0.4194444444
+</pre>
+</table>
+
+</div>
+</body>
+</html>
+

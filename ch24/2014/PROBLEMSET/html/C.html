@@ -1,0 +1,234 @@
+<html>
+<head><title>C. Visual Programming - VM</title></head>
+<body>
+<div align="justify">
+
+<h2>C. Visual Programming - VM</h2>
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr><td align="justify">
+<p>
+The WSA employs many programmers, who perform a bit better or a bit worse each
+day. This results in higher or lower quality code accordingly. The management
+understands the importance of high quality code (especially in such a
+security-sensitive domain!), therefore they decided to optimize the processes
+of the WSA software department.
+<p>
+The first step of the effort was to send a few managers to understand the nature
+of the problems. The programmers had shown thousands of lines of source code,
+written in various languages the managers had never seen before. They had a hard
+time trying to understand all this, and after weeks of evaluation, they figured
+out why: most programming languages are too complicated! They concluded that
+they must design a new programming language that is much simpler, and mandate
+its use within the organization.
+<td> &nbsp;&nbsp; <td align="right">
+<img width=300 alt="Two semi-transparent triangles connected with a not-so-bold line" src="bin_add.png">
+<br><font size="-3">Almost accurate visualisation of the example program (0.pp) for this task</font>
+</table>
+<p>
+They came up with something more visual (thus user friendly) and vastly simpler
+(it has only two different constructions and only one kind of instruction).
+Programmers were initially sceptical of the practicability of these ideas,
+so WSA management has hired you to prove the merits of the language by
+implementing certain example algorithms.
+<p>
+This problem is so large it's split in two separate problems: first you
+should write and test your toolchain for dealing with polyprog programs,
+then (using your brand new tools) you can attempt to create the example
+programs.
+
+
+<h3> programming polyprog </H3>
+
+The polyprog machine has 16 registers, of which the first 15 (from 0 to 14) are
+general purpose, while register 15 is the serial input/output (SIO) device.
+Registers store 16 bit unsigned integers.
+<p>
+Polyprog programs are represented by a list of polygons and lines.  Color is
+specified in 32 bit RGBA (each component is an integer between 0 and 255).
+Coordinates are unsigned 16 bit integer x;y pairs. A polygon has a fill color,
+a stroke color, and at least 3 vertices specified by their coordinates.
+A line is a color and an ordered list of points (coordinates); the <i>end points</i>
+are the first and last points on the list.
+<p>
+To keep source code clean and readable:
+<ul>
+ <li>polygons shall not overlap or touch other polygons
+ <li>lines may not overlap or touch polygons except that both endpoints of the
+   lines must be on polygon vertices
+ <li>lines may intersect other lines
+ <li>a polygon vertex may be the same position with zero or one <i>line end
+ point</i>
+ <li>line mid points may overlap each other
+ <li>the number of points in a line is limited to <i>LLEN</i>, including the two
+   endpoints
+ <li>dimensions of the program (maximum x and y coordinates) are limited to <i>DIM</i>
+   units; (0 &lt;= x &lt; DIM) and (0 &lt;= y &lt; DIM).
+</ul>
+All polygons have at least one line connected to them and a valid program
+contains at least one polygon.
+<p>
+Limits: <i>DIM</i>=65536 and <i>LLEN</i>=16.
+
+<h3> the polyprog processor </h3>
+
+The processor has an instruction pointer which points to one of the polygons.
+A polygon instruction is executed in multiple stages:
+
+<h4> Stage 1: register operation </h4>
+	<ul>
+		<li>register <i>A</i> is addressed by the high order 4 bits of fill:red
+		<li>register <i>B</i> is addressed by the low order 4 bits of fill:red
+		<li>register <i>C</i> is addressed by the high order 4 bits of fill:green
+		<li>register <i>D</i> is addressed by the low order 4 bits of fill:green
+		<li>register <i>E</i> is addressed by the high order 4 bits of fill:blue
+		<li>register <i>F</i> is addressed by the low order 4 bits of fill:blue
+		<li>constant <i>X</i> is fill:alpha
+		<li>constant <i>Y</i> is stroke:red
+		<li>constant <i>Z</i> is stroke:green*256 + stroke:blue
+		<li>constant <i>T</i> is stroke:alpha
+	</ul>
+	perform
+	<pre>
+  A = (Y + B + C * D + Register[F]) * (255-X) / ( (255-T) + E ) + Z
+	</pre>
+	and update <i>A</i> accordingly. Register values and constants
+	are converted to 32 bit unsigned integers for the calculation; at the end,
+	the result is truncated back to a 16 bit unsigned integer.
+	(Thus, operations are evaluated modulo 2<sup>32</sup>, division is
+	integer division with non-negative operands, a zero second operand is
+	fatal error and the final result modulo 2<sup>16</sup> is stored in <i>A</i>.)
+	<p>
+	<i>Register[F]</i> means the lower 4 bits of the value in <i>F</i> selects which
+	register's value is substituted (the higher 4 bits are ignored).
+
+<H4>Stage 2: route selection </h4>
+	Take every vertex of the polygon that has a connected line, sort them by
+	<i>y*DIM+x</i> in ascending order, and walk this list checking for the following condition:
+	<ul>
+		<li>register <i>Q</i> is addressed by the low order 4 bits of the x coordinate
+		<li>constant <i>L</i> is line:red*256 + line:green
+		<li>constant <i>H</i> is line:blue*256 + line:alpha
+		<li>if <i>(Q &gt;= L)</i> and <i>(Q &lt; H)</i>, the condition is statisfied
+	</ul>
+	
+<h4>Stage 3: jump</h4>
+	Pick the vertex for which the condition was first satisfied in Stage 2; or if
+	there's no such vertex, pick the last vertex in the above order. The
+	instruction pointer is modified to point to the polygon on the other end of
+	the line connected to the picked vertex.
+
+<h3>reset</h3>
+
+After a reset all general purpose registers are initialized to contain their
+own addresses (so that the value in register N is N). The instruction pointer
+is pointing to the polygon that has the vertex with <i>min(y*DIM+x)</i>.
+The program's input stream is set up so that the first read will get the first
+byte in the input.
+
+<h3> serial input and output (SIO) </h3>
+
+When register 15 (SIO) is read, it returns the next byte in the input stream
+until EOF; once EOF is reached, all subsequent reads will result in EOF.
+When SIO is written, it appends the byte
+to the output stream. If an instruction (polygon) attempts to read SIO multiple
+times, only the first attempt will result in reading a byte from the
+input stream, subsequent reads in the same instruction
+will reuse the same (cached) value without
+removing more bytes from the input. It is possible to read and write SIO in
+the same instruction, in which case the write happens later. The program stops
+running immediately when EOF is written to the serial output.
+<p>
+SIO data is an unsigned 8 bit integer placed in the least significant 8 bits of
+the register, leaving the upper 8 bits 0:
+<pre>
+MSB                                        LSB
+15                                           0
+0  0  0  0  0  0  0  0  d  d  d  d  d  d  d  d
+</pre>
+
+Input EOF is a word with value 256:
+<pre>
+MSB                                        LSB
+15                                           0
+0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0
+</pre>
+
+Output EOF is a word with value &gt;255: at least one of the z bits is 1.
+(In this case, x bits are ignored.)
+<pre>
+MSB                                        LSB
+15                                           0
+z  z  z  z  z  z  z  z  x  x  x  x  x  x  x  x
+</pre>
+
+<h3> program submission syntax </h3>
+
+The first line of the program contains two integers <i>P</i> and <i>L</i>
+separated by a space; <i>P</i> is the number of polygons, <i>L</i> is the
+number of lines. The next <i>P</i> lines describe
+polygons, then the next <i>L</i> lines describe lines.
+<p>
+A polygon description starts with 4 integers <i>SR, SG, SB, SA</i> for
+the stroke color components, then 4 integers <i>FR, FG, FB, SB</i> for
+the fill color components and an integer <i>C</i>, number of vertices.
+The rest of the line is a space separated list of <i>X</i> space
+<i>Y</i> coordinates of the vertices in CW or CCW order.
+<p>
+A line entry starts with 4 integers <i>R, B, G and A</i> for the color
+of the line, followed by integer <i>P</i> (the number of points)
+and list of <i>X</i> space <i>Y</i> coordinates giving the points of the line.
+<i>P</i> is limited to: 2 &lt;= <i>P</i> &lt;= <i>LLEN</i>.
+
+<h3> Tasks </h3>
+<p>
+This task is provided as an aid for developing your own toolchain, especially
+an interpreter, to develop, run and debug polyprogs. <b>Please make sure
+you solve all inputs of this task before trying to solve the next problem.</b>
+<p>
+Any new implementation of
+polyprog compilers and interpreters must comply with the standard described
+above. Verification is possible using the reference programs the Managers have
+provided. An implementor should run all five reference programs
+and compare the output to the reference outputs. Unfortunately the
+reference output of these programs is the Intellectual Property of the WSA,
+but the managers are willing to compare your output to the references
+and tell if they match.
+
+<h3>Input</h3>
+<p>
+You need to run five polyprog programs. A reference serial input, serial.in.bin
+is also provided; before running a reference program, the SIO's read pointer
+should be reset to the beginning of this file. <b>Note: serial.in.bin
+is a binary file.</b>
+
+<h3>Output</h3>
+<p>
+The output as written by the program on the SIO. <b>Output files are binary,
+but never contain the \0 (nil) character.</b> If your interpreter outputs
+\0 executing any of the reference programs, it is broken.
+
+<h3>Example input</h3>
+<pre>
+2 1
+0 0 0 254 47 0 0 254 3 100 100 110 110 80 110
+0 0 0 254 255 18 0 254 3 200 200 210 210 176 210
+0 0 0 1 3 80 110 150 150 176 210
+</pre>
+<p>
+
+(<i>"The Input stream contains pairs of 7-bit unsigned integers in binary format;
+sum each pair and print the result to the output as 8-bit unsigned int in
+binary format. The program shall stop when EOF is read on the input stream.
+If the input stream contains an odd number of bytes, ignore the last byte."</i>)
+
+<h3>Example output</h3>
+Running the reference solution on serial.in.bin should result
+in 3 bytes on the output stream - here represented in a hexadecimal format:
+<pre>
+D3 D1 D5
+</pre>
+
+</div>
+</body>
+</html>
+

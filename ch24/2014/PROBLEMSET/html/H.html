@@ -1,0 +1,133 @@
+<html>
+<head><title>H. Tile design</title></head>
+<body>
+<div align="justify">
+
+<h2>H. Tile design</h2>
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr><td align="justify">
+<p>
+In the brand new HQ of the WSA, construction subcontractors are working on the
+last tweaks, like tiling the personal hygiene facilities (bathrooms). The
+overall design concept dictates that the wall patterns must match the purpose of
+each room, so the selected bathroom tile design features pipe sections.
+<p>
+Each tile has exactly one pipe printed on it:
+<ul>
+<li> a straight pipe section;
+<li> or a pipe corner.
+</ul>
+<td> &nbsp;&nbsp; <td align="right">
+<img width=300 alt="A corner pipe bathroom wall tile" src="engraved_small.png">
+<br><font size="-3">source: http://www.photos-public-domain.com/<br>2011/12/30/blue-bathroom-tile-<br>with-swirl-pattern-texture/</font>
+</table>
+
+<p>
+Tiles can be rotated but not mirrored.
+<p>
+When designing tiling layouts, there are some psychological constraints as well.
+Imagine what guests would think seeing a decorative pipe system that just ends
+abruptly - it may make them imagine that the WSA organization is not a single,
+seamless, organically interconnected system. To avoid such misunderstandings,
+the pipeline must not have ends; which is possible by designing a large single
+loop that covers the wall.
+<p>
+Furthermore, users well-versed in algorithmic security may object to seeing long
+repeated patterns in such loops, because those would suggest that entropy in the
+WSA is low. How could they trust the WSA's cryptography and the randomness of
+its keys if the WSA can't even build a random enough tile layout?
+<p>
+Your task is to help the designer to tile the wall so that all available
+space is covered by tiles, the pipes on the tiles form a single loop, and the
+longest repeating pipe sequence of the design is as short as possible.
+
+<h3>Input</h3>
+
+Three integers, <i>W, H</i> and <i>L</i>, where <i>W</i> and <i>H</i>
+are the width and height (measured in number of tiles) of the wall and
+<i>L</i> is the length of the longest repeating pipe line we want
+to achieve (see below).
+
+<h3>Output</h3>
+
+The first line is two integers <i>W, H</i> (matching width and height in
+the input). The follwing <i>H</i> lines form a large "ASCII art"
+representation of the tile figures, one character per tile, each line
+containing <i>W</i> characters. The meaning of the characters:
+<p>
+<table align="center" border=1>
+	<tr><th>character</th><td align=center>F<td align=center>7<td align=center>J<td align=center>L<td align=center>-<td align=center>I
+	<tr><th>figure</th>
+	<td> <img src="pipe3.png" alt="pipe section from south to east (corner)">
+	<td> <img src="pipe4.png" alt="pipe section from south to west (corner)">
+	<td> <img src="pipe5.png" alt="pipe section from north to west (corner)">
+	<td> <img src="pipe6.png" alt="pipe section from north to east (corner)">
+	<td> <img src="pipe1.png" alt="pipe section from east to west (straight)">
+	<td> <img src="pipe2.png" alt="pipe section from north to south (straight)">
+</table>
+<p>
+So each tile figure is a pipe section with some orientation.
+The pipe sections have a flow direction as well that is not represented
+in the plan, but will be visible on the final design, where
+tiles will be placed so that the flow can go around the wall in positive direction.
+<p>
+A pipe line is a sequence of neighboring tiles with connected pipe sections
+following the direction of the flow. If the pipe line connects back to itself
+then it's a loop. All the tiles should form a single loop, but the
+longest repeating pipe line (<i>LRPL</i>) must be as short as possible
+(ideally <i>L</i> or less).
+A rotated version of the pipe line is considered to be a repetition,
+but a mirrored one is not. Repetitions can overlap.
+<p>
+Finding a solution with longer than <i>L</i> repetitions will
+earn less than 100 points by the following formula:
+
+<h3>Scoring</h3>
+
+if <tt>LRPL &le; L</tt> then <tt>SCORE = 100</tt><br>
+else if <tt>LRPL &ge; L+25</tt> then <tt>SCORE = 0</tt><br>
+else <tt>SCORE = round(0.16*(L+25-LRPL)<sup>2</sup>)</tt>
+
+<table border="0" width="100%" cellpadding=0 cellspacing=0>
+<tr>
+<td valign=top><h3>Example input</h3>
+<pre>
+8 8 5
+</pre>
+
+<td valign=top><h3>Example output</h3>
+<pre>
+8 8
+<b>F--7</b>F--7
+<b>I</b>F7IL7FJ
+<b>I</b>IIL-JL7
+IIL-7F-J
+IIF7IIF7
+LJILJII<b>I</b>
+F-JF7LJ<b>I</b>
+L--J<b>L--J</b>
+</pre>
+</table>
+
+<p>
+The longest repeating pipe line in the example is 6
+(hilighted), so its score is 92.
+<p>
+Note that the hilighted part below is not a rotated
+and overlapping 8 length repetition, because pipes are directed.
+<pre>
+8 8
+F--7F--7
+I<b>F7</b>IL7FJ
+I<b>II</b>L-JL7
+I<b>I</b>L-7F-J
+<b>II</b>F7IIF7
+<b>LJ</b>ILJIII
+F-JF7LJI
+L--JL--J
+</pre>
+
+</div>
+</body>
+</html>
+
