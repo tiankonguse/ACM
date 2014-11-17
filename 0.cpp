@@ -9,6 +9,7 @@
 #include<stack>
 #include<algorithm>
 #include<functional>
+#include <time.h>
 #include<stdarg.h>
 using namespace std;
 #ifdef __int64
@@ -70,6 +71,7 @@ int countbits(ULL x) {
 
 int main() {
     ULL a;
+    srand (time(NULL));
     initMitHeakArray();
     int m = (64+2)/3;
     printf("width = %d\n",m);

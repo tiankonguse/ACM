@@ -10,6 +10,7 @@
 #include<algorithm>
 #include<functional>
 #include<stdarg.h>
+#include <time.h>
 using namespace std;
 #ifdef __int64
 typedef __int64 LL;
@@ -20,7 +21,7 @@ typedef unsigned long long ULL;
 #endif
 
 
-ULL mitHeakArray[3];
+ULL mitHeakArray[10];
 bool okMitHeak = false;
 int initMitHeakArray() {
     if(okMitHeak) {
@@ -69,8 +70,9 @@ int countbits(ULL x) {
 }
 
 int main() {
-    ULL a;
+    ULL input;
     initMitHeakArray();
+    srand (time(NULL));
     int m = (64+2)/3;
     printf("width = %d\n",m);
     for(int j=0; j<3; j++) {
@@ -82,20 +84,19 @@ int main() {
     }
     printf("\n");
     printf("%22llo %22llo %22llo\n", mitHeakArray[0],mitHeakArray[1],mitHeakArray[2]);
-    ULL ans[2];
+    ULL ans[5];
     ULL cas = 0;
     ULL MOD = 10000;
     ULL limit = 10;
     while(1){
             cas++;
-        a = rand();
-        a = a*a;
-        ans[0] = bitCount(a);
-        ans[1] = _countbits(a);
-        ans[2] = countbits(a);
-
+        input = rand();
+        input = input*input;
+        ans[0] = bitCount(input);
+        ans[1] = _countbits(input);
+        ans[2] = countbits(input);
         if(ans[0] != ans[1] || ans[0] != ans[2]){
-            printf("%llu: bitCount = %d _countbits = %d table = %d\n", a, ans[0], ans[1], ans[2]);
+            printf("%llu: bitCount = %d _countbits = %d table = %d\n", input, ans[0], ans[1], ans[2]);
             break;
         }
         if(cas % MOD == 0){
