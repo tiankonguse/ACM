@@ -41,13 +41,13 @@ int initMitHeakArray() {
 
 }
 int bitCount ( ULL n ) {
-    if(~n == 0){
+    if(~n == 0) {
         return 64;
     }
     static int a = initMitHeakArray();
     ULL tmp = n - ((n >> 1) & mitHeakArray[1]) - ((n >> 2) & mitHeakArray[0]);
     int ans = ( (tmp + (tmp >> 3) ) & mitHeakArray[2]) % 63;
-    if(ans == 0 && n != 0){
+    if(ans == 0 && n != 0) {
         ans = 63;
     }
     return ans;
@@ -74,6 +74,33 @@ int init() {
 int countbits(ULL x) {
     static int a = init();
     return oneNum[x & ((1ULL << 16) - 1)] + oneNum[(x >> 16) & ((1ULL << 16) - 1)] + oneNum[(x >> 32) & ((1ULL << 16) - 1)] + oneNum[(x >> 48) & ((1ULL << 16) - 1)];
+}
+
+
+ULL mitHeakMask[3];
+bool okMitHeakMask = false;
+int initMitHeakMask() {
+    if(okMitHeakMask) {
+        return true;
+    }
+    ULL a = 0x55ULL, b = 0x33ULL, c = 0x0FULL;
+    for(int i=0; i<8; i++) {
+        a = (a << 8) | 0x55ULL;
+        b = (b << 8) | 0x33ULL;
+        c = (c << 8) | 0x0FULL;
+    }
+    mitHeakMask[0] = a;
+    mitHeakMask[1] = b;
+    mitHeakMask[2] = c;
+    okMitHeakMask = true;
+    return 0;
+}
+int countbitsMask(ULL x) {
+    int a = initMitHeakMask();
+    for(int i=0,j=1; i<3; i++,j<<=1) {
+        x=(x & mitHeakMask[i]) + ((x>>j) & mitHeakMask[i]);
+    }
+    return x%255;
 }
 
 int main() {
@@ -103,33 +130,36 @@ int main() {
     ans[1] = _countbits(input);
     ans[0] = bitCount(input);
     ans[2] = countbits(input);
-    printf("%llu : bitCount = %llu _countbits = %llu table = %llu\n", input, ans[0], ans[1], ans[2]);
+    ans[3] = countbitsMask(input);
+    printf("%23llo : %llu %llu %llu %llu\n", input, ans[0], ans[1], ans[2], ans[3]);
 
 
-    for(int i=0;i<64;i++){
+    for(int i=0; i<64; i++) {
         input = (~0ULL) ^ (1ULL<<i);
         ans[1] = _countbits(input);
         ans[0] = bitCount(input);
-        ans[2] = countbits(input);
-        printf("i=%2d %23llo : %llu %llu %llu\n", i, input, ans[0], ans[1], ans[2]);
+        ans[3] = countbitsMask(input);
+        printf("i=%2d %23llo : %llu %llu %llu %llu\n", i, input, ans[0], ans[1], ans[2], ans[3]);
     }
 
 
-    while(1){
-            cas++;
+    while(1) {
+        cas++;
         input = rand();
         input = input*input*input*input*input;
         ans[0] = bitCount(input);
         ans[1] = _countbits(input);
         ans[2] = countbits(input);
-        if(ans[0] != ans[1] || ans[0] != ans[2]){
-            printf("%llu : bitCount = %llu _countbits = %llu table = %llu\n", input, ans[0], ans[1], ans[2]);
+        ans[3] = countbitsMask(input);
+        //printf("%23llo : %llu %llu %llu %llu\n", input, ans[0], ans[1], ans[2], ans[3]);
+        if(ans[0] != ans[1] || ans[0] != ans[2] || ans[0] != ans[3]) {
+            printf("%23llo : %llu %llu %llu %llu\n", input, ans[0], ans[1], ans[2], ans[3]);
             break;
         }
-        if(cas % MOD == 0){
+        if(cas % MOD == 0) {
             printf("case : %llu * %llu\n", cas/MOD, MOD);
         }
-        if(cas / MOD >= limit){
+        if(cas / MOD >= limit) {
             printf("finish");
             break;
         }
