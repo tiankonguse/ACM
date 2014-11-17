@@ -41,9 +41,16 @@ int initMitHeakArray() {
 
 }
 int bitCount ( ULL n ) {
+    if(~n == 0){
+        return 64;
+    }
     static int a = initMitHeakArray();
     ULL tmp = n - ((n >> 1) & mitHeakArray[1]) - ((n >> 2) & mitHeakArray[0]);
-    return ( (tmp + (tmp >> 3) ) & mitHeakArray[2]) % 63;
+    int ans = ( (tmp + (tmp >> 3) ) & mitHeakArray[2]) % 63;
+    if(ans == 0 && n != 0){
+        ans = 63;
+    }
+    return ans;
 }
 
 
@@ -84,19 +91,39 @@ int main() {
     }
     printf("\n");
     printf("%22llo %22llo %22llo\n", mitHeakArray[0],mitHeakArray[1],mitHeakArray[2]);
+
+
+
     ULL ans[5];
     ULL cas = 0;
     ULL MOD = 10000;
-    ULL limit = 10;
+    ULL limit = 100;
+
+    input = ~0;
+    ans[1] = _countbits(input);
+    ans[0] = bitCount(input);
+    ans[2] = countbits(input);
+    printf("%llu : bitCount = %llu _countbits = %llu table = %llu\n", input, ans[0], ans[1], ans[2]);
+
+
+    for(int i=0;i<64;i++){
+        input = (~0ULL) ^ (1ULL<<i);
+        ans[1] = _countbits(input);
+        ans[0] = bitCount(input);
+        ans[2] = countbits(input);
+        printf("i=%2d %23llo : %llu %llu %llu\n", i, input, ans[0], ans[1], ans[2]);
+    }
+
+
     while(1){
             cas++;
         input = rand();
-        input = input*input;
+        input = input*input*input*input*input;
         ans[0] = bitCount(input);
         ans[1] = _countbits(input);
         ans[2] = countbits(input);
         if(ans[0] != ans[1] || ans[0] != ans[2]){
-            printf("%llu: bitCount = %d _countbits = %d table = %d\n", input, ans[0], ans[1], ans[2]);
+            printf("%llu : bitCount = %llu _countbits = %llu table = %llu\n", input, ans[0], ans[1], ans[2]);
             break;
         }
         if(cas % MOD == 0){
