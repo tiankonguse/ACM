@@ -73,7 +73,12 @@ int init() {
 
 int countbits(ULL x) {
     static int a = init();
-    return oneNum[x & ((1ULL << 16) - 1)] + oneNum[(x >> 16) & ((1ULL << 16) - 1)] + oneNum[(x >> 32) & ((1ULL << 16) - 1)] + oneNum[(x >> 48) & ((1ULL << 16) - 1)];
+    static  ULL mask = (1ULL << 16) - 1;
+    ULL ans = 0;
+    for(int i=0; i<4; i++,x>>=16) {
+        ans += oneNum[x & mask];
+    }
+    return ans;
 }
 
 
@@ -151,8 +156,9 @@ int main() {
         ans[1] = _countbits(input);
         ans[2] = countbits(input);
         ans[3] = countbitsMask(input);
-        //printf("%23llo : %llu %llu %llu %llu\n", input, ans[0], ans[1], ans[2], ans[3]);
+
         if(ans[0] != ans[1] || ans[0] != ans[2] || ans[0] != ans[3]) {
+            printf("ERROR\n");
             printf("%23llo : %llu %llu %llu %llu\n", input, ans[0], ans[1], ans[2], ans[3]);
             break;
         }
