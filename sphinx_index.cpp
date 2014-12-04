@@ -60,8 +60,7 @@ struct CSphWriter_VLN {
     }
     void ZipOffsets (vector<DWORD>& m_dDoclist) {
         for(int i=0; i<m_dDoclist.size(); i++) {
-            m_iPos++;
-            array.push_back(m_dDoclist[i]);
+            ZipInt(m_dDoclist[i]);
         }
     }
     void print() {
@@ -93,7 +92,7 @@ void  cidxHit ( CSphFatHit * hit ) {
         // flush prev doclist, if any
         if ( m_dDoclist.size()) {
             // finish writing wordlist entry
-
+            printf(" %d %d\n",fdData.m_iPos,m_iLastDoclistPos);
             fdIndex.ZipInt ( fdData.m_iPos - m_iLastDoclistPos );
             fdIndex.ZipInt ( m_iLastWordDocs );
             fdIndex.ZipInt ( m_iLastWordHits );
@@ -152,9 +151,10 @@ int main() {
     hits[0].init(1,1,2);
     hits[1].init(1,1,3);
     hits[2].init(1,2,3);
-    hits[3].init(1,2,4);
+    hits[3].init(1,3,4);
     hits[4].init(2,1,1);
-    for(int i=0; i<5; i++) {
+    hits[5].init(0,0,0);
+    for(int i=0; i<6; i++) {
         cidxHit(hits+i);
     }
     printf("data: ");
