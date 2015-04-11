@@ -1,0 +1,3 @@
+[submodule "leetcode-solutions"]
+	path = leetcode-solutions 
+	url = https://github.com/tiankonguse/leetcode-solutions.git
