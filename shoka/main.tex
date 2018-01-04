@@ -1,0 +1,153 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cmap}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{xeCJK}
+\usepackage{minted}
+
+\geometry{margin=1in}
+
+\setCJKmainfont[BoldFont={SimHei}]
+{SimSun}
+\setCJKmonofont{FangSong}
+
+\newcommand{\cppcode}[1]{
+    \inputminted[mathescape]{cpp}{source/#1}
+}
+
+\title{代码库}
+\author{上海交通大学}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\clearpage
+
+\section{计算几何}
+
+\subsection{半平面交}
+
+\subsubsection{$O(N^2)$}
+
+\cppcode{half-plane-intersection-n2.cpp}
+
+\subsubsection{$O(N \log N)$}
+
+\cppcode{half-plane-intersection-nlogn.cpp}
+
+\section{数据结构}
+
+\subsection{$k$d树}
+
+\cppcode{kd-tree.cpp}
+
+\subsection{坚固的数据结构}
+
+(Joke from \textbf{crazyb0y}) 
+
+\subsubsection{坚固的线段树}
+
+\cppcode{persistent-segment-tree.cpp}
+
+\subsubsection{坚固的平衡树}
+
+\cppcode{persistent-treap.cpp}
+
+\subsection{后缀三姐妹}
+
+\subsubsection{后缀数组}
+
+\cppcode{suffix-array.cpp}
+
+\subsubsection{后缀自动机}
+
+\cppcode{suffix-automaton.cpp}
+
+\subsection{最长回文串Manacher算法}
+
+\texttt{palindrome[i]}是以$\frac{i}{2}$为对称中心的最长回文串长度
+
+\cppcode{manacher.cpp}
+
+\section{图论}
+
+\section{数论}
+
+\subsection{Millar-rabin}
+
+\cppcode{millar-rabin.cpp}
+
+\subsection{Polar Rho}
+
+\cppcode{pollard-rho.cpp}
+
+\subsection{快速傅里叶变换}
+
+\cppcode{fast-fourier-transform.cpp}
+
+\subsection{直线下格点统计}
+
+计算$$\sum_{0 \leq i < n} \lfloor \frac{a + b \cdot i}{m} \rfloor$$
+($n, m > 0, a, b \geq 0$)
+\cppcode{lattice-count.cpp}
+
+\section{Miscellaneous}
+
+\subsection{环状最长公共子串}
+
+\cppcode{cyclic-longest-common-string.cpp}
+
+\subsection{二次剩余}
+
+解方程$x^2 \equiv n \pmod p (p > 2)$, 
+找$a$使得$\omega = a^2 - n$不是二次剩余，
+则$$x \equiv (a + \sqrt{\omega})^{\frac{p + 1}{2}} \left(\bmod \frac{\mathbb{F}_p[x]}{(x^2 - \omega)}\right)$$
+
+\subsection{五边形数定理}
+
+设$p(n)$是$n$的拆分数，有$$p(n) = \sum_{k} (-1)^{k - 1} p\left(n - \frac{k(3k - 1)}{2}\right)$$
+
+\subsection{球面三角公式}
+
+设$a, b, c$是边长，$A, B, C$是所对的二面角，
+有余弦定理$$\cos a = \cos b \cos c + \sin b \sin c \cos A$$
+正弦定理$$\frac{\sin A}{\sin a} = \frac{\sin B}{\sin b} = \frac{\sin C}{\sin c}$$
+三角形面积是$A + B + C - \pi$
+
+
+\subsection{四面体体积公式}
+
+$U, V, W, u, v, w$是四面体的$6$条棱，$U, V, W$构成三角形，$(U, u), (V, v), (W, w)$互为对棱，
+则$$V = \frac{\sqrt{(s - 2a)(s - 2b)(s - 2c)(s - 2d)}}{192 uvw}$$
+其中$$\left\{\begin{array}{lll}
+        a & = & \sqrt{xYZ}, \\
+        b & = & \sqrt{yZX}, \\
+        c & = & \sqrt{zXY}, \\
+        d & = & \sqrt{xyz}, \\
+        s & = & a + b + c + d, \\ 
+        X & = & (w - U + v)(U + v + w), \\
+        x & = & (U - v + w)(v - w + U), \\
+        Y & = & (u - V + w)(V + w + u), \\
+        y & = & (V - w + u)(w - u + V), \\
+        Z & = & (v - W + u)(W + u + v), \\
+        z & = & (W - u + v)(u - v + W)
+    \end{array}\right.$$
+
+\subsection{牛顿恒等式}
+
+设$$\prod_{i = 1}^n{(x - x_i)} = a_n + a_{n - 1} x + \dots + a_1 x^{n - 1} + a_0 x^n$$
+$$p_k = \sum_{i = 1}^n{x_i^k}$$
+则$$a_0 p_k + a_1 p_{k - 1} + \cdots + a_{k - 1} p_1 + k a_k = 0$$
+
+特别地，对于$$|\mathbf{A} - \lambda \mathbf{E}| = (-1)^n(a_n + a_{n - 1} \lambda + \cdots + a_1 \lambda^{n - 1} + a_0 \lambda^n)$$
+有$$p_k = \mathrm{Tr}(\mathbf{A}^k)$$
+
+\end{document}

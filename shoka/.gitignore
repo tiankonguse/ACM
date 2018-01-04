@@ -1,0 +1,8 @@
+*.swp
+*.DS_Store
+
+*.aux
+*.log
+*.out
+*.pyg
+*.toc
