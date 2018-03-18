@@ -39,6 +39,7 @@ using namespace std;
 #define TO_STRING1( x ) #x
 
 
+//你好
 
 int main() {
     char s[90] = "hello";
