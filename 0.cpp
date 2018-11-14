@@ -4,6 +4,7 @@
 #include<iostream>
 #include<string>
 #include<queue>
+#include<vector>
 #include<map>
 #include<cmath>
 #include<stack>
