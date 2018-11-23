@@ -66,7 +66,6 @@ int main() {
 						dp[j][i] = minj;
 					}
 				}
-				
 				if(dp[j][i] != 0){
 					if(tmpMin > j){
 						tmpMin = j;
@@ -75,12 +74,10 @@ int main() {
 						tmpMax = j;
 					}
 				}
-				
 			}
 			minj = tmpMin;
 			maxj = tmpMax;
 		}
-		
 		if(minj == 6){
 			printf("-1\n");
 		}else{
