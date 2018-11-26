@@ -63,6 +63,10 @@ void unbindData(int a, int b){
     delData(b, maxMap);
 }
 
+#define  myprintf(fmt,args...) do{\
+    if(debug)printf(fmt, ##args);\
+}while(0)
+
 int getMax(std::map<int, std::set<int> >& maplist){
     auto itMap = maplist.end();
     itMap--;
@@ -72,7 +76,9 @@ int getMax(std::map<int, std::set<int> >& maplist){
 int main(){
     #ifndef ONLINE_JUDGE
     freopen("in.txt", "r", stdin);
-    //freopen("out.txt", "w", stdout);
+    if(debug == 0){
+        freopen("out.txt", "w", stdout);
+    }
     #endif
     int n,m;
     int a, b;
@@ -91,26 +97,26 @@ int main(){
         int t;
         scanf("%d", &t);
         
-        //printf("begin cal t = %d\n", t);
+        myprintf("begin cal t = %d\n", t);
         for(int i=0;i<n;i++){
-            //printf("i=%d t=%d\n\n", i, t);
-            if(t == 0){
+            myprintf("i=%d t=%d\n\n", i, t);
+            if(t == 2){
                 scanf("%d", &a);
                 delData(a, leftList);
                
                 //must choose from pair 
                 if(pairMap.find(a) != pairMap.end()){
                     b = pairMap[a];
-                    //printf("t=0, pair(%d, %d)\n", a, b);
+                    myprintf("t=0, pair(%d, %d)\n", a, b);
                     unbindData(a, b);
                 }else{
                     if(maxMap.size() > 0){
                         b = getMax(maxMap); 
                         t = 3;
-                        //printf("t=0 get pair, t=2. a=%d (%d, )\n", a, b);
+                        myprintf("t=0 get pair, t=2. a=%d (%d, )\n", a, b);
                     }else{
                         b = getMax(leftList); 
-                        //printf("t=0 get max a=%d b=%d\n", a, b);
+                        myprintf("t=0 get max a=%d b=%d\n", a, b);
                     }
                 }
                 delData(b, leftList);
@@ -123,16 +129,16 @@ int main(){
 
                 if(pairMap.find(a) != pairMap.end()){
                     b = pairMap[a];
-                    //printf("t=2, pair(%d, %d)\n", a, b);
+                    myprintf("t=2, pair(%d, %d)\n", a, b);
                     unbindData(a, b);
                 }
 
                 if(maxMap.size() > 0){
                     b = getMax(maxMap); 
-                    //printf("t=2 get pair. a=%d (%d, )\n", a, b);
+                    myprintf("t=2 get pair. a=%d (%d, )\n", a, b);
                 }else{
                     b = getMax(leftList); 
-                    //printf("t=2 get max a=%d b=%d\n", a, b);
+                    myprintf("t=2 get max a=%d b=%d\n", a, b);
                 }
 
                 delData(b, leftList);
@@ -142,11 +148,11 @@ int main(){
                 if(maxMap.size() > 0){
                     b = getMax(maxMap); 
                     a = pairMap[b];
-                    //printf("t=1, pair(%d, %d)\n", a, b);
+                    myprintf("t=1, pair(%d, %d)\n", a, b);
                     unbindData(a, b);
                 }else{
                     b = getMax(leftList); 
-                    //printf("t=1 get max a=%d b=%d\n", a, b);
+                    myprintf("t=1 get max a=%d b=%d\n", a, b);
                 }
 
                 printf("%d\n", b);

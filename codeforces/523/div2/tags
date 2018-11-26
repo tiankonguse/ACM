@@ -1,0 +1,57 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+LL	A.cpp	/^typedef __int64 LL;$/;"	t	file:
+LL	B.cpp	/^typedef __int64 LL;$/;"	t	file:
+LL	C.cpp	/^typedef __int64 LL;$/;"	t	file:
+LL	D.cpp	/^typedef __int64 LL;$/;"	t	file:
+LL	E.cpp	/^typedef __int64 LL;$/;"	t	file:
+LL	F.cpp	/^typedef __int64 LL;$/;"	t	file:
+LL	G.cpp	/^typedef __int64 LL;$/;"	t	file:
+LL	tpl.cpp	/^typedef __int64 LL;$/;"	t	file:
+M	C.cpp	/^const int M=300000;$/;"	v
+MOD	C.cpp	/^LL MOD = 1000000007;$/;"	v
+N	C.cpp	/^const int N=1000000;$/;"	v
+debug	A.cpp	/^const int debug = 0;$/;"	v
+debug	B.cpp	/^const int debug = 0;$/;"	v
+debug	C.cpp	/^const int debug = 0;$/;"	v
+debug	D.cpp	/^const int debug = 0;$/;"	v
+debug	E.cpp	/^const int debug = 0;$/;"	v
+debug	F.cpp	/^const int debug = 0;$/;"	v
+debug	G.cpp	/^const int debug = 0;$/;"	v
+debug	tpl.cpp	/^const int debug = 0;$/;"	v
+factor	C.cpp	/^LL factor[110000];$/;"	v
+getprm	C.cpp	/^int getprm() {$/;"	f	signature:()
+is	C.cpp	/^bool is[N];$/;"	v
+main	A.cpp	/^int main() {$/;"	f	signature:()
+main	B.cpp	/^int main() {$/;"	f	signature:()
+main	C.cpp	/^int main() {$/;"	f	signature:()
+main	D.cpp	/^int main() {$/;"	f	signature:()
+main	E.cpp	/^int main() {$/;"	f	signature:()
+main	F.cpp	/^int main() {$/;"	f	signature:()
+main	G.cpp	/^int main() {$/;"	f	signature:()
+main	tpl.cpp	/^int main() {$/;"	f	signature:()
+prm	C.cpp	/^int prm[M];$/;"	v
+solverFactor	C.cpp	/^LL solverFactor(LL n) {$/;"	f	signature:(LL n)
+str	B.cpp	/^LL str[110000];$/;"	v
+str	C.cpp	/^LL str[110000];$/;"	v
+sub	C.cpp	/^LL sub[1100000]; \/\/目前以坐标为长度的满足条件的子串个数$/;"	v
+uchar	A.cpp	/^typedef unsigned char uchar;$/;"	t	file:
+uchar	B.cpp	/^typedef unsigned char uchar;$/;"	t	file:
+uchar	C.cpp	/^typedef unsigned char uchar;$/;"	t	file:
+uchar	D.cpp	/^typedef unsigned char uchar;$/;"	t	file:
+uchar	E.cpp	/^typedef unsigned char uchar;$/;"	t	file:
+uchar	F.cpp	/^typedef unsigned char uchar;$/;"	t	file:
+uchar	G.cpp	/^typedef unsigned char uchar;$/;"	t	file:
+uchar	tpl.cpp	/^typedef unsigned char uchar;$/;"	t	file:
+uint	A.cpp	/^typedef unsigned uint;$/;"	t	file:
+uint	B.cpp	/^typedef unsigned uint;$/;"	t	file:
+uint	C.cpp	/^typedef unsigned uint;$/;"	t	file:
+uint	D.cpp	/^typedef unsigned uint;$/;"	t	file:
+uint	E.cpp	/^typedef unsigned uint;$/;"	t	file:
+uint	F.cpp	/^typedef unsigned uint;$/;"	t	file:
+uint	G.cpp	/^typedef unsigned uint;$/;"	t	file:
+uint	tpl.cpp	/^typedef unsigned uint;$/;"	t	file:
