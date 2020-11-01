@@ -11,68 +11,57 @@
 #include<functional>
 using namespace std;
 typedef long long LL;
-const int N = 1000010;
-struct T {
-    int pos,val,i;
-    bool operator<(const T other)const {
-        return this->pos < other.pos;
-    }
-} str[N],maxVal[N],tmp;
-bool cmp(T a, T b) {
-    return a.pos < b.pos;
+
+const int N = 111;
+
+struct T{
+	int x,y;
+	double v;
+}str[N],base[N];
+int n,m;
+
+int dis(T&a, T&b){
+	return ((a.x - b.x)*(a.x - b.x) + (a.y - b.y)*(a.y - b.y));
 }
+
+double getPosn(int p){
+	T& now = str[p];
+	int ans = dis(now, base[0]);
+	for(int i=1;i<m;i++){
+		ans = min(ans, dis(now, base[i]));
+	}
+	return sqrt(ans/now.v);
+}
+
+double getPosm(int p){
+	T& now = base[p];
+	double ans = dis(now, str[0])/str[0].v;
+	for(int i=1;i<m;i++){
+		ans = min(ans, dis(now, str[i])/str[i].v);
+	}
+	return sqrt(ans);
+}
+
 int main(int argc, char* argv[]) {
-    int n,d,i,j,pos,ans_b,ans_e,ans_val,now_val;
+	while(~scanf("%d%d",&n,&m)){
+		for(int i=0;i<n;i++){
+			scanf("%d%d%lf",&str[i].x, &str[i].y, &str[i].v);
+			str[i].v = str[i].v*str[i].v;
+		}
+		for(int i=0;i<m;i++){
+			scanf("%d%d",&base[i].x, &base[i].y);
+		}
+		double ans = 0;
+		for(int i=0;i<n;i++){
+			ans = max(ans, getPosn(i));;
+		}
+		for(int i=0;i<m;i++){
+			ans = max(ans, getPosm(i));;
+		}
+		printf("%.18f\n",ans);
 
 
-    while(~scanf("%d%d",&n,&d)) {
-        for(i=0; i<n; i++) {
-            scanf("%d%d",&str[i].pos, &str[i].val);
-            str[i].i = i+1;
-        }
-        sort(str, str+n);
-//        puts("");
-//        for(i=0; i<n; i++) {
-//            printf("%d %d\n",str[i].pos, str[i].val);
-//        }
-//        puts("");
-        if(str[n-1].pos - str[0].pos < d) {
-            printf("-1 -1\n");
-        } else {
-            tmp.val = -1;
-            ans_val = -1;
-            for(i=n-1; i>=0; i--) {
-                if(str[i].val > tmp.val) {
-                    tmp = str[i];
-                }
-                maxVal[i] = tmp;
-            }
-//
-//            puts("");
-//            for(i=0; i<n; i++) {
-//                printf("%d %d\n",maxVal[i].pos, maxVal[i].val);
-//            }
-//            puts("");
-
-            for(i=0; i<n; i++) {
-                if(str[n-1].pos - str[i].pos < d) {
-                    break;
-                } else {
-                    tmp.pos = str[i].pos + d;
-                    pos = lower_bound(str,str+n,tmp, cmp)-str;
-                    now_val = maxVal[pos].val + str[i].val;
-                    if(now_val > ans_val) {
-                        ans_val = now_val;
-                        ans_b = str[i].i;
-                        ans_e = maxVal[pos].i;
-                    }
-                }
-            }
-//            printf("%d %d %d\n",ans_b, ans_e, ans_val);
-            printf("%d %d\n",ans_b, ans_e);
-        }
-    }
-
+	}
     return 0;
 }
 
