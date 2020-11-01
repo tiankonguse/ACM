@@ -4,27 +4,32 @@
 using namespace std;
 
 
+char str[100010];
 int main() {
-    vector<long long> vec;
-    int t, n, m, v;
-    scanf("%d", &t);
-    while(t--) {
-        scanf("%d %d", &n, &m);
-        vec.clear();
-        while(n--) {
-            scanf("%d", &v);
-            vec.push_back(v);
-        }
-        sort(vec.begin(), vec.end());
-        vec.resize(m*2);
+    vector<int> base = {2, 3, 5, 7, 11, 13, 17, 37, 79, 113, 197, 199, 337, 1193, 3779, 11939, 19937, 193939, 199933};
+    map<int, string> m;
 
-        long long ans = 0;
-        int len = vec.size();
-        for(int i=0; i<m;i++){
-            ans += vec[i] * vec[len-1-i];
+    for(auto v: base) {
+        string s = to_string(v);
+        int len = s.length();
+        while(len--) {
+            char c = s.back();
+            s.pop_back();
+            s.insert(s.begin(), c);
+            m.insert({-stoi(s), s});
         }
-        printf("%lld\n", ans);
     }
+
+    scanf("%s", str);
+    int ans = -1;
+    string s = str;
+    for(auto& p: m){
+        if(s.find(p.second) != std::string::npos){
+                ans = -p.first;
+            break;
+        }
+    }
+    printf("%d\n", ans);
 
 
     return 0;
