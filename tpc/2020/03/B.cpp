@@ -6,8 +6,10 @@ using namespace std;
 char str[1000010];
 
 int main() {
+    printf("hello word\n");
     int t;
     scanf("%d", &t);
+    printf("nexr\n");
     while(t--) {
         scanf("%s", str);
         int one = 0, zero = 0;

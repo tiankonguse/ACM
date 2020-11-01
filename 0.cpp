@@ -46,6 +46,5 @@ int main() {
     char s[90] = "hello";
     char a[90] = "hello";
     char * const p = s;
-    s = a;
     return 0;
 }

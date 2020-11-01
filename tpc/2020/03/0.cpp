@@ -5,7 +5,7 @@ using namespace std;
 
 
 int main() {
-    vector<long long> vec;
+    vector<int> vec;
     int t, n, m, v;
     scanf("%d", &t);
     while(t--) {
@@ -18,12 +18,12 @@ int main() {
         sort(vec.begin(), vec.end());
         vec.resize(m*2);
 
-        long long ans = 0;
+        int ans = 0;
         int len = vec.size();
         for(int i=0; i<m;i++){
             ans += vec[i] * vec[len-1-i];
         }
-        printf("%lld\n", ans);
+        printf("%d\n", ans);
     }
 
 
