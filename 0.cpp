@@ -43,8 +43,8 @@ using namespace std;
 //你好
 
 int main() {
-    char s[90] = "hello";
-    char a[90] = "hello";
-    char * const p = s;
+    int a, b;
+    scanf("%d %d", &a, &b);
+    printf("%d + %d = %d\n", a, b, a+b);
     return 0;
 }
