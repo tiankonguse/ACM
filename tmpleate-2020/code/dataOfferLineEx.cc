@@ -21,34 +21,48 @@ const int max3 = 2100, max4 = 11100, max5 = 55000, max6 = 2000100;
 
 class DataOffline {
  public:
-  void Add(ll v) { m[v] = 0; }
+ void Init(int n){
+     m.reserve(n);
+     vec.reserve(n);
+ }
+  void Add(ll v) {
+    if (m.count(v) == 0) {
+      m[v] = 0;
+      vec.push_back(v);
+    }
+  }
   void Build() {
-    index = 0;
-    for (auto& p : m) {
-      p.second = ++index;
+    index = vec.size();
+    sort(vec.begin(), vec.end());
+    for (int i = 0; i < vec.size(); i++) {
+      m[vec[i]] = i + 1;
     }
   }
   int Get(ll v) { return m[v]; }
   int Size() { return index; }
   int Lower(ll v) {
-    auto it = m.lower_bound(v);
-    if (it == m.end()) {
+    auto it = lower_bound(vec.begin(), vec.end(), v);
+    if (it == vec.end()) {
       return index + 1;
     }
-    return it->second;
+    return m[*it];
   }
   int Upper(ll v) {
-    auto it = m.upper_bound(v);
-    if (it == m.end()) {
+    auto it = upper_bound(vec.begin(), vec.end(), v);
+    if (it == vec.end()) {
       return index + 1;
     }
-    return it->second;
+    return m[*it];
   }
-  void Reset() { m.clear(); }
+  void Reset() {
+    m.clear();
+    vec.clear();
+  }
 
  private:
   int index;
-  map<ll, int> m;
+  unordered_map<ll, int> m;
+  vector<ll> vec;
 };
 
 int main() {
