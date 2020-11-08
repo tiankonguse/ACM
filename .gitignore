@@ -1,7 +1,7 @@
 # ignore objects and archives, anywhere in the tree.
 *.[oa]
 # 后面不能再修改了
-.vscode 
+#.vscode 
 
 # ignore generated html files,
 #*.html
