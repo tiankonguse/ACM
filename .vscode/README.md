@@ -16,4 +16,10 @@ vscode 插件：C/C++、Code Runner
 ## Mac  
 
 
+vscode 插件：C/C++、Code Runner、CodeLLDB
 
+配置：code-runner.runInTerminal 勾选
+
+编译器：gcc9
+安装命令：brew install gcc@9
+当然，也可以使用 `brew search gcc` 搜索最新版本进行安装，安装路径在`/usr/local/Cellar/`下面。  
