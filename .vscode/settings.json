@@ -1,7 +1,10 @@
 {
     "files.associations": {
         "vector": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "queue": "cpp",
+        "map": "cpp",
+        "unordered_map": "cpp"
     },
     "code-runner.runInTerminal": true
 }
