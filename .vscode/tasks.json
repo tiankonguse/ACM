@@ -7,6 +7,7 @@
             "args": [
                 "-g",
                 "${file}",
+                "-I.\/include\/",
                 "-o",
                 // "${fileDirname}/${fileBasenameNoExtension}.out",
                 "tmp.exe",
@@ -32,6 +33,7 @@
             "args": [
                 "-g",
                 "${file}",
+                "-I.\/include\/",
                 "-o",
                 // "${fileDirname}/${fileBasenameNoExtension}.out",
                 "${workspaceFolder}\\tmp.exe",
@@ -57,6 +59,7 @@
             "args": [
                 "-g",
                 "${file}",
+                "-I.\/include\/",
                 "-o",
                 // "${fileDirname}/${fileBasenameNoExtension}.out",
                 "${workspaceFolder}/tmp.exe",

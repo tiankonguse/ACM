@@ -4,7 +4,9 @@
         "random": "cpp",
         "queue": "cpp",
         "map": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "typeindex": "cpp",
+        "typeinfo": "cpp"
     },
     "code-runner.runInTerminal": true
 }
