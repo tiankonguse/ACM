@@ -7,7 +7,8 @@
         "unordered_map": "cpp",
         "typeindex": "cpp",
         "typeinfo": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "functional": "cpp"
     },
     "code-runner.runInTerminal": true
 }
