@@ -21,6 +21,8 @@ const double PI = acos(-1.0), eps = 1e-7;
 const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
+
+
 const int mod1 = 100000;
 
 ll nums[max5];
@@ -34,11 +36,20 @@ void init() {
 }
 
 int main() {
+#ifndef ONLINE_JUDGE
+  freopen("in.txt", "r", stdin);
+  freopen("out.txt", "w", stdout);
+  // freopen("out_std.txt", "w", stdout);
+#endif
+
   init();
   ll n, x;
+
   while (~scanf("%lld%lld", &n, &x)) {
     printf("%lld\n", nums[n] * x % mod1);
   }
-
+#ifndef ONLINE_JUDGE
+  // diff out.txt & out_std.txt
+#endif
   return 0;
 }
