@@ -21,23 +21,13 @@ const double PI = acos(-1.0), eps = 1e-7;
 const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
-int str[max3];
-
 int main() {
   int t, n;
   scanf("%d", &t);
   while (t--) {
     scanf("%d", &n);
-    for (int i = 2; i <= n; i += 2) {
-      str[i] = i - 1;
-      str[i - 1] = i;
-    }
-    if (n % 2 == 1) {
-      str[n] = str[n - 1];
-      str[n - 1] = n;
-    }
     for (int i = 1; i <= n; i++) {
-      printf("%d%c", str[i], i == n ? '\n' : ' ');
+      printf("%d%c", i == n ? 1 : i + 1, i == n ? '\n' : ' ');
     }
   }
   return 0;
