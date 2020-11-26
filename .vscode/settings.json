@@ -8,7 +8,9 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "ios": "cpp",
-        "functional": "cpp"
+        "functional": "cpp",
+        "unordered_set": "cpp",
+        "valarray": "cpp"
     },
     "code-runner.runInTerminal": true
 }
