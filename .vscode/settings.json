@@ -10,7 +10,9 @@
         "ios": "cpp",
         "functional": "cpp",
         "unordered_set": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "utility": "cpp",
+        "algorithm": "cpp"
     },
     "code-runner.runInTerminal": true
 }
