@@ -3,7 +3,7 @@
 const int N = 8005;
 int low[N], dfn[N], id[N], stack[N], inS[N];
 int stop, ts, idn;
-vector <int> E[N];
+vector<int> E[N];
 
 void dfs(int u) {
 	stack[stop++] = u;

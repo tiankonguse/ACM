@@ -48,7 +48,7 @@ double findmin(const po &a,const po &b){
 	return m;
 }
 
-double minst(int i){//ÕÒµãiÉÏµÄÆøÇòµÄ×î´ó°ë¾­ 
+double minst(int i){//æ‰¾ç‚¹iä¸Šçš„æ°”çƒçš„æœ€å¤§åŠç» 
 		int j;
 		double m=inf,tmp;
 		for(j=0;j<s;j++){
@@ -91,7 +91,7 @@ void read(){
 	
 	b[0].read();
 	b[1].read();
-    sv=fabs((b[0].x-b[1].x)*(b[0].y-b[1].y)*(b[0].z-b[1].z));//Ëã³ö³¤·½ÌåµÄÌå»ı 
+    sv=fabs((b[0].x-b[1].x)*(b[0].y-b[1].y)*(b[0].z-b[1].z));//ç®—å‡ºé•¿æ–¹ä½“çš„ä½“ç§¯ 
     
 	for(int i=0;i<n;i++){
 		p[i].read();
