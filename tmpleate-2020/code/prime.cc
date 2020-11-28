@@ -21,6 +21,10 @@ const double PI = acos(-1.0), eps = 1e-7;
 const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 21100, max5 = 200100, max6 = 2000100;
 
+/*
+筛素数
+*/
+
 const int N = 1000000;
 const int M = 300000;
 bool is[N];

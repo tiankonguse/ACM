@@ -21,6 +21,11 @@ const double PI = acos(-1.0), eps = 1e-7;
 const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
+/*
+ 树状数组：解决单点更新，区间和查询问题
+ 
+ */
+
 class TreeArray {
  public:
   void init(int n_) {

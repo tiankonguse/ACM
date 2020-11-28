@@ -19,6 +19,10 @@ const double PI = acos(-1.0), eps = 1e-7;
 const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 11100, max5 = 55000, max6 = 2000100;
 
+/*
+ 数据离散化（map版本），将大数据映射到下标可以表示的数组内
+*/
+
 class DiscreteArray {
  public:
   void Add(ll v) { m[v] = 0; }

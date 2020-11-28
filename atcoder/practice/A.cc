@@ -21,19 +21,11 @@ const double PI = acos(-1.0), eps = 1e-7;
 const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
-/*
-IO 宏判断
-*/
+int str[max3];
 
 int main() {
-#ifndef ONLINE_JUDGE
-  freopen("in.txt", "r", stdin);
-  freopen("out.txt", "w", stdout);
-  // freopen("out_std.txt", "w", stdout);
-#endif
-
-#ifndef ONLINE_JUDGE
-  // diff out.txt out_std.txt
-#endif
+  int a, b, c;
+  scanf("%d%d%d%s", &a, &b, &c, str);
+  printf("%d %s\n", a + b + c, str);
   return 0;
 }
