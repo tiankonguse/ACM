@@ -22,14 +22,23 @@ const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
 int main() {
-#ifndef ONLINE_JUDGE
-  freopen("in.txt", "r", stdin);
-  freopen("out.txt", "w", stdout);
-  // freopen("out_std.txt", "w", stdout);
-#endif
   int t;
   scanf("%d", &t);
   while (t--) {
+    int n, m;
+    scanf("%d%d", &n, &m);
+    set<int> s;
+    for (int i = 0; i < n; i++) {
+      int v;
+      scanf("%d", &v);
+      s.insert(v);
+    }
+    for (int i = 0; i < m; i++) {
+      int v;
+      scanf("%d", &v);
+      s.insert(v);
+    }
+    printf("%d\n", n + m - s.size());
   }
   return 0;
 }

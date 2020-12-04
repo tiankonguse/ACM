@@ -1,6 +1,9 @@
-aaaa
-baccacd
-aabdac
-aabacad
-aaaaaaaa
-abadb
+-1
+1
+1
+4
+1 1 1 1
+5
+1 1 0 1 1
+9
+1 0 0 0 0 0 0 0

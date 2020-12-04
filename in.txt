@@ -1,13 +1,6 @@
-6
-4 2
-bbab
-7 5
-cceddda
-6 5
-ecdaed
-7 4
-dcdbdaa
-8 3
-ccabbaca
-5 7
-eabba
+5
+1
+2
+8
+12
+1022
