@@ -25,6 +25,8 @@ const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
 int main() {
-  printf("hello word\n");
+
+
+
   return 0;
 }

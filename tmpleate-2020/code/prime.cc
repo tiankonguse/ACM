@@ -48,8 +48,11 @@ int getprm() {
 
 int main() {
   int k = getprm();
-  for (int i = 0; i < 20; i++) {
-    printf("i=%d v=%d\n", i, prm[i]);
+  for (int i = 0; prm[i] < 31; i++) {
+    printf("%d,\n", prm[i]);
+  }
+  for (int i = 2; i <= 10; i++) {
+    printf("i=%d mod=%d\n", i, 2521 % i);
   }
 
   return 0;

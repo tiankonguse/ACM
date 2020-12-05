@@ -8,6 +8,7 @@
                 "-g",
                 "${file}",
                 "-I.\/include\/",
+                "-I.\/atcoder\/ac-library\/",
                 "-o",
                 // "${fileDirname}/${fileBasenameNoExtension}.out",
                 "tmp.exe",
