@@ -89,7 +89,8 @@
         "thread": "cpp",
         "tuple": "cpp",
         "type_traits": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "*.tcc": "cpp"
     },
     "code-runner.runInTerminal": true
 }

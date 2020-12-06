@@ -27,10 +27,12 @@ int main() {
   freopen("out.txt", "w", stdout);
   // freopen("out_std.txt", "w", stdout);
 #endif
-  int t;
-  while (scanf("%d", &t) != EOF) {
-    while (t--) {
-    }
+  int ans = 0;
+  char c;
+  while (scanf("%c", &c) != EOF) {
+    ans++;
   }
+  printf("%d\n", ans);
+
   return 0;
 }
