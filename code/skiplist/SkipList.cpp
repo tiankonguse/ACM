@@ -32,7 +32,7 @@ class SkipListNode {
         SkipListLevel():next(NULL),num(1) {
         }
         SkipListNode* next;
-        int num;//µ±Ç°next»áÌø¹ı¶àÉÙ¸ö½Úµã,°üº¬µ±Ç°½Úµã
+        int num;//å½“å‰nextä¼šè·³è¿‡å¤šå°‘ä¸ªèŠ‚ç‚¹,åŒ…å«å½“å‰èŠ‚ç‚¹
     };
 public:
     SkipListNode(int v = -1, int l = -1):value(v),maxlevel(l) {
@@ -50,34 +50,34 @@ public:
     SkipList():level(1),length(0) {
     }
 
-    //¸ù¾İÖµ²éÎ»ÖÃ£¬²»´æÔÚ·µ»Ø-1
+    //æ ¹æ®å€¼æŸ¥ä½ç½®ï¼Œä¸å­˜åœ¨è¿”å›-1
     int findByValue(int value) {
         SkipListNode* head = &_header;
         int pos = -1;
-        //²éÕÒĞ¡ÓÚµÈÓÚvalueµÄ×îºóÒ»¸ö½Úµã
+        //æŸ¥æ‰¾å°äºç­‰äºvalueçš„æœ€åä¸€ä¸ªèŠ‚ç‚¹
         for(int i=MAXLEVEL-1; i>=0; i--) {
-            //next²»ÊÇNULL, ÇÒ´óÓÚ×ó±ß½ç£¬×ó±ß½çÓÒÒÆ
+            //nextä¸æ˜¯NULL, ä¸”å¤§äºå·¦è¾¹ç•Œï¼Œå·¦è¾¹ç•Œå³ç§»
             while(head->level[i].next && head->level[i].next->value <= value) {
-                pos += head->level[i].num; //×ó±ß½çÓÒÒÆ£¬¼ÆËãÆ«ÒÆÁ¿
+                pos += head->level[i].num; //å·¦è¾¹ç•Œå³ç§»ï¼Œè®¡ç®—åç§»é‡
                 head = head->level[i].next;
             }
         }
-        //Èç¹ûvalueÊÇ×îĞ¡Öµ£¬Ôò±¾Éí¾ÍÊÇ-1£¬Èç¹ûvalue²»ÊÇ×îĞ¡Öµ£¬Ôò¿Ï¶¨²»Ò»Ñù
+        //å¦‚æœvalueæ˜¯æœ€å°å€¼ï¼Œåˆ™æœ¬èº«å°±æ˜¯-1ï¼Œå¦‚æœvalueä¸æ˜¯æœ€å°å€¼ï¼Œåˆ™è‚¯å®šä¸ä¸€æ ·
         if(head->value != value) {
             pos = -1;
         }
         return pos;
     }
 
-    //¸ù¾İÎ»ÖÃ²éÖµ£¬¿Ï¶¨´æÔÚ
+    //æ ¹æ®ä½ç½®æŸ¥å€¼ï¼Œè‚¯å®šå­˜åœ¨
     int getByPos(int rank) {
         SkipListNode* head = &_header;
         int pos = 0;
-        //²éÕÒĞ¡ÓÚµÈÓÚvalueµÄ×îºóÒ»¸ö½Úµã
+        //æŸ¥æ‰¾å°äºç­‰äºvalueçš„æœ€åä¸€ä¸ªèŠ‚ç‚¹
         for(int i=MAXLEVEL-1; i>=0; i--) {
-            //next²»ÊÇNULL, ÇÒÌø¹ı½Úµãºó»¹Ã»µ½´ïÄ¿±êÎ»ÖÃ
+            //nextä¸æ˜¯NULL, ä¸”è·³è¿‡èŠ‚ç‚¹åè¿˜æ²¡åˆ°è¾¾ç›®æ ‡ä½ç½®
             while(head->level[i].next && head->level[i].num + pos <= rank) {
-                pos += head->level[i].num; //×ó±ß½çÓÒÒÆ£¬¼ÆËãÆ«ÒÆÁ¿
+                pos += head->level[i].num; //å·¦è¾¹ç•Œå³ç§»ï¼Œè®¡ç®—åç§»é‡
                 head = head->level[i].next;
             }
         }
@@ -85,15 +85,15 @@ public:
     }
     void insert(int value) {
         SkipListNode* head = &_header;
-        SkipListNode *pre[MAXLEVEL]; //²åÈëÊ±£¬¿ÉÄÜĞèÒª¸üĞÂµÄ±íÍ·
-        int preNum[MAXLEVEL];//ĞèÒª¸üĞÂµÄ±íÍ·Ö®Ç°ÓĞ¶àÉÙ½Úµã
+        SkipListNode *pre[MAXLEVEL]; //æ’å…¥æ—¶ï¼Œå¯èƒ½éœ€è¦æ›´æ–°çš„è¡¨å¤´
+        int preNum[MAXLEVEL];//éœ€è¦æ›´æ–°çš„è¡¨å¤´ä¹‹å‰æœ‰å¤šå°‘èŠ‚ç‚¹
 
         int pos = -1;
         for(int i=MAXLEVEL-1; i>=0; i--) {
-            //next²»ÊÇNULL, ÇÒ´óÓÚ×ó±ß½ç£¬×ó±ß½çÓÒÒÆ
-            preNum[i] = i == (MAXLEVEL-1) ? 0 : preNum[i+1];//ÓÉÓÚ¼ÆËãÖ®Ç°µÄ£¬¼Ì³ĞÉÏÒ»²ãµÄ
+            //nextä¸æ˜¯NULL, ä¸”å¤§äºå·¦è¾¹ç•Œï¼Œå·¦è¾¹ç•Œå³ç§»
+            preNum[i] = i == (MAXLEVEL-1) ? 0 : preNum[i+1];//ç”±äºè®¡ç®—ä¹‹å‰çš„ï¼Œç»§æ‰¿ä¸Šä¸€å±‚çš„
             while(head->level[i].next && head->level[i].next->value <= value) {
-                preNum[i] += head->level[i].num;//×ó±ß½çÓÒÒÆ£¬ÀÛ¼ÓÉÏÆ«ÒÆÁ¿
+                preNum[i] += head->level[i].num;//å·¦è¾¹ç•Œå³ç§»ï¼Œç´¯åŠ ä¸Šåç§»é‡
                 head = head->level[i].next;
             }
             pre[i] = head;
@@ -103,18 +103,18 @@ public:
         node->maxlevel = rand()%MAXLEVEL;
         node->value = value;
 
-        //ÔÚupdateºÍupdateµÄÏÂ¸ö½ÚµãÖ®¼ä²åÈënode
+        //åœ¨updateå’Œupdateçš„ä¸‹ä¸ªèŠ‚ç‚¹ä¹‹é—´æ’å…¥node
         for(int i=0; i< node->maxlevel; i++) {
             node->level[i].next = pre[i]->level[i].next;
             pre[i]->level[i].next = node;
-            //²åÈëÎ»ÖÃµ½ÏÂ¸öÎ»ÖÃÖ®¼äµÄ¸öÊı ¼õÈ¥ ²åÈëºóÕ¼ÓÃµÄ¸öÊı ¾ÍÊÇĞÂµÄÖ®¼äµÄ¸öÊı
+            //æ’å…¥ä½ç½®åˆ°ä¸‹ä¸ªä½ç½®ä¹‹é—´çš„ä¸ªæ•° å‡å» æ’å…¥åå ç”¨çš„ä¸ªæ•° å°±æ˜¯æ–°çš„ä¹‹é—´çš„ä¸ªæ•°
             node->level[i].num = pre[i]->level[i].num - (preNum[0] - preNum[i]);
-            //²åÈëÎ»ÖÃÖ®Ç°µÄ½ÚµãÊı ¼õÈ¥ µÚi²ãÖ®Ç°µÄ½ÚµãÊı + 1 ¾ÍÊÇ²åÈëÎ»ÖÃµ½ÏÂ¸öÎ»ÖÃÖ®¼äµÄ¸öÊı
+            //æ’å…¥ä½ç½®ä¹‹å‰çš„èŠ‚ç‚¹æ•° å‡å» ç¬¬iå±‚ä¹‹å‰çš„èŠ‚ç‚¹æ•° + 1 å°±æ˜¯æ’å…¥ä½ç½®åˆ°ä¸‹ä¸ªä½ç½®ä¹‹é—´çš„ä¸ªæ•°
             pre[i]->level[i].num = (preNum[0] - preNum[i]) + 1;
         }
 
         for (int i = node->maxlevel; i < MAXLEVEL; i++) {
-            pre[i]->level[i].num++; //ĞÂ½ÚµãµÄ¸ß¶È²»ÔÊĞí£¬Ã»¸üĞÂµ½
+            pre[i]->level[i].num++; //æ–°èŠ‚ç‚¹çš„é«˜åº¦ä¸å…è®¸ï¼Œæ²¡æ›´æ–°åˆ°
         }
     }
 };

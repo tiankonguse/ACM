@@ -33,18 +33,18 @@ int BinarySearch_min_eq(int len, int* array, int value) {
     while(left <= right) {
         mid = (left + right)/2;
         if(array[mid] < value) {
-            left = mid + 1; //Ð¡ÓÚvalue£¬´ð°¸ÔÚÓÒ±ß
+            left = mid + 1; //å°äºŽvalueï¼Œç­”æ¡ˆåœ¨å³è¾¹
         } else if(array[mid] > value) {
-            right = mid - 1; //´óÓÚvalue£¬´ð°¸ÔÚ×ó±ß
+            right = mid - 1; //å¤§äºŽvalueï¼Œç­”æ¡ˆåœ¨å·¦è¾¹
         } else {
             if(left == right) {
-                return mid; //ÕÒµ½ÁË
+                return mid; //æ‰¾åˆ°äº†
             } else {
-                right = mid; //´ð°¸¿Ï¶¨ÔÚ×ó±ß»òÕßÊÇmid
+                right = mid; //ç­”æ¡ˆè‚¯å®šåœ¨å·¦è¾¹æˆ–è€…æ˜¯mid
             }
         }
     }
-    return -1;//Ã»ÕÒµ½
+    return -1;//æ²¡æ‰¾åˆ°
 }
 
 int BinarySearch_min_e_g(int len, int* array, int value) {
@@ -56,12 +56,12 @@ int BinarySearch_min_e_g(int len, int* array, int value) {
     while(left <= right) {
         mid = (left + right)/2;
         if(array[mid] < value) {
-            left = mid + 1; //Ð¡ÓÚvalue£¬´ð°¸ÔÚÓÒ±ß
+            left = mid + 1; //å°äºŽvalueï¼Œç­”æ¡ˆåœ¨å³è¾¹
         } else {
             if(left == right) {
-                return mid;//ÕÒµ½ÁË
+                return mid;//æ‰¾åˆ°äº†
             } else {
-                right = mid;//´ð°¸¿Ï¶¨ÔÚ×ó±ß»òÕßÊÇmid
+                right = mid;//ç­”æ¡ˆè‚¯å®šåœ¨å·¦è¾¹æˆ–è€…æ˜¯mid
             }
         }
     }
@@ -78,12 +78,12 @@ int BinarySearch_min_gt(int len, int* array, int value) {
     while(left <= right) {
         mid = (left + right)/2;
         if(array[mid] <= value) {
-            left = mid + 1; //Ð¡ÓÚµÈÓÚvalue, ´ð°¸ÔÚÓÒ±ß
+            left = mid + 1; //å°äºŽç­‰äºŽvalue, ç­”æ¡ˆåœ¨å³è¾¹
         } else {
             if(left == right) {
                 return mid;
             } else {
-                right = mid;//´ð°¸¿Ï¶¨ÔÚ×ó±ß»òÕßÊÇmid
+                right = mid;//ç­”æ¡ˆè‚¯å®šåœ¨å·¦è¾¹æˆ–è€…æ˜¯mid
             }
         }
     }
@@ -104,12 +104,12 @@ int BinarySearch_min_tpl(int len, int* array, int value) {
     while(left <= right) {
         mid = (left + right)/2;
         if(check(mid, value)) {
-            //¸ù¾ÝÇé¿öÈ·ÈÏÒ»¸ö±ß½ç
+            //æ ¹æ®æƒ…å†µç¡®è®¤ä¸€ä¸ªè¾¹ç•Œ
         } else {
             if(left == right) {
-                return mid; //ÕÒµ½ÁË
+                return mid; //æ‰¾åˆ°äº†
             } else {
-                //È·ÈÏÁíÒ»¸ö±ß½ç
+                //ç¡®è®¤å¦ä¸€ä¸ªè¾¹ç•Œ
             }
         }
     }
@@ -127,10 +127,10 @@ int BinarySearch_max_lt(int len, int* array, int value) {
     while(left < right) {
         mid = (left + right)/2;
         if(array[mid] >= value) {
-            right = mid; //´óÓÚµÈÓÚ£¬´ð°¸ÔÚ×ó±ß
+            right = mid; //å¤§äºŽç­‰äºŽï¼Œç­”æ¡ˆåœ¨å·¦è¾¹
         } else {
             if(left + 1 == right) {
-                return mid; //ÕÒµ½ÁË
+                return mid; //æ‰¾åˆ°äº†
             } else {
                 left = mid;
             }

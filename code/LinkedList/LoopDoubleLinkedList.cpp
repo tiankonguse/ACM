@@ -35,10 +35,10 @@ struct LoopDoubleLink {
 };
 
 void insert(LoopDoubleLink* head, LoopDoubleLink* node) {
-    //°ó¶¨ next Óë NodeµÄ¹ØÏµ
+    //ç»‘å®š next ä¸ Nodeçš„å…³ç³»
     node->_next = head->_next;
     head->_next->_pre = node;
-    //°ó¶¨ head Óë nodeµÄ¹ØÏµ
+    //ç»‘å®š head ä¸ nodeçš„å…³ç³»
     head->_next = node;
     node->_pre = head;
 }

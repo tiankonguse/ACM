@@ -39,12 +39,12 @@ public:
     }
     int getNode(int defauleVal = 0) {
         int index = -1;
-        //ÓÅÏÈ´Ó»ØÊÕ³ØÖĞ·ÖÅä£¬Ã»ÓĞÔò´ÓÎ´Ê¹ÓÃµÄ¿Õ¼ä·ÖÅä¡£
+        //ä¼˜å…ˆä»å›æ”¶æ± ä¸­åˆ†é…ï¼Œæ²¡æœ‰åˆ™ä»æœªä½¿ç”¨çš„ç©ºé—´åˆ†é…ã€‚
         if(_emptyHead != -1) {
             index = _emptyHead;
             _emptyHead = get(_emptyHead)->_next;
         } else {
-            index = _useMax++; //ÔÛ²»¼ì²é±ß½ç
+            index = _useMax++; //å’±ä¸æ£€æŸ¥è¾¹ç•Œ
         }
         reset(index, defauleVal);
         return index;

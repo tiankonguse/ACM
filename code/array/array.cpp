@@ -51,15 +51,15 @@ class LoopQueue {
 public:
     LoopQueue():_data(NULL),_capacity(0),_size(0),_head(0),_tail(0) {}
     void push(int value) {
-        if(_size == _capacity) this->grow();//ÒÑ¾­ÂúÁË
-        if(_tail == _capacity) _tail = 0;//¶ÓÎ²ÒÆµ½×îºóÁË
+        if(_size == _capacity) this->grow();//å·²ç»æ»¡äº†
+        if(_tail == _capacity) _tail = 0;//é˜Ÿå°¾ç§»åˆ°æœ€åäº†
         this->_data[_tail++] = value;
         _size++;
     }
     void pop() {
         _head++;
         _size--;
-        if(_head == _capacity) _head = 0;//¶ÓÊ×ÒÆµ½×îºóÁË
+        if(_head == _capacity) _head = 0;//é˜Ÿé¦–ç§»åˆ°æœ€åäº†
     }
     int front() {
         return this->_data[_head];
@@ -71,7 +71,7 @@ private:
     void grow() {
         _capacity = (_capacity + 1) * 2;
         int* newdata = new int[_capacity];
-        if(_data != NULL) {//¿Õ¼äcopy
+        if(_data != NULL) {//ç©ºé—´copy
             memcpy(newdata, _data+_head, sizeof(int) * _size - _head);
             memcpy(newdata + _size - _head, _data, sizeof(int) * _head);
             delete[] _data;
@@ -156,15 +156,15 @@ class DoubleQueue : public FullArray {
 public:
     DoubleQueue():_head(0) {
     }
-    //void push_back(int value);¸¸ÀàÒÑÊµÏÖ
+    //void push_back(int value);çˆ¶ç±»å·²å®ç°
     void push_front(int value) {
         if(_head>0) {
             this->at(--_head) = value;
         } else {
-            //ÔõÃ´°ìÄØ£¿×ß²»Í¨ÁË¡£
+            //æ€ä¹ˆåŠå‘¢ï¼Ÿèµ°ä¸é€šäº†ã€‚
         }
     }
-    //void pop_back();¸¸ÀàÒÑÊµÏÖ
+    //void pop_back();çˆ¶ç±»å·²å®ç°
     void pop_front() {
         _head++;
     }

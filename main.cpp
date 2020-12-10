@@ -362,7 +362,7 @@ struct rec{
 
 int n, nn; rec event[N];
 
-void Ins(int x,int y,int z){ // ¾ØĞÎÇĞ¸î¡£¡£¡£
+void Ins(int x,int y,int z){ // çŸ©å½¢åˆ‡å‰²ã€‚ã€‚ã€‚
     event[nn].w = x, event[nn].x = min(y,z), event[nn++].t = 1;
     event[nn].w = x, event[nn].x = max(y,z), event[nn].z = min(y,z), event[nn++].t = 2;
 }
@@ -397,7 +397,7 @@ int main(){
 
         sort(event, event + nn);
 
-        REP(i, nn){ // É¨ÃèÏß¡£¡£¡£
+        REP(i, nn){ // æ‰«æçº¿ã€‚ã€‚ã€‚
             if(event[i].t == 1){
                 B -= event[i].w;
                 A += (LL) event[i].w * event[i].x;

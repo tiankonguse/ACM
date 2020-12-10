@@ -29,7 +29,7 @@ const int HALF_ARRAY = MAX_ARRAY/2;
 
 struct BlockLink {
     BlockLink():_next(NULL),_useSize(0) {}
-    int _vecValue[MAX_ARRAY]; //¼ÙÉè×î¶à1W¸öÊı¾İ£¬ÕâÀï¿ª·½Îª100
+    int _vecValue[MAX_ARRAY]; //å‡è®¾æœ€å¤š1Wä¸ªæ•°æ®ï¼Œè¿™é‡Œå¼€æ–¹ä¸º100
     struct BlockLink* _next;
     int _useSize;
 };
@@ -52,9 +52,9 @@ public:
         }
         it->_vecValue[it->_useSize++] = value;
     }
-    //´Ó0¿ªÊ¼
+    //ä»0å¼€å§‹
     int& get(int index) {
-        struct BlockLink* it = head;//¼ÙÉè²»»áÔ½½ç
+        struct BlockLink* it = head;//å‡è®¾ä¸ä¼šè¶Šç•Œ
         while(it->_useSize <= index) {
             index -= it->_useSize;
             it = it->_next;
@@ -64,10 +64,10 @@ public:
     void set(int index, int value) {
         get(index) = value;
     }
-    //¶¨Òå£º²åÈëÔÚindexÎ»ÖÃÖ®Ç°,´Ó0¿ªÊ¼
+    //å®šä¹‰ï¼šæ’å…¥åœ¨indexä½ç½®ä¹‹å‰,ä»0å¼€å§‹
     void insert(int index, int value) {
-        struct BlockLink* it = head;//¼ÙÉè²»»áÔ½½ç
-        while(it->_useSize <= index) {//µÈÓÚµÄÊ±ºòÊÇÏÂ¸öÊı×éµÄÆğÊ¼Î»ÖÃ
+        struct BlockLink* it = head;//å‡è®¾ä¸ä¼šè¶Šç•Œ
+        while(it->_useSize <= index) {//ç­‰äºçš„æ—¶å€™æ˜¯ä¸‹ä¸ªæ•°ç»„çš„èµ·å§‹ä½ç½®
             index -= it->_useSize;
             it = it->_next;
         }
@@ -76,7 +76,7 @@ public:
             newNode->_next = it->_next;
             it->_next = newNode;
 
-            //ÏÈ·ÖÒ»°ëµ½ĞÂÊı×é
+            //å…ˆåˆ†ä¸€åŠåˆ°æ–°æ•°ç»„
             int newSize = HALF_ARRAY;
             int leftStart = newSize;
             for(int i=0; leftStart < MAX_ARRAY; i++, leftStart++) {
@@ -85,34 +85,34 @@ public:
             newNode->_useSize = leftStart - newSize;
             it->_useSize -= leftStart - newSize;
 
-            //ÔÙ´Î²éÕÒ
+            //å†æ¬¡æŸ¥æ‰¾
             if(it->_useSize <= index) {
                 index -= it->_useSize;
                 it = it->_next;
             }
         }
 
-        //´ÓºóÏòÇ°ÒÆ¶¯
+        //ä»åå‘å‰ç§»åŠ¨
         for(int i = it->_useSize - 1; i >= index; i--) {
             it->_vecValue[i+1] = it->_vecValue[i];
         }
         it->_vecValue[index] = value;
 
     }
-    //¶¨Òå£º²åÈëÔÚindexÎ»ÖÃÖ®Ç°,´Ó0¿ªÊ¼
+    //å®šä¹‰ï¼šæ’å…¥åœ¨indexä½ç½®ä¹‹å‰,ä»0å¼€å§‹
     void remove(int index) {
-        struct BlockLink* it = head;//¼ÙÉè²»»áÔ½½ç
-        while(it->_useSize <= index) {//µÈÓÚµÄÊ±ºòÊÇÏÂ¸öÊı×éµÄÆğÊ¼Î»ÖÃ
+        struct BlockLink* it = head;//å‡è®¾ä¸ä¼šè¶Šç•Œ
+        while(it->_useSize <= index) {//ç­‰äºçš„æ—¶å€™æ˜¯ä¸‹ä¸ªæ•°ç»„çš„èµ·å§‹ä½ç½®
             index -= it->_useSize;
             it = it->_next;
         }
-        //´ÓºóÏòÇ°ÒÆ¶¯
+        //ä»åå‘å‰ç§»åŠ¨
         for(int i = index; i < it->_useSize; i++) {
             it->_vecValue[i] = it->_vecValue[i+1];
         }
         it->_useSize--;
 
-        //¼ì²éÊÇ·ñĞèÒªºÏ²¢, Ö®ºÍĞ¡ÓÚÊı×éµÄÒ»°ë¾ÍºÏ²¢
+        //æ£€æŸ¥æ˜¯å¦éœ€è¦åˆå¹¶, ä¹‹å’Œå°äºæ•°ç»„çš„ä¸€åŠå°±åˆå¹¶
         if(it->_next != NULL && it->_useSize + it->_next->_useSize < HALF_ARRAY) {
             struct BlockLink* delNode = it->_next;
             for(int i = 0; i < delNode->_useSize; i++, it->_useSize++) {
