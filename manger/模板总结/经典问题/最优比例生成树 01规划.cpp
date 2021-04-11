@@ -1,14 +1,14 @@
 /*
-Éèx[i]µÈÓÚ1»ò0, ±íÊ¾±ße[i]ÊÇ·ñÊôÓÚÉú³ÉÊ÷.
-ÔòÎÒÃÇËùÇóµÄ±ÈÂÊ r = ¡Æ(benifit[i] * x[i]) / ¡Æ(cost[i] * x[i]), 0¡Üi<m .
-ÎªÁËÊ¹ r ×î´ó, Éè¼ÆÒ»¸ö×ÓÎÊÌâ
-ÈÃ z = ¡Æ(benifit[i] * x[i]) - l * ¡Æ(cost[i] * x[i]) = ¡Æ(d[i] * x[i]) ×î´ó 
-   (d[i] = benifit[i] - l * cost[i]) , ²¢¼ÇÎªz(l). 
-ÎÒÃÇ¿ÉÒÔz(l)¿´×öÒÔdÎª±ßÈ¨µÄ×î´óÉú³ÉÊ÷µÄ×ÜÈ¨Öµ.
+è®¾x[i]ç­‰äºŽ1æˆ–0, è¡¨ç¤ºè¾¹e[i]æ˜¯å¦å±žäºŽç”Ÿæˆæ ‘.
+åˆ™æˆ‘ä»¬æ‰€æ±‚çš„æ¯”çŽ‡ r = âˆ‘(benifit[i] * x[i]) / âˆ‘(cost[i] * x[i]), 0â‰¤i<m .
+ä¸ºäº†ä½¿ r æœ€å¤§, è®¾è®¡ä¸€ä¸ªå­é—®é¢˜
+è®© z = âˆ‘(benifit[i] * x[i]) - l * âˆ‘(cost[i] * x[i]) = âˆ‘(d[i] * x[i]) æœ€å¤§ 
+   (d[i] = benifit[i] - l * cost[i]) , å¹¶è®°ä¸ºz(l). 
+æˆ‘ä»¬å¯ä»¥z(l)çœ‹åšä»¥dä¸ºè¾¹æƒçš„æœ€å¤§ç”Ÿæˆæ ‘çš„æ€»æƒå€¼.
 
-È»ºóÃ÷È·Á½¸öÐÔÖÊ:
-¡¡1.  zµ¥µ÷µÝ¼õ
-¡¡2.  z( max(r) ) = 0
+ç„¶åŽæ˜Žç¡®ä¸¤ä¸ªæ€§è´¨:
+ã€€1.  zå•è°ƒé€’å‡
+ã€€2.  z( max(r) ) = 0
 */
 
 #include<cstdio>

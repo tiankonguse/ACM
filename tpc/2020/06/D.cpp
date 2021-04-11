@@ -16,7 +16,7 @@ const int mod = 1000000007;
 //memset(dpMin, 0x3f, sizeof(dpMin)); // inf
 //memset(dpMax, 0xc0, sizeof(dpMax)); // -inf
 
-char strT[1111111]; //一位数组储存多个字符串
+char strT[1111111]; 
 char* nowT;
 struct Op {
     char op[5];
@@ -73,17 +73,17 @@ int main() {
             }
             for(auto& kv: ans){
                 auto& pp = kv.second;
-                if(pp.first == -1 || pp.first < pos){ //已经找到答案，或者在 pos 之前
+                if(pp.first == -1 || pp.first < pos){ 
                     // do nothing
-                }else if(pos <= pp.first && pp.first < pos + len ){ // 在插入的字符串 [pos, pos+len)之内
+                }else if(pos <= pp.first && pp.first < pos + len ){ 
                     if(p->op[0] == '+'){
                         pp.second = p->pt[pp.first - pos];
                         pp.first = -1;
                     }else{
-                        pp.first = p->a - 1 + (pp.first - pos) % (p->b - p->a + 1); //由于重复了 c 次，需要取模，计算在第几次
+                        pp.first = p->a - 1 + (pp.first - pos) % (p->b - p->a + 1); 
                     }
                 }else{
-                    pp.first -= len; //在字符串之后，需要前移
+                    pp.first -= len; 
                 }
             }
         }

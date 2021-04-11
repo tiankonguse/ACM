@@ -1,7 +1,7 @@
-//����ͼ��С������,prim�㷨+ӳ����ֶ�,�������ʽ,���Ӷ�O(mlogn)
-//������С�������ĳ���ret,����ͼ�Ĵ�Сn�������list,buf
-//�ɸ��ı�Ȩ������,pre[]�������Ĺ���,�ø�����ʾ,���ڵ�(��һ��)preֵΪ-1
-//���뱣֤ͼ����ͨ��!
+//无向图最小生成树,prim算法+映射二分堆,正向表形式,复杂度O(mlogn)
+//返回最小生成树的长度ret,传入图的大小n和正向表list,buf
+//可更改边权的类型,pre[]返回树的构造,用父结点表示,根节点(第一个)pre值为-1
+//必须保证图的连通的!
 #define MAXN 200
 #define inf 1000000000
 typedef double elem_t;

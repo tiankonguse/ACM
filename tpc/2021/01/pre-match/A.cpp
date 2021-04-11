@@ -28,6 +28,10 @@ const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
 int main() {
+#ifndef ONLINE_JUDGE
+  freopen("./in.txt", "r", stdin);
+  freopen("./out.txt", "w", stdout);
+#endif
   int t;
   scanf("%d", &t);
   while (t--) {
@@ -40,5 +44,24 @@ int main() {
     }
   }
 
+#ifndef ONLINE_JUDGE
+  freopen("./diff.txt", "w", stdout);
+  system("diff ./out_std.txt ./out.txt | wc -l");
+  system("diff ./out_std.txt ./out.txt");
+#endif
+
   return 0;
 }
+
+/*
+input:
+3
+1
+0
+20
+
+output:
+You are the future of Tencent!
+Good luck and Enjoy TPC!
+You are the future of Tencent!
+*/

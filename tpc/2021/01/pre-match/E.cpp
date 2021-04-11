@@ -30,10 +30,45 @@ const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
 
 int main() {
+  #ifndef ONLINE_JUDGE
+  freopen("./in.txt", "r", stdin);
+  freopen("./out.txt", "w", stdout);
+#endif
+
   int t;
   scanf("%d", &t);
   while (t--) {
   }
 
+#ifndef ONLINE_JUDGE
+  freopen("./diff.txt", "w", stdout);
+  system("diff ./out_std.txt ./out.txt | wc -l");
+  system("diff ./out_std.txt ./out.txt");
+#endif
   return 0;
 }
+
+
+/*
+input:
+2
+5 6 1 5
+1 2 3 1
+2 3 5 -1
+3 4 1 2
+4 5 1 -1
+5 1 5 3
+2 4 3 -1
+5 6 1 5
+1 2 1 1
+2 3 1 2
+3 4 1 -10
+3 4 2 10
+5 1 3 10
+2 4 5 -10
+
+output:
+2
+-35
+
+*/
