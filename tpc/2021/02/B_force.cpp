@@ -18,41 +18,34 @@ using max_queue = priority_queue<T>;
 
 // lower_bound 大于等于
 // upper_bound 大于
+// vector/array: upper_bound(vec.begin(), vec.end(), v)
+// map: m.upper_bound(v)
 // reserve vector预先分配内存
 // reverse(v.begin(), v.end()) 反转
 // sum = accumulate(a.begin(), a.end(), 0);
+// unordered_map / unordered_set
+// 排序，小于是升序：[](auto&a, auto&b){ return a < b; })
+// 优先队列 priority_queue<Node>：大于是升序
+// struct Node{
+//     int t;
+//     bool operator<(const Node & that)const { return this->t > that.t; }
+// };
 
 const LL INF = 0x3f3f3f3f3f3f3f3fll;
 const double PI = acos(-1.0), eps = 1e-7;
 const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
-int str[max5];
-double dp[max5];  // 最近两个报团的最优解 VS 最近三个报团的最优解
-int d;
-
-double solve2(int x, int y) { return max(y - x - d, 0) / 2.0; }
-
-double solve3(int x, int y, int z) {
-  return (max(y - x - d, 0) + max(z - y - d, 0)) / 2.0;
-}
-
-double dfs2(int i) { return max(dp[i - 2], solve2(str[i - 1], str[i])); }
-double dfs3(int i) {
-  return max(dp[i - 3], solve3(str[i - 2], str[i - 1], str[i]));
-}
-
-double dfs(int i) {
-  if (i == 2) {
-    return dfs2(i);
+ll forceCal(int n, ll a, ll b) {
+  ll sum = a | b;
+  for (int i = 2; i <= n; i++) {
+    ll c = a + b;
+    sum |= c;
+    c %= 1024;
+    a = b, b = c;
   }
-  if (i == 3) {
-    return dfs3(i);
-  }
-  if (i == 4) {
-    return dfs2(i);
-  }
-  return min(dfs2(i), dfs3(i));
+  // printf("sum=%lld\n", sum);
+  return sum;
 }
 
 int main() {
@@ -64,26 +57,29 @@ int main() {
   scanf("%d", &t);
   while (t--) {
     int n;
-    scanf("%d%d", &n, &d);
-    for (int i = 1; i <= n; i++) {
-      scanf("%d", &str[i]);
-    }
-    sort(str + 1, str + n + 1);
+    ll a, b;
+    scanf("%d", &n);
+    scanf("%lld%lld", &a, &b);
 
-    dp[0] = 0;
-    dp[1] = 0;  // 一个无解，设置为最大值
+    ll sum = 0;
+    int ans = 0;
 
-    for (int i = 2; i <= n; i++) {
-      dp[i] = dfs(i);
+    sum = forceCal(min(n, 20), a, b);
+    while (sum > 0) {
+      if (sum % 2 == 0) {
+        ans++;
+      }
+      sum /= 2;
     }
-    printf("%.6f\n", dp[n]);
+
+    printf("%d\n", ans);
   }
 
-#ifndef ONLINE_JUDGE
-  // freopen("./diff.txt", "w", stdout);
-  // system("diff ./out_std.txt ./out.txt | wc -l");
-  // system("diff ./out_std.txt ./out.txt");
-#endif
+  // #ifndef ONLINE_JUDGE
+  //   freopen("./diff.txt", "w", stdout);
+  //   system("diff ./out_std.txt ./out.txt | wc -l");
+  //   system("diff ./out_std.txt ./out.txt");
+  // #endif
 
   return 0;
 }
