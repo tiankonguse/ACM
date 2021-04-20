@@ -44,8 +44,7 @@ int solver() {
 
   for (auto& p : m) {
     if (p.second >= 3) {
-      // printf("%d , num>3\n", p.first);
-      return 0;
+      return 0; // 相同数字大于 2 次，肯定没答案
     }
     if (p.second == 2) {
       num++;
@@ -54,8 +53,7 @@ int solver() {
   }
 
   if (num > 1) {
-    // printf("two, num=%d\n", num);
-    return 0;
+    return 0; // 相同数字出现多次，肯定没答案
   }
 
   int ans = 0;

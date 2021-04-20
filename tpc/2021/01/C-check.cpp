@@ -163,28 +163,31 @@ bool check_2_7_9(int n, int k) {
 
 void init() {
   set<int> s;
-  // for(int i=0;i<10000;i++){
-  //   s.insert(i*i);
-  // }
-  // for(int i=1;i<100000;i++){
-  //   for(int j=i+1;j<100000;j++){
-  //     if(s.count(i+i) && s.count(i+j) && s.count(j+j)){
-  //       printf("i=%d j=%d\n", i, j);
-  //     }
-  //   }
-  // }
-  printf("begin\n");
-  for(int i=2;i<=10;i++){
-    int k = i * (i-1)/2;
-    for(int j=1;j<=k;j++){
-      // if(i==5){
-      //   printf("n=%d k=%d ans=%d\n", i, j, check_2_98(i, j));
-      // }
-      if(!check_2_7_98(i, j)){
-        printf("n=%d k=%d\n", i, j);
+  for(int i=0;i<10000;i++){
+    s.insert(i*i);
+  }
+  for(int i=2;i<3;i++){
+    for(int j=i+1;j<1000;j++){
+      for(int k=j+1;k<1000;k++){
+        if(s.count(i+i) && s.count(j+j) == 0 && s.count(k+k) == 1 && s.count(i+j) && s.count(j+k) == 0 && s.count(k+i) == 1){
+          printf("i=%d j=%d k=%d\n", i, j, k);
+          return ;
+        }
       }
     }
   }
+  printf("begin\n");
+  // for(int i=2;i<=10;i++){
+  //   int k = i * (i-1)/2;
+  //   for(int j=1;j<=k;j++){
+  //     // if(i==5){
+  //     //   printf("n=%d k=%d ans=%d\n", i, j, check_2_98(i, j));
+  //     // }
+  //     if(!check_2_7_98(i, j)){
+  //       printf("n=%d k=%d\n", i, j);
+  //     }
+  //   }
+  // }
 }
 
 int main() {
