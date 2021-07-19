@@ -1,4 +1,4 @@
-// 确定性AC自动机(Trie图) By 猛犸也钻地 @ 2011.11.24
+// 确定性AC自动机(Trie图)
 
 #include <cstring>
 #include <algorithm>
