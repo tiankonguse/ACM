@@ -25,13 +25,13 @@ const int kind = 2, N = max5;
 
 class TireTree {
  public:
-  int tire[N][kind], word[N], tireVal[N];
+  int tire[N][kind], word[N], pre[N];
   int num = 0;
 
   void init() {
     memset(tire[0], 0, sizeof(tire[0]));
     memset(tire[1], 0, sizeof(tire[1]));
-    tireVal[1] = 1;
+    pre[1] = 1;
     num = 2;
   }
   void insert(ll n, ll val) {
@@ -41,7 +41,7 @@ class TireTree {
       if (!tire[p][i]) {
         memset(tire[num], 0, sizeof(tire[num]));
         word[num] = 0;
-        tireVal[num] = tireVal[p] * 2 + i;
+        pre[num] = p;
         tire[p][i] = num++;
       }
       p = tire[p][i];
@@ -49,10 +49,32 @@ class TireTree {
     }
     word[p] = val;
   }
+  void Erase(const int n) {
+    int p = 1;
+    // 先找到 p 的叶子节点
+    int val = n;
+    while(val) {
+      int i = val % 2;
+      if(!tire[p][i]) return; //not exist
+      p = tire[p][i];
+      val = val / 2;
+    }
+
+    // 逆向的删除空叶子
+    word[p] = 0;
+    while (p != 1 && word[p] == 0 && tire[p][0] == 0 && tire[p][1] == 0) {
+      auto father = pre[p];
+      if(tire[father][0] == p) {
+        tire[father][0] = 0;
+      }else {
+        tire[father][1] = 0;
+      }
+      p = father;
+    }
+  }
 };
 
 TireTree tireTreeAll;
-
 
 int main() {
   int n;
