@@ -17,11 +17,16 @@ template <class T>
 using max_queue = priority_queue<T>;
 
 // int dir[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
-// int dir[8][2] = {{0,1},{1, 1},{1,0},{1,-1}, {0,-1}, {-1, -1}, {-1,0}, {-1,
-// 1}}; lower_bound 大于等于 upper_bound 大于 vector/array:
-// upper_bound(vec.begin(), vec.end(), v) map: m.upper_bound(v) reserve
-// vector预先分配内存 reverse(v.begin(), v.end()) 反转 sum =
-// accumulate(a.begin(), a.end(), 0); unordered_map / unordered_set
+// int dir[8][2] = {{0,1},{1, 1},{1,0},{1,-1}, {0,-1}, {-1, -1}, {-1,0}, {-1, 1}};
+// lower_bound 大于等于
+// upper_bound 大于
+// vector/array: upper_bound(vec.begin(), vec.end(), v)
+// map: m.upper_bound(v)
+// reserve vector预先分配内存
+// reverse(v.begin(), v.end()) 反转
+// sum = accumulate(a.begin(), a.end(), 0);
+// dis: std::distance(a.begin(), a.end())
+// unordered_map / unordered_set
 // 排序，小于是升序：[](auto&a, auto&b){ return a < b; })
 // 优先队列 priority_queue<Node>：大于是升序
 // __builtin_popcount 快速得到 1 的个数
@@ -33,7 +38,7 @@ using max_queue = priority_queue<T>;
 // mutex mtx;       // 互斥量，锁，定义一个即可
 // condition_variable cv; // 条件变量
 // cv.notify_one(); // 事件通知
-// unique_lock<mutex> lck(mtx);
+// unique_lock<mutex> lck(mtx); 
 // cv.wait(lck); //等待事件
 
 // atomic_int tick; // 原子计数
@@ -50,71 +55,38 @@ const double PI = acos(-1.0), eps = 1e-7;
 const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
-int a[222], b[222];
-
-void Solver() {
-  int n, k;
-  scanf("%d%d", &n, &k);
-
-  for (int i = 0; i < n; i++) {
-    scanf("%d", &a[i]);
-  }
-  for (int i = 0; i < n; i++) {
-    scanf("%d", &b[i]);
-  }
-  a[0] += b[0];
-  vector<pair<int, int>> vec;
-  for (int i = 0; i < n; i++) {
-    vec.push_back({a[i], i});
-    // printf("i=%d [%d,%d]\n", i, vec[i].first, vec[i].second);
-  }
-  sort(vec.begin(), vec.end(), [](auto& a, auto& b) {
-    if (a.first == b.first) {
-      return a.second > b.second;
-    } else {
-      return a.first > b.first;
-    }
-  });
-
-  int ans = 0;
-  int pre = -1;
-  for (int i = 0; i < n; i++) {
-    // printf("sort i=%d [%d,%d]\n", i, vec[i].first, vec[i].second);
-    if (pre != vec[i].first) {
-      pre = vec[i].first;
-      ans = i + 1;
-    }
-    if (vec[i].second == 0) {
-      break;
-    }
-  }
-
-  printf("%s\n", ans <= k ? "Yes" : "No");
-}
-
 int main() {
 #ifndef ONLINE_JUDGE
   // freopen("./in.txt", "r", stdin);
   // freopen("./out.txt", "w", stdout);
 #endif
   int t;
-  scanf("%d", &t);
-  while (t--) {
-    Solver();
-  }
+  // scanf("%d", &t);
+  // while (t--) {
+  //   int a, b;
+  //   scanf("%d%d", &a, &b);
+  //   printf("%d\n", a+b);
+  // }
+  printf("hello world!\n");
 
-  // #ifndef ONLINE_JUDGE
-  //   freopen("./diff.txt", "w", stdout);
-  //   system("diff ./out_std.txt ./out.txt | wc -l");
-  //   system("diff ./out_std.txt ./out.txt");
-  // #endif
+#ifndef ONLINE_JUDGE
+  // freopen("./diff.txt", "w", stdout);
+  // system("diff ./out_std.txt ./out.txt | wc -l");
+  // system("diff ./out_std.txt ./out.txt");
+#endif
 
   return 0;
 }
 
 /*
 input:
-
+3
+1
+0
+20
 
 output:
+You are the future of Tencent!
+Good luck and Enjoy TPC!
+You are the future of Tencent!
 */

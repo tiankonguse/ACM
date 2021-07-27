@@ -72,7 +72,7 @@ bool check(int n, int k) {
 
 int main() {
 #ifndef ONLINE_JUDGE
-  freopen("./in.txt", "r", stdin);
+  // freopen("./in.txt", "r", stdin);
   // freopen("./out.txt", "w", stdout);
 #endif
   int t;

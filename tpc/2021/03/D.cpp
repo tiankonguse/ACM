@@ -50,8 +50,106 @@ const double PI = acos(-1.0), eps = 1e-7;
 const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
+vector<vector<pair<int, ll>>> vec;
+struct Node {
+  ll none = 0;  // 没有边，不能有边
+  ll owen = 0;  // 没有边，内部有边
+  ll zero = 0;  // 偶数个边，下去再回来
+  ll one = 0;   // 奇数个边，不回来
+  ll two = 0;   // 偶数个边，下来上来，再下去
+  ll ans = 0;
+};
+vector<Node> dp;
+
+void CalNone(int root, int pre) {  // 计算 none
+  Node& node = dp[root];
+
+  for (auto& p : vec[root]) {
+    if (p.first == pre) continue;
+    node.none += p.second + dp[p.first].none;
+  }
+}
+
+void CalZero(int root, int pre) {  //偶数个边，下去再回来
+  Node& node = dp[root];
+
+  node.zero = node.none;
+  ll sum_zero = 0;
+  for (auto& p : vec[root]) {
+    if (p.first == pre) continue;
+    ll none = p.second + dp[p.first].none;
+
+    ll zero = 0;
+    if (p.second == 0) {
+      zero = 2 + dp[p.first].zero;
+    } else {
+      zero = (p.second % 2) + dp[p.first].zero;
+    }
+
+    sum_zero += min(none, zero);
+  }
+  node.zero = node.zero;
+}
+
+void CalOne(int root, int pre) {  //奇数个边，不回来
+  Node& node = dp[root];
+
+  node.one = node.zero;
+  vector<ll> dis;
+  for (auto& p : vec[root]) {
+    if (p.first == pre) continue;
+    dis.push_back(dp[p.first].one - dp[p.first].zero);
+  }
+  sort(dis.begin(), dis.end());
+
+  node.one = min(node.one, node.zero + dis[0]);
+}
+
+void Dfs(int root, int pre) {
+  Node& node = dp[root];
+
+  for (auto& p : vec[root]) {
+    if (p.first == pre) continue;
+    Dfs(p.first, root);
+  }
+
+  if (pre != 0 && vec[root].size() == 1) {  // 叶子节点
+    return;
+  }
+
+  // 计算 none
+  CalNone(root, pre);
+
+  //偶数个边，下去再回来
+  CalZero(root, pre);
+
+  //奇数个边，不回来
+  CalOne(root, pre);
+}
+
 void Solver() {
-  //
+  int n;
+  vec.clear();
+  scanf("%d", &n);
+  vec.resize(n + 1);
+
+  for (int i = 1; i < n; i++) {
+    int u, v;
+    ll p;
+    scanf("%d%d%lld", &u, &v, &p);
+    vec[u].push_back({v, p});
+    vec[v].push_back({u, p});
+  }
+
+  dp.resize(n + 1);
+
+  if (n == 2) {
+    dp[1].ans = 0;
+  } else {
+    Dfs(1, 0);
+  }
+
+  printf("%lld\n", dp[1].ans);
 }
 
 int main() {

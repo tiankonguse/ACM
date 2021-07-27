@@ -50,8 +50,57 @@ const double PI = acos(-1.0), eps = 1e-7;
 const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
+vector<vector<int>> vec;
+unordered_map<int, int> one;
+queue<pair<int, int>> que;
+
+void Add(int i) {
+  int v = vec[i].back();
+  if (one.count(v)) {
+    que.push({i, one[v]});
+    one.erase(v);
+  } else {
+    one.insert({v, i});
+  }
+}
+
+void Del(int i) {
+  vec[i].pop_back();
+  if (vec[i].size() > 0) {
+    Add(i);
+  }
+}
+
 void Solver() {
-  //
+  vec.clear();
+  one.clear();
+  while (!que.empty()) que.pop();
+
+  int n, k;
+  scanf("%d%d", &n, &k);
+  vec.resize(k);
+
+  for (int i = 0; i < k; i++) {
+    int m;
+    scanf("%d", &m);
+    vec[i].resize(m);
+    for (int j = m - 1; j >= 0; j--) {
+      scanf("%d", &vec[i][j]);
+    }
+    Add(i);
+  }
+
+  int flag = 0;  // 赢家
+  while (!que.empty()) {
+    flag = 1 - flag;
+    auto p = que.front();
+    que.pop();
+
+    Del(p.first);
+    Del(p.second);
+  }
+
+  printf("%s\n", flag ? "Kelly" : "Nacho");
 }
 
 int main() {

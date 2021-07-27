@@ -21,7 +21,8 @@ using max_queue = priority_queue<T>;
 // 1}}; lower_bound 大于等于 upper_bound 大于 vector/array:
 // upper_bound(vec.begin(), vec.end(), v) map: m.upper_bound(v) reserve
 // vector预先分配内存 reverse(v.begin(), v.end()) 反转 sum =
-// accumulate(a.begin(), a.end(), 0); unordered_map / unordered_set
+// accumulate(a.begin(), a.end(), 0); dis: std::distance(a.begin(), a.end())
+// unordered_map / unordered_set
 // 排序，小于是升序：[](auto&a, auto&b){ return a < b; })
 // 优先队列 priority_queue<Node>：大于是升序
 // __builtin_popcount 快速得到 1 的个数
@@ -50,46 +51,24 @@ const double PI = acos(-1.0), eps = 1e-7;
 const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
-int a[222], b[222];
+int n;
+ll m;
+ll str[20];
+
+int Dfs(int pos, ll sum, int num) {
+  if (pos == n) {
+    return num > 0 && (sum % m == 0);
+  }
+  return Dfs(pos + 1, sum + str[pos], num + 1) + Dfs(pos + 1, sum, num);
+}
 
 void Solver() {
-  int n, k;
-  scanf("%d%d", &n, &k);
-
+  scanf("%d%d", &n, &m);
   for (int i = 0; i < n; i++) {
-    scanf("%d", &a[i]);
-  }
-  for (int i = 0; i < n; i++) {
-    scanf("%d", &b[i]);
-  }
-  a[0] += b[0];
-  vector<pair<int, int>> vec;
-  for (int i = 0; i < n; i++) {
-    vec.push_back({a[i], i});
-    // printf("i=%d [%d,%d]\n", i, vec[i].first, vec[i].second);
-  }
-  sort(vec.begin(), vec.end(), [](auto& a, auto& b) {
-    if (a.first == b.first) {
-      return a.second > b.second;
-    } else {
-      return a.first > b.first;
-    }
-  });
-
-  int ans = 0;
-  int pre = -1;
-  for (int i = 0; i < n; i++) {
-    // printf("sort i=%d [%d,%d]\n", i, vec[i].first, vec[i].second);
-    if (pre != vec[i].first) {
-      pre = vec[i].first;
-      ans = i + 1;
-    }
-    if (vec[i].second == 0) {
-      break;
-    }
+    scanf("%lld", &str[i]);
   }
 
-  printf("%s\n", ans <= k ? "Yes" : "No");
+  printf("%d\n", Dfs(0, 0, 0));
 }
 
 int main() {
@@ -102,19 +81,26 @@ int main() {
   while (t--) {
     Solver();
   }
+  // printf("hello world!\n");
 
-  // #ifndef ONLINE_JUDGE
-  //   freopen("./diff.txt", "w", stdout);
-  //   system("diff ./out_std.txt ./out.txt | wc -l");
-  //   system("diff ./out_std.txt ./out.txt");
-  // #endif
+#ifndef ONLINE_JUDGE
+  // freopen("./diff.txt", "w", stdout);
+  // system("diff ./out_std.txt ./out.txt | wc -l");
+  // system("diff ./out_std.txt ./out.txt");
+#endif
 
   return 0;
 }
 
 /*
 input:
-
+3
+1
+0
+20
 
 output:
+You are the future of Tencent!
+Good luck and Enjoy TPC!
+You are the future of Tencent!
 */
