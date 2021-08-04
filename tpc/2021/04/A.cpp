@@ -51,7 +51,38 @@ const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
 void Solver() {
-  //
+  int n;
+  ll k;
+  scanf("%d%lld", &n, &k);
+  vector<int> vec(n * 2 + 1);
+
+  for (int i = 1; i <= n; i++) {
+    scanf("%d", &vec[i]);
+    vec[i + n] = vec[i];
+  }
+
+  int val = 0, num = 0;
+  for (int i = 1; i <= 2 * n; i++) {
+    if (val != vec[i]) {
+      val = vec[i];
+      num = 1;
+    } else {
+      num++;
+    }
+
+    if (num == k) {
+      printf("%d %d\n", i, val);
+      return;
+    }
+  }
+
+  if(num != 2 * n) {
+    printf("INF\n");
+    return ;
+  }else{
+    printf("%lld %d\n", k, vec[1]);
+  }
+
 }
 
 int main() {

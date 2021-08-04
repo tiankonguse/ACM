@@ -52,16 +52,16 @@ const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
 vector<vector<pair<int, ll>>> vec;
 struct Node {
-  ll none = 0;  // 没有边，不能有边
+  ll none = 0;  // 没有边，内部无边
   ll owen = 0;  // 没有边，内部有边
   ll zero = 0;  // 偶数个边，下去再回来
-  ll one = 0;   // 奇数个边，不回来
-  ll two = 0;   // 偶数个边，下来上来，再下去
+  ll one = 0;   // 奇数个边，下去，不回来
+  ll two = 0;   // 偶数个边，上来，再下去
   ll ans = 0;
 };
 vector<Node> dp;
 
-void CalNone(int root, int pre) {  // 计算 none
+void CalNone(int root, int pre) {  // 没有边，内部无边
   Node& node = dp[root];
 
   for (auto& p : vec[root]) {
@@ -70,39 +70,61 @@ void CalNone(int root, int pre) {  // 计算 none
   }
 }
 
-void CalZero(int root, int pre) {  //偶数个边，下去再回来
+ll GoBack(const pair<int, ll>& p) {
+  ll none = p.second + dp[p.first].none;  // 不下去
+
+  ll zero = 0;
+  if (p.second == 0) {
+    zero = 2 + dp[p.first].zero;  // 0 权重时 ，下去代价加 2
+  } else {
+    zero = (p.second % 2) + dp[p.first].zero;  // 其他情况，代价模2
+  }
+  return min(none, zero);
+}
+
+ll GoNoBack(const pair<int, ll>& p) {
+  return (1 - (p.second % 2)) + dp[p.first].one;
+}
+
+//偶数个边，下去再回来
+void CalZero(int root, int pre) {  
   Node& node = dp[root];
 
   node.zero = node.none;
   ll sum_zero = 0;
   for (auto& p : vec[root]) {
     if (p.first == pre) continue;
-    ll none = p.second + dp[p.first].none;
-
-    ll zero = 0;
-    if (p.second == 0) {
-      zero = 2 + dp[p.first].zero;
-    } else {
-      zero = (p.second % 2) + dp[p.first].zero;
-    }
-
-    sum_zero += min(none, zero);
+    sum_zero += GoBack(p);  // 不下去 VS 下去
   }
-  node.zero = node.zero;
+  node.zero = sum_zero;
 }
 
-void CalOne(int root, int pre) {  //奇数个边，不回来
+//奇数个边，下去，不回来
+// 选择一个儿子下去不回来
+void CalOne(int root, int pre) {
   Node& node = dp[root];
 
   node.one = node.zero;
-  vector<ll> dis;
+  ll min_dis = 0;
+
+  ll sum_zero = 0;
   for (auto& p : vec[root]) {
     if (p.first == pre) continue;
-    dis.push_back(dp[p.first].one - dp[p.first].zero);
-  }
-  sort(dis.begin(), dis.end());
+    ll zero = GoBack(p);
+    ll one = GoNoBack(p);
 
-  node.one = min(node.one, node.zero + dis[0]);
+    sum_zero += zero;  // 不下去 VS 下去
+    min_dis = min(min_dis, one - zero);
+  }
+
+  node.one = min(node.one, sum_zero + min_dis);
+}
+
+// 偶数个边，上来，再下去
+// 1、某个儿子上来再下去
+// 2、一个儿子上来，另一个儿子下去
+void CalTwo(int root, int pre) {
+  
 }
 
 void Dfs(int root, int pre) {
@@ -125,6 +147,9 @@ void Dfs(int root, int pre) {
 
   //奇数个边，不回来
   CalOne(root, pre);
+
+  // 偶数个边，上来，再下去
+  CalTwo(root, pre);
 }
 
 void Solver() {

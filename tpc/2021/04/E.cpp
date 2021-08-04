@@ -50,8 +50,50 @@ const double PI = acos(-1.0), eps = 1e-7;
 const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
 const int max3 = 2100, max4 = 11100, max5 = 200100, max6 = 2000100;
 
+struct OpOne {
+  ll flag;
+  ll x, y, z;
+  ll l, r;
+  ll ans;
+} op[max5];
+
+int query[max5];
+  int flag, query_num ;
+
+void Update(const OpOne& op, int start) {
+  for(int i = start; i < query_num; i++){
+    int l = op[query[i]].l, r = op[query[i]].r;
+  
+  }
+}
+
 void Solver() {
-  //
+  ll n, q;
+  query_num = 0;
+  scanf("%lld%lld", &n, &q);
+  for (int i = 0; i < q; i++) {
+    scanf("%lld", &op[i].flag);
+    if (flag == 1) {
+      scanf("%lld%lld%lld", &op[i].x, &op[i].y, &op[i].z);
+    } else {
+      scanf("%lld%lld", &op[i].l, &op[i].r);
+      op[i].ans = 0;
+      query[query_num++] = i;
+    }
+  }
+
+  int query_start = query_num;
+  for (int i = q - 1; i >= 0; i--) {
+    if (op[i].flag == 1) {
+      Update(op[i], query_start);
+    } else {
+      query_start--;
+    }
+  }
+
+  for (int i = 0; i < query_num; i++) {
+    printf("%lld\n", op[query[i]].ans);
+  }
 }
 
 int main() {
