@@ -1,0 +1,31 @@
+Description:
+
+   	You have N sticks on your hands. When I show you a stick,
+you should tell me how many pairs of sticks on your hands can make a triangle with my stick.
+
+Input:
+
+   	The first line is a positive integer T standing for the numbers of test cases. The first line of each test case is two positive integers N, M, standing for the number of sticks on your hands and the times I will show you a stick. The second line has N positive integers. Each stands for i-th length of a stick on your hands. The i-th stick's length is li. Then M lines follow .Each is a positive integer Ki indicating the length of stick that I show you.
+(1<=T<=100,2<=N<=2000,1<=M<=100000,1<=li<=50000,1<=ki<=100000)
+
+Output:
+
+For each stick I show you, output the number of pair that can make a triangle with this stick. Each output should be in one line.
+
+Sample Input:
+
+2
+3 2
+2 4 6
+5
+16
+3 1
+12 12 18
+12
+
+Sample Output:
+
+3
+0
+3
+
