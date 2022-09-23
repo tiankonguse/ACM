@@ -138,15 +138,133 @@ class Solution {
 };
 
 vector<int> nums, nums1, nums2;
+char str[max6];
+unsigned h[max6];
 int n;
 
+bool SameChar() {
+  char pre = str[0];
+  for (int i = 0; i < n; i++) {
+    if (str[i] != pre) return false;
+  }
+  return true;
+}
+
+bool IsFirstMin() {
+  char minVal = str[0];
+  for (int i = 0; i < n; i++) {
+    minVal = min(minVal, str[i]);
+  }
+  return minVal == str[0];
+}
+
+ll qpow(ll x, ll v, ll mod) {
+  x = x % mod;
+  ll y = 1;
+  while (v) {
+    if (v & 1) y = y * x % mod;
+    x = x * x % mod;
+    v >>= 1;
+  }
+  return y;
+}
+unsigned H(int l, int r) {
+  if (l == 0) return h[r];
+  unsigned pre = h[l - 1] * qpow(26, r - l + 1, mod) % mod;
+  return(h[r] - pre + mod) % mod;
+}
+
+bool CheckLess(int len) {
+  int l = 1, r = len;  // 二分长度，判断是否相等
+
+  while (l < r) {
+    int mid = (l + r) / 2;
+    unsigned prefixHash = H(0, mid - 1);  //
+    unsigned suffixHash = H(len - mid, len - 1);
+    if (prefixHash == suffixHash) {
+      l = mid + 1;
+    } else {
+      r = mid;
+    }
+  }
+  char prefixVal = str[l - 1];
+  char suffixVal = str[len - l];
+  if (prefixVal > suffixVal) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+bool IsOneStep() {
+  int nn = n * 2;
+
+  // 填充逆序串
+  for (int i = n, j = n - 1; i < nn; i++, j--) {
+    str[i] = str[j];
+  }
+  str[nn] = '\0';
+
+  unsigned pre = 0;
+  for (int i = 0; i < nn; i++) {
+    pre = (pre * 26 + (str[i] - 'a')) % mod;
+    h[i] = pre;
+  }
+
+  for (int i = n + 1; i < nn; i++) {
+    if (CheckLess(i)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+bool IsOK() {
+  for (int i = 0; i < n; i++) {
+    if (str[i] > str[n - 1 - i]) return true;
+    if (str[i] < str[n - 1 - i]) return false;
+  }
+  return false;
+}
+
+int Check() {
+  n = strlen(str);
+
+  // 无答案
+  char pre = str[0];
+  if (SameChar()) {
+    return -1;
+  }
+
+  if (IsOK()) {
+    return 0;
+  }
+
+  if (!IsFirstMin()) {
+    return 1;
+  }
+  if (IsOneStep()) {
+    return 1;
+  }
+
+  return 2;
+}
+
 void Solver() {  //
-  scanf("%d", &n);
+  scanf("%s", str);
+
+  int ans = Check();
+  if (ans == -1) {
+    printf("Impossible\n");
+  } else {
+    printf("%d\n", ans);
+  }
 }
 
 int main() {
-  int t;
-  scanf("%d", &t);
+  int t = 1;
+  // scanf("%d", &t);
 
   while (t--) {
     Solver();
