@@ -86,9 +86,6 @@ constexpr ll MOD = 1000000007;
 constexpr ld EPS = 1e-12;
 ld PI = acos(-1.0);
 
-const double pi = acos(-1.0), eps = 1e-7;
-const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007;
-const int max3 = 2010, max4 = 20010, max5 = 200010, max6 = 2000010;
 // LONG_MIN(10进制 10位), LONG_MAX(10进制 19位)
 
 /*
@@ -137,9 +134,19 @@ class Solution {
   int smallestRepunitDivByK(int K) { return -1; }
 };
 
+#define DEBUG 0
+const double pi = acos(-1.0), eps = 1e-7;
+const int inf = 0x3f3f3f3f, ninf = 0xc0c0c0c0, mod = 1000000007,
+          modEx = 1000000009;
+const int max3 = 2010, max4 = 20010, max5 = 200010, max6 = 2000010;
+
 vector<int> nums, nums1, nums2;
 char str[max6];
-unsigned h[max6];
+string strEx;
+ll h[max6];
+ll qpowCache[max6];
+ll hEx[max6];
+ll qpowCacheEx[max6];
 int n;
 
 bool SameChar() {
@@ -158,44 +165,70 @@ bool IsFirstMin() {
   return minVal == str[0];
 }
 
-ll qpow(ll x, ll v, ll mod) {
-  x = x % mod;
-  ll y = 1;
-  while (v) {
-    if (v & 1) y = y * x % mod;
-    x = x * x % mod;
-    v >>= 1;
-  }
-  return y;
-}
-unsigned H(int l, int r) {
+const ll BASE = 29;
+ll H(int l, int r) {
   if (l == 0) return h[r];
-  unsigned pre = h[l - 1] * qpow(26, r - l + 1, mod) % mod;
-  return(h[r] - pre + mod) % mod;
+  ll pre = h[l - 1] * qpowCache[r - l + 1] % mod;
+  return (h[r] - pre + mod) % mod;
 }
+ll HEx(int l, int r) {
+  if (l == 0) return hEx[r];
+  ll pre = hEx[l - 1] * qpowCacheEx[r - l + 1] % modEx;
+  return (hEx[r] - pre + modEx) % modEx;
+}
+pll HH(int l, int r) { return {H(l, r), HEx(l, r)}; }
 
-bool CheckLess(int len) {
+bool CheckLess(const int len) {
   int l = 1, r = len;  // 二分长度，判断是否相等
+  const int rstart = n * 2 - len;
+  if (DEBUG) {
+    printf("n=%d len=%d %s rstart=%d %s\n", n, len,
+           strEx.substr(0, len).c_str(), rstart,
+           strEx.substr(rstart, len).c_str());
+  }
 
   while (l < r) {
     int mid = (l + r) / 2;
-    unsigned prefixHash = H(0, mid - 1);  //
-    unsigned suffixHash = H(len - mid, len - 1);
+    pll prefixHash = HH(0, mid - 1);  //
+    // str 是回文串，需要镜像计算
+    pll suffixHash = HH(rstart, rstart + mid - 1);
+    if (DEBUG) {
+      printf("mid=%d\n", mid);
+      printf("left: (%d,%d) %s (%lld,%lld)\n", 0, mid - 1,
+             strEx.substr(0, mid).c_str(), prefixHash.first, prefixHash.second);
+      printf("left: (%d,%d) %s (%lld,%lld)\n", rstart, rstart + mid - 1,
+             strEx.substr(rstart, mid).c_str(), suffixHash.first,
+             suffixHash.second);
+    }
     if (prefixHash == suffixHash) {
       l = mid + 1;
     } else {
       r = mid;
     }
   }
+  if (DEBUG) {
+    printf("ans mid=%d\n", l);
+  }
   char prefixVal = str[l - 1];
   char suffixVal = str[len - l];
-  if (prefixVal > suffixVal) {
-    return true;
-  } else {
-    return false;
-  }
-}
 
+  bool ans = false;
+  if (prefixVal > suffixVal) {
+    ans = true;
+  }
+  if (DEBUG) {
+    printf("len=%d ans=%d l=%d\n", len, ans, l);
+  }
+  return ans;
+}
+/*
+tpctpc
+aba
+a
+abc
+acdabc
+abcdabbc
+*/
 bool IsOneStep() {
   int nn = n * 2;
 
@@ -204,15 +237,30 @@ bool IsOneStep() {
     str[i] = str[j];
   }
   str[nn] = '\0';
-
-  unsigned pre = 0;
-  for (int i = 0; i < nn; i++) {
-    pre = (pre * 26 + (str[i] - 'a')) % mod;
-    h[i] = pre;
+  if (DEBUG) {
+    strEx = str;
+    printf("str=%s nn=%d\n", str, nn);
+  }
+  qpowCache[0] = 1;
+  qpowCacheEx[0] = 1;
+  for (int i = 1; i <= nn; i++) {
+    qpowCache[i] = (qpowCache[i - 1] * BASE) % mod;
+    qpowCacheEx[i] = (qpowCacheEx[i - 1] * BASE) % modEx;
   }
 
-  for (int i = n + 1; i < nn; i++) {
-    if (CheckLess(i)) {
+  ll pre = 0;
+  ll preEx = 0;
+  for (int i = 0; i < nn; i++) {
+    pre = (pre * BASE + (str[i] - 'a' + 1)) % mod;
+    h[i] = pre;
+
+    preEx = (preEx * BASE + (str[i] - 'a' + 1)) % modEx;
+    hEx[i] = preEx;
+    // printf("i=%d h=%lld\n", i, pre);
+  }
+
+  for (int len = n + 1; len < nn; len++) {  // [n+1, 2*n)
+    if (CheckLess(len)) {
       return true;
     }
   }
@@ -232,7 +280,6 @@ int Check() {
   n = strlen(str);
 
   // 无答案
-  char pre = str[0];
   if (SameChar()) {
     return -1;
   }
