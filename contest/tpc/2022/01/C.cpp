@@ -166,8 +166,22 @@ bool IsFirstMin() {
 }
 
 const ll BASE = 29;
+
+ll qpow(ll x, ll v, ll mod) {
+  x = x % mod;
+  ll y = 1;
+  while (v) {
+    if (v & 1) y = y * x % mod;
+    x = x * x % mod;
+    v >>= 1;
+  }
+  return y;
+}
+
 ll H(int l, int r) {
   if (l == 0) return h[r];
+  // 每次实时调用 qpow， 复杂度是 O(n log(n) log(n))， 预处理后，复杂度可以降低到 O(n log(n))
+  // ll pre = h[l - 1] * qpow(BASE, r - l + 1, mod) % mod;  
   ll pre = h[l - 1] * qpowCache[r - l + 1] % mod;
   return (h[r] - pre + mod) % mod;
 }

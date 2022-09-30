@@ -90,7 +90,8 @@
         "tuple": "cpp",
         "type_traits": "cpp",
         "variant": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "span": "cpp"
     },
     "code-runner.runInTerminal": true
 }
